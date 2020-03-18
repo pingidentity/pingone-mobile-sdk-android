@@ -72,7 +72,7 @@ To manually pair the device, call the following method with your pairing key:
 PingOne.pair(context, pairingKey, new PingOne.PingOneSDKCallback())
 ```
 
-To pair the device using OpedID Connect (automatic pairing):
+To automatically pair the device using OpenID Connect:
 
 1. call this function to get the PingOne SDK mobile payload:
 ```java
@@ -126,8 +126,8 @@ The PingOne Mobile SDK bundle provides a sample app that includes all the basic 
 
 ### Send Logs
 
-The PingOne Mobile SDK bundle writes fixed size of encrypted log messages in memory.
-To send this logs to our server for support, call the ```public static void sendLogs(Context context, PingOneSendLogsCallback callback)``` method, for example:
+The PingOne Mobile SDK bundle writes fixed size, encrypted log messages to memory. To send these logs to our server for support, call the ```public static void sendLogs(Context context, PingOneSendLogsCallback callback)``` method. 
+For example:
  ```java
 PingOne.sendLogs(context, new PingOne.PingOneSendLogsCallback() {
     @Override
