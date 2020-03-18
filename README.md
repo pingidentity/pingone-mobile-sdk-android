@@ -46,22 +46,22 @@ When configuring your PingOne SDK application in the PingOne admin web console (
 		```
 	    implementation 'androidx.appcompat:appcompat:1.1.0'
 
-		implementation 'org.slf4j:slf4j-api:1.7.26'
+		implementation 'org.slf4j:slf4j-api:1.7.30'
 		implementation 'com.github.tony19:logback-android:2.0.0'
 
 		implementation 'com.madgag.spongycastle:core:1.58.0.0'
 		implementation 'com.madgag.spongycastle:bcpkix-jdk15on:1.58.0.0'
 
 		//FireCloud Messaging Services
-		implementation 'com.google.firebase:firebase-core:17.0.0'
-		implementation 'com.google.firebase:firebase-messaging:19.0.1'
+		implementation 'com.google.firebase:firebase-core:17.2.3'
+		implementation 'com.google.firebase:firebase-messaging:20.1.2'
 
 		//Google's gSon library to build and parse JSON format
-		implementation 'com.google.code.gson:gson:2.8.5'
+		implementation 'com.google.code.gson:gson:2.8.6'
 
 		//The jose.4.j library is an open source (Apache 2.0) implementation of JWT and the JOSE specification suite
- 		implementation 'org.bitbucket.b_c:jose4j:0.6.5'
-```
+ 		implementation 'org.bitbucket.b_c:jose4j:0.7.0'
+              
 
 
 ### Pairing
@@ -124,38 +124,17 @@ public void onMessageReceived(final RemoteMessage remoteMessage) {
 The PingOne Mobile SDK bundle provides a sample app that includes all the basic flows in order to help you get started.
 
 
-### Share log file
+### Send Logs
 
-```java
-/*
-* Call this method if you want to share the PingOne SDK logs with the PingOne support team.
-* The FileProvider for your application_id and PingOne log file are provided by the SDK component.
-*/
-private void shareLogFile(Context context){
-   /*
-    * This is the full path to the PingOne log file
-    */
-   File file = new File(context.getFilesDir().getAbsolutePath()
-           .concat(File.separator)
-           .concat("pingone.log"));
-   /*
-    * Create a URI using FileProvider to make sure it will work on every Android version
-    */
-   Uri uri = FileProvider.getUriForFile(context, BuildConfig.APPLICATION_ID, file);
-   /*
-    * Bundle a URI into Intent and activate it
-    */
-   Intent sharingIntent = new Intent(Intent.ACTION_SEND);
-   sharingIntent.setType("text/*");
-   sharingIntent.putExtra(Intent.EXTRA_STREAM, uri);
-   /*
-    * Set flag to give temporary permission to external app to use your FileProvider
-    */
-   sharingIntent.setFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
-   /*
-    * Activate an intent (title is mandatory and configurable)
-    */
-   startActivity(Intent.createChooser(sharingIntent, "Choose an application"));
-
-}
+The PingOne Mobile SDK bundle writes fixed size of encrypted log messages in memory.
+To send this logs to our server for support, call the ```public static void sendLogs(Context context, PingOneSendLogsCallback callback)``` method, for example:
+ ```java
+PingOne.sendLogs(context, new PingOne.PingOneSendLogsCallback() {
+    @Override
+    public void onComplete(@Nullable final String supportId, @Nullable PingOneSDKError pingOneSDKError) {
+        if(supportId!=null){
+            // pass this supportId value to PingOne support team
+        }
+     }
+});
 ```
