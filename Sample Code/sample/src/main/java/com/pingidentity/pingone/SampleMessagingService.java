@@ -64,7 +64,6 @@ public class SampleMessagingService extends FirebaseMessagingService {
                      * if application is in foreground process the push in activity
                      */
                     if (ProcessLifecycleOwner.get().getLifecycle().getCurrentState() == Lifecycle.State.RESUMED) {
-
                         startActivity(handleNotificationObjectIntent);
                     }else {
                         /*

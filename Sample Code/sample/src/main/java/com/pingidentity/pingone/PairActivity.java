@@ -1,5 +1,6 @@
 package com.pingidentity.pingone;
 
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -18,8 +19,10 @@ import androidx.core.content.FileProvider;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.FirebaseApp;
 import com.google.firebase.iid.FirebaseInstanceId;
 import com.google.firebase.iid.InstanceIdResult;
+import com.pingidentity.pingidsdkv2.NotificationObject;
 import com.pingidentity.pingidsdkv2.PingOne;
 import com.pingidentity.pingidsdkv2.PingOneSDKError;
 
@@ -33,6 +36,8 @@ public class PairActivity extends SampleActivity {
     Logger logger = LoggerFactory.getLogger(PairActivity.class);
 
     private EditText activationCodeInput;
+
+
 
 
     @Override
@@ -121,7 +126,6 @@ public class PairActivity extends SampleActivity {
                 .show()
                 .getButton(DialogInterface.BUTTON_POSITIVE).setContentDescription(this.getString(R.string.alert_dialog_button_ok));
     }
-
 
     /*
      * To share log file use this method. The FileProvider for your application_id and
