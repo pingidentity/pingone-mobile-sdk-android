@@ -63,7 +63,7 @@ When configuring your PingOne SDK application in the PingOne admin web console (
 
     *  As the PingOne SDK component is loaded locally, you’ll have to add the PingOne SDK component’s dependencies manually in order to be able to compile and run it. Add these dependencies under the PingOne SDK component dependency:
 
-		```
+	```
 	    implementation 'androidx.appcompat:appcompat:1.1.0'
 
 		implementation 'org.slf4j:slf4j-api:1.7.30'
@@ -81,7 +81,9 @@ When configuring your PingOne SDK application in the PingOne admin web console (
 
 		//The jose.4.j library is an open source (Apache 2.0) implementation of JWT and the JOSE specification suite
  		implementation 'org.bitbucket.b_c:jose4j:0.7.0'
-              
+        implementation "androidx.lifecycle:lifecycle-extensions:2.2.0"
+    ```
+       
 
 
 ### Pairing
