@@ -1,9 +1,12 @@
 <resources>
+    
+    <string name="app_name">PingOne Sample App</string>
 
     <string name="button_regular_pairing_text">Manual Pairing</string>
     <string name="button_oidc_log_in_text">OIDC Automatic Pairing</string>
+    <string name="button_send_logs_text">Send logs</string>
 
-    <string name="activation_code_hint">Pairing Key</string>
+    <string name="activation_code_hint">Activation code</string>
 
     <string name="pair_button_text">PAIR</string>
 
@@ -18,6 +21,7 @@
 
     <string name="button_regular_pairing" translatable="false">button_regular_pair</string>
     <string name="button_oidc_pairing" translatable="false">button_oidc_pairing</string>
+    <string name="button_send_logs" translatable="false">button_send_logs</string>
     <string name="button_pair" translatable="false">button_pair</string>
     <string name="edit_text_pairing_key" translatable="false">edit_text_pairing_key</string>
     <string name="alert_dialog_button_ok">button_ok</string>
