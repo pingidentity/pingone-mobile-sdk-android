@@ -17,6 +17,13 @@
         android:layout_height="wrap_content"
         android:contentDescription="@string/button_oidc_pairing"
         android:text="@string/button_oidc_log_in_text"/>
+    <Button
+        android:id="@+id/button_send_logs"
+        android:layout_gravity="center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:contentDescription="@string/button_send_logs"
+        android:text="@string/button_send_logs_text"/>
 
     <TextView
         android:id="@+id/text_view_app_version"

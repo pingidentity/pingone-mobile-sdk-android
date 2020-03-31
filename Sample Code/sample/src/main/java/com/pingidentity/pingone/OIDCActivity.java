@@ -38,7 +38,7 @@ import java.util.Map;
  * This is sample OIDC Activity which shows how to use the AppAuth open code library
  * to implement login via OpenID Connect protocol.
  */
-public class OIDCActivity extends SampleActivity {
+public class OIDCActivity extends AppCompatActivity {
     private static final String TAG = "OIDC_Activity";
 
     private static final String OIDC_ISSUER = "https://auth.pingone.com/1e41d166-8012-4fa2-b755-15cd7c8a03de/as";
@@ -113,9 +113,6 @@ public class OIDCActivity extends SampleActivity {
         }
     }
 
-    /*
-     * Discovers server configuration from provided OIDC_ISSUER and sends authorization request
-     */
     private void discoverAndAuthorize(){
         AuthorizationServiceConfiguration.fetchFromIssuer(Uri.parse(OIDC_ISSUER), new AuthorizationServiceConfiguration.RetrieveConfigurationCallback() {
             @Override
@@ -174,9 +171,6 @@ public class OIDCActivity extends SampleActivity {
         super.onBackPressed();
     }
 
-    /*
-     * We would like to ask the user for approval of pairing the device
-     */
     private void showApproveDenyDialog(final PairingObject pairingObject){
         if(alertDialog!=null && alertDialog.isShowing()){
             alertDialog.cancel();
