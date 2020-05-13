@@ -2,12 +2,20 @@ package com.pingidentity.pingone;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
+import android.text.Spannable;
+import android.text.SpannableString;
+import android.text.style.ForegroundColorSpan;
+import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonObject;
 import com.pingidentity.pingidsdkv2.NotificationObject;
 import com.pingidentity.pingidsdkv2.PingOne;
 import com.pingidentity.pingidsdkv2.PingOneSDKError;
@@ -27,6 +35,12 @@ public class SampleActivity extends AppCompatActivity {
             }
             if (getIntent().hasExtra("body")){
                 body = getIntent().getStringExtra("body");
+            }
+            if (pingOneNotificationObject!=null && pingOneNotificationObject.getClientContext()!=null) {
+                JsonObject jsonObject = new Gson().fromJson(pingOneNotificationObject.getClientContext(), JsonObject.class);
+                if (jsonObject.has("header_font_color")){
+                    changeTitleColor(jsonObject.get("header_font_color").getAsString());
+                }
             }
             if(pingOneNotificationObject.isTest()){
                 showOkDialog(body);
@@ -48,6 +62,12 @@ public class SampleActivity extends AppCompatActivity {
             }
             if (intent.hasExtra("body")){
                 body = intent.getStringExtra("body");
+            }
+            if (pingOneNotificationObject!=null && pingOneNotificationObject.getClientContext()!=null) {
+                JsonObject jsonObject = new Gson().fromJson(pingOneNotificationObject.getClientContext(), JsonObject.class);
+                if (jsonObject.has("header_font_color")){
+                    changeTitleColor(jsonObject.get("header_font_color").getAsString());
+                }
             }
             if(pingOneNotificationObject.isTest()){
                 showOkDialog(body);
@@ -123,5 +143,11 @@ public class SampleActivity extends AppCompatActivity {
 
         alertDialog.getButton(DialogInterface.BUTTON_POSITIVE).setContentDescription(getString(R.string.button_approve));
         alertDialog.getButton(DialogInterface.BUTTON_NEGATIVE).setContentDescription(getString(R.string.button_deny));
+    }
+
+    private void changeTitleColor(String color){
+        Spannable text = new SpannableString(getSupportActionBar().getTitle());
+        text.setSpan(new ForegroundColorSpan(Color.parseColor(color)), 0, text.length(), Spannable.SPAN_INCLUSIVE_INCLUSIVE);
+        getSupportActionBar().setTitle(text);
     }
 }

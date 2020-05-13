@@ -1,5 +1,25 @@
 # Release Notes
 
+## v1.3.0 - May 14th, 2020
+Features:
+
+- Push notification data is now JWT-signed and verified
+- Push notification data is now includes "client-context" field
+- "Silent" device authorization feature  
+
+Dependencies updated:
+
+  * 'com.android.tools.build:gradle:3.5.3'
+  * 'com.google.gms:google-services:4.3.3'
+  * 'com.google.firebase:firebase-core:17.3.0'
+  * 'com.google.firebase:firebase-messaging:20.1.5'
+
+
+Compatibility notes:
+
+- Deprecated method: `PingOne.processRemoteNotification(RemoteMessage remoteMessage, PingOne.PingOneNotificationCallback callback)`
+
+
 ## v1.2.0 - March 31st, 2020
 Features:
 

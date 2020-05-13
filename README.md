@@ -74,15 +74,15 @@ When configuring your PingOne SDK application in the PingOne admin web console (
 	    implementation 'com.madgag.spongycastle:bcpkix-jdk15on:1.58.0.0'
 
 	    //FireCloud Messaging Services
-	    implementation 'com.google.firebase:firebase-core:17.2.3'
-	    implementation 'com.google.firebase:firebase-messaging:20.1.2'
+	    implementation 'com.google.firebase:firebase-core:17.3.0'
+	    implementation 'com.google.firebase:firebase-messaging:20.1.5'
 
 	    //Google's gSon library to build and parse JSON format
 	    implementation 'com.google.code.gson:gson:2.8.6'
 
 	    //The jose.4.j library is an open source (Apache 2.0) implementation of JWT and the JOSE specification suite
  	    implementation 'org.bitbucket.b_c:jose4j:0.7.0'
-            implementation "androidx.lifecycle:lifecycle-extensions:2.2.0"
+        implementation "androidx.lifecycle:lifecycle-extensions:2.2.0"
     ```
        
 
@@ -129,7 +129,7 @@ PingOne SDK will only handle push notifications which were issued by the PingOne
 ```java
 @Override
 public void onMessageReceived(final RemoteMessage remoteMessage) {
-    PingOne.processRemoteNotification(remoteMessage, new PingOne.PingOneNotificationCallback() {
+    PingOne.processRemoteNotification(context, remoteMessage, new PingOne.PingOneNotificationCallback() {
         @Override
 	public void onComplete(@Nullable NotificationObject notificationObject, PingOneSDKError error) {
 	    if (notificationObject == null){
