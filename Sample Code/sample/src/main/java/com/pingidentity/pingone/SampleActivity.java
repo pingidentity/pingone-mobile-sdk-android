@@ -138,6 +138,26 @@ public class SampleActivity extends AppCompatActivity {
                         });
                     }
                 })
+                .setOnCancelListener(new DialogInterface.OnCancelListener() {
+                    @Override
+                    public void onCancel(DialogInterface dialog) {
+                        pingOneNotificationObject.deny(SampleActivity.this, new PingOne.PingOneSDKCallback() {
+                            @Override
+                            public void onComplete(@Nullable final PingOneSDKError error) {
+                                runOnUiThread(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        if (error != null) {
+                                            showOkDialog(error.toString());
+                                        }else{
+                                            finish();
+                                        }
+                                    }
+                                });
+                            }
+                        });
+                    }
+                })
                 .create();
         alertDialog.show();
 
