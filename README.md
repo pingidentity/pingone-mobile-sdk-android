@@ -74,8 +74,8 @@ When configuring your PingOne SDK application in the PingOne admin web console (
 	    implementation 'com.madgag.spongycastle:bcpkix-jdk15on:1.58.0.0'
 
 	    //FireCloud Messaging Services
-	    implementation 'com.google.firebase:firebase-core:17.3.0'
-	    implementation 'com.google.firebase:firebase-messaging:20.1.5'
+	    implementation 'com.google.firebase:firebase-core:17.4.2'
+	    implementation 'com.google.firebase:firebase-messaging:20.2.0'
 
 	    //Google's gSon library to build and parse JSON format
 	    implementation 'com.google.code.gson:gson:2.8.6'
