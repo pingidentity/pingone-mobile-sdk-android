@@ -4,7 +4,7 @@
 Features:
 
 - Push notification data is now JWT-signed and verified
--  Added `clientContext` to the push notification object. `clientContext` contains extra parameters that are passed to the client.
+- Added `clientContext` to the push notification object. `clientContext` contains extra parameters that are passed to the client.
 - "Silent" device authorization feature  
 
 Dependencies updated:
