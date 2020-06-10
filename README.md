@@ -6,9 +6,10 @@ PingOne for Customers Mobile SDK is a set of components and services targeted at
 This solution leverages Ping Identity’s expertise in MFA technology, as a component that can be embedded easily and quickly into a new or existing application. The PingOne for Customers Mobile SDK package comprises of the following components:
 
 * The PingOne for Customers Mobile SDK library for Android applications.
-* A sample app example source code for Android. 
+* A sample app example source code for Android. A sample app example source code for Android. 
+The Sample Code directory contains the Android project that is ready to be built after all the prerequisites are satisfied. To open the Sample Code as a Project in Android Studio, clone the whole directory and go to: File -> New -> Import Project.
+Choose the Sample Code folder as the project's root folder.
 
-Note that this repo root folder is not a valid Android Studio project. If you clone it from Android Studio, choose 'No' when prompted to create new Android Project. Then open the project from the Sample Code folder on disk.
 Release notes can be found [here](./release-notes.md).
 
 ### Documentation
