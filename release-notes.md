@@ -1,10 +1,10 @@
 # Release Notes
 
-## v1.3.0 - June, 2020
+## v1.3.0 - June 18th, 2020
 Features:
 
 - Push notification data is now JWT-signed and verified
-- Push notification data is now includes "client-context" field
+- Added `clientContext` to the push notification object. `clientContext` contains extra parameters that are passed to the client.
 - "Silent" device authorization feature  
 
 Dependencies updated:
