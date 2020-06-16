@@ -3,6 +3,7 @@ package com.pingidentity.pingone;
 import android.content.Intent;
 import android.util.Log;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.lifecycle.Lifecycle;
 import androidx.lifecycle.ProcessLifecycleOwner;
@@ -23,8 +24,8 @@ import org.json.JSONObject;
 public class SampleMessagingService extends FirebaseMessagingService {
 
     @Override
-    public void onMessageReceived(final RemoteMessage remoteMessage) {
-        PingOne.processRemoteNotification(remoteMessage, new PingOne.PingOneNotificationCallback() {
+    public void onMessageReceived(@NonNull final RemoteMessage remoteMessage) {
+        PingOne.processRemoteNotification(SampleMessagingService.this, remoteMessage, new PingOne.PingOneNotificationCallback() {
             @Override
             public void onComplete(@Nullable NotificationObject pingOneNotificationObject, PingOneSDKError error) {
                 if (pingOneNotificationObject == null){
@@ -64,7 +65,6 @@ public class SampleMessagingService extends FirebaseMessagingService {
                      * if application is in foreground process the push in activity
                      */
                     if (ProcessLifecycleOwner.get().getLifecycle().getCurrentState() == Lifecycle.State.RESUMED) {
-
                         startActivity(handleNotificationObjectIntent);
                     }else {
                         /*
@@ -94,7 +94,7 @@ public class SampleMessagingService extends FirebaseMessagingService {
         PingOne.setDeviceToken(this, token, new PingOne.PingOneSDKCallback() {
             @Override
             public void onComplete(@Nullable PingOneSDKError pingOneSDKError) {
-
+                //check for an error and re-schedule service update
             }
         });
     }
