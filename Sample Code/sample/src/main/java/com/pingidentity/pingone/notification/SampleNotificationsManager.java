@@ -14,6 +14,7 @@ import androidx.core.app.NotificationManagerCompat;
 
 import com.pingidentity.pingidsdkv2.NotificationObject;
 import com.pingidentity.pingone.R;
+import com.pingidentity.pingone.SampleActivity;
 
 import static com.pingidentity.pingone.notification.SampleNotificationsActionsReceiver.ACTION_APPROVE;
 import static com.pingidentity.pingone.notification.SampleNotificationsActionsReceiver.ACTION_DENY;
@@ -101,7 +102,8 @@ public class SampleNotificationsManager {
 
         builder.addAction(createDenyAction(extra));
         builder.addAction(createApproveAction(extra));
-
+        builder.setAutoCancel(true);
+        builder.setContentIntent(createOnTapPendingIntent(notificationObject));
         Notification newMessageNotification = builder.build();
         NotificationManagerCompat notificationManager = NotificationManagerCompat.from(context);
         notificationManager.notify(NOTIFICATION_ID_SAMPLE_APP, newMessageNotification);
@@ -153,5 +155,14 @@ public class SampleNotificationsManager {
                 context.getString(R.string.notification_action_deny),
                 denyPendingIntent)
                 .build();
+    }
+
+    private PendingIntent createOnTapPendingIntent(NotificationObject notificationObject){
+        Intent intent = new Intent(context, SampleActivity.class);
+        //intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        Bundle data = new Bundle();
+        data.putParcelable("PingOneNotification", notificationObject);
+        intent.putExtras(data);
+        return PendingIntent.getActivity(context, (int) (System.currentTimeMillis() & 0xfffffff), intent, PendingIntent.FLAG_UPDATE_CURRENT);
     }
 }
