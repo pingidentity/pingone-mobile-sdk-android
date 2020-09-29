@@ -31,7 +31,7 @@ None.
 
 **Copyright:**
 
-Copyright (C), OpenID. All rights reserved.
+Copyright (C) 2017 The AppAuth Authors.
 
 **License:**
 https://github.com/openid/AppAuth-Android/blob/master/LICENSE
