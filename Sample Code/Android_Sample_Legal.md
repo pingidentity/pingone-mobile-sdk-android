@@ -9,7 +9,7 @@ This release contains software written by Ping Identity plus software written by
 
 | Common Name | Developed or Sourced by | License Section |
 |--|--|--|
-| AppAuth | Iain McGinnis| 1.0 |
+| AppAuth | OpenID | 1.0 |
 
 **Notice**
 
@@ -31,7 +31,7 @@ None.
 
 **Copyright:**
 
-XXXX
+Copyright (C), OpenID. All rights reserved.
 
 **License:**
 https://github.com/openid/AppAuth-Android/blob/master/LICENSE
