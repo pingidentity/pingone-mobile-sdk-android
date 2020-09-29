@@ -6,7 +6,9 @@ PingOne for Customers Mobile SDK is a set of components and services targeted at
 This solution leverages Ping Identity’s expertise in MFA technology, as a component that can be embedded easily and quickly into a new or existing application. The PingOne for Customers Mobile SDK package comprises of the following components:
 
 * The PingOne for Customers Mobile SDK library for Android applications.
-* A sample app example source code for Android.
+* A sample app example source code for Android. A sample app example source code for Android. 
+The Sample Code directory contains the Android project that is ready to be built after all the prerequisites are satisfied. To open the Sample Code as a Project in Android Studio, clone the whole directory and go to: File -> New -> Import Project.
+Choose the Sample Code folder as the project's root folder.
 
 Release notes can be found [here](./release-notes.md).
 
@@ -14,8 +16,8 @@ Release notes can be found [here](./release-notes.md).
 
 Reference documentation is available for PingOne for Customers Mobile SDK, describing its capabilities, features, installation and setup, integration with mobile apps, deployment and more: 
 
-* [PingOne for Customers Mobile SDK release notes and admin related documentation](https://documentation.pingidentity.com/pingone/p14cAdminGuide/)
-* [PingOne for Customers Mobile SDK developer documentation](https://apidocs.pingidentity.com/pingone/customer/v1/api/mobileSDK/)
+* [PingOne for Customers Mobile SDK release notes and admin related documentation](https://docs.pingidentity.com/bundle/p14c/)
+* [PingOne for Customers Mobile SDK developer documentation](https://apidocs.pingidentity.com/pingone/platform/v1/api/#mobile-sdk-api)
 
 
 ## Set up a mobile app using the PingOne SDK sample code
@@ -74,15 +76,15 @@ When configuring your PingOne SDK application in the PingOne admin web console (
 	    implementation 'com.madgag.spongycastle:bcpkix-jdk15on:1.58.0.0'
 
 	    //FireCloud Messaging Services
-	    implementation 'com.google.firebase:firebase-core:17.2.3'
-	    implementation 'com.google.firebase:firebase-messaging:20.1.2'
+	    implementation 'com.google.firebase:firebase-core:17.4.2'
+	    implementation 'com.google.firebase:firebase-messaging:20.2.0'
 
 	    //Google's gSon library to build and parse JSON format
 	    implementation 'com.google.code.gson:gson:2.8.6'
 
 	    //The jose.4.j library is an open source (Apache 2.0) implementation of JWT and the JOSE specification suite
  	    implementation 'org.bitbucket.b_c:jose4j:0.7.0'
-            implementation "androidx.lifecycle:lifecycle-extensions:2.2.0"
+        implementation "androidx.lifecycle:lifecycle-extensions:2.2.0"
     ```
        
 
@@ -129,7 +131,7 @@ PingOne SDK will only handle push notifications which were issued by the PingOne
 ```java
 @Override
 public void onMessageReceived(final RemoteMessage remoteMessage) {
-    PingOne.processRemoteNotification(remoteMessage, new PingOne.PingOneNotificationCallback() {
+    PingOne.processRemoteNotification(context, remoteMessage, new PingOne.PingOneNotificationCallback() {
         @Override
 	public void onComplete(@Nullable NotificationObject notificationObject, PingOneSDKError error) {
 	    if (notificationObject == null){
