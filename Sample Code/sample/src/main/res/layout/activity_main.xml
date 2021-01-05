@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
+    android:padding="@dimen/fragment_vertical_margin"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
     <Button
@@ -18,6 +19,14 @@
         android:contentDescription="@string/button_oidc_pairing"
         android:text="@string/button_oidc_log_in_text"/>
     <Button
+        android:id="@+id/button_authentication_api"
+        android:layout_gravity="center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:contentDescription="@string/button_authentication_api"
+        android:text="@string/button_authentication_api_text"/>
+
+    <Button
         android:id="@+id/button_send_logs"
         android:layout_gravity="center"
         android:layout_width="wrap_content"
@@ -27,8 +36,8 @@
 
     <TextView
         android:id="@+id/text_view_app_version"
-        android:contentDescription="@string/text_view_app_version"
-        android:layout_gravity="center"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:contentDescription="@string/text_view_app_version" />
 </LinearLayout>

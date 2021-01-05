@@ -14,12 +14,14 @@ import com.pingidentity.pingidsdkv2.NotificationObject;
 import com.pingidentity.pingidsdkv2.PingOne;
 import com.pingidentity.pingidsdkv2.PingOneSDKError;
 import com.pingidentity.pingone.notification.SampleNotificationsManager;
+import com.pingidentity.pingone.util.ActivityLifecycleViewModel;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
 /*
- * This is where you will receive FCM messages
+ * This is where you will receive FCM messages and new tokens, if previous token
+ * was discarded by Google's security
  */
 public class SampleMessagingService extends FirebaseMessagingService {
 
@@ -64,7 +66,7 @@ public class SampleMessagingService extends FirebaseMessagingService {
                     /*
                      * if application is in foreground process the push in activity
                      */
-                    if (ProcessLifecycleOwner.get().getLifecycle().getCurrentState() == Lifecycle.State.RESUMED) {
+                    if(new ActivityLifecycleViewModel().getStateMutableLiveData().getValue() == Lifecycle.State.RESUMED) {
                         startActivity(handleNotificationObjectIntent);
                     }else {
                         /*

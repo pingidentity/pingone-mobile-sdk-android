@@ -38,7 +38,7 @@ import java.util.Map;
  * This is sample OIDC Activity which shows how to use the AppAuth open code library
  * to implement login via OpenID Connect protocol.
  */
-public class OIDCActivity extends AppCompatActivity {
+public class OIDCActivity extends SampleLifecycleActivity {
     private static final String TAG = "OIDC_Activity";
 
     private static final String OIDC_ISSUER = "https://auth.pingone.com/1e41d166-8012-4fa2-b755-15cd7c8a03de/as";
