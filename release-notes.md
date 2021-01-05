@@ -1,5 +1,12 @@
 # Release Notes
 
+## v1.4.0 - Jan 5th, 2021
+Features:
+
+- Added support for Mobile Authentication Framework for Android Developers. 
+See the files in the `PingAuthenticationUI` and `PingAuthenticationCore` folders.
+
+
 ## v1.3.0 - June 18th, 2020
 Features:
 

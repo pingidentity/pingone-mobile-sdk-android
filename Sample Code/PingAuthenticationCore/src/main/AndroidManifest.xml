@@ -1,0 +1,6 @@
+<manifest package="com.pingidentity.authcore"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- In order to perform network operations the following permissions must be included: -->
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+</manifest>

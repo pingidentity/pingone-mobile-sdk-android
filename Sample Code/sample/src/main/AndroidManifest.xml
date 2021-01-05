@@ -1,6 +1,23 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.pingidentity.pingone">
-
+    <queries>
+        <intent>
+            <action android:name="android.intent.action.VIEW" />
+            <data android:scheme="pingonesdk" />
+        </intent>
+    </queries>
+    <queries>
+        <intent>
+            <action android:name="android.intent.action.VIEW" />
+            <category android:name="android.intent.category.BROWSABLE" />
+            <data android:scheme="https" />
+        </intent>
+        <intent>
+            <action android:name="android.intent.action.VIEW" />
+            <category android:name="android.intent.category.APP_BROWSER" />
+            <data android:scheme="https" />
+        </intent>
+    </queries>
     <application
 
         android:allowBackup="true"
@@ -20,7 +37,7 @@
         <activity android:name=".SampleActivity"/>
         <activity android:name=".PairActivity"/>
         <activity android:name=".OIDCActivity"/>
-
+        <activity android:name=".MobileAuthenticationFrameworkActivity"/>
         <!--Activity that receives the redirect Uri sent by the OpenID endpoint. It forwards the data
             * received as part of this redirect to {@link AuthorizationManagementActivity}, which
             * destroys the browser tab before returning the result to the completion
@@ -35,6 +52,9 @@
                     android:host="sample"/>
             </intent-filter>
         </activity>
+
+        <activity android:name="com.pingidentity.authenticationui.PingAuthenticationUIActivity"/>
+
         <service
             android:name=".SampleMessagingService"
             android:exported="false">
