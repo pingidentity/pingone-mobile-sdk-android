@@ -1,0 +1,14 @@
+<resources>
+    <!-- Strings related to login fragment-->
+    <string name="prompt_username">Username</string>
+    <string name="prompt_password">Password</string>
+    <string name="action_sign_in_short">Sign on</string>
+    <string name="ok">OK</string>
+
+    <!-- Strings related to prompt fragment-->
+    <string name="action_check_otp">Check OTP</string>
+
+    <string name="authentication_completed">Authentication completed</string>
+    <string name="error_dialog_title">Error</string>
+
+</resources>
