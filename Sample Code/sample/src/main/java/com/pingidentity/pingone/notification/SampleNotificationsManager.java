@@ -103,7 +103,7 @@ public class SampleNotificationsManager {
         builder.addAction(createDenyAction(extra));
         builder.addAction(createApproveAction(extra));
         builder.setAutoCancel(true);
-        builder.setContentIntent(createOnTapPendingIntent(notificationObject));
+        builder.setContentIntent(createOnTapPendingIntent(notificationIntent));
         Notification newMessageNotification = builder.build();
         NotificationManagerCompat notificationManager = NotificationManagerCompat.from(context);
         notificationManager.notify(NOTIFICATION_ID_SAMPLE_APP, newMessageNotification);
@@ -157,11 +157,19 @@ public class SampleNotificationsManager {
                 .build();
     }
 
-    private PendingIntent createOnTapPendingIntent(NotificationObject notificationObject){
+    private PendingIntent createOnTapPendingIntent(Intent notificationIntent){
+        NotificationObject notificationObject = notificationIntent.getParcelableExtra("PingOneNotification");
+
         Intent intent = new Intent(context, SampleActivity.class);
-        //intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         Bundle data = new Bundle();
         data.putParcelable("PingOneNotification", notificationObject);
+        if(notificationIntent.hasExtra("title")) {
+            data.putString("title", notificationIntent.getStringExtra("title"));
+        }
+        if (notificationIntent.hasExtra("body")){
+            data.putString("body", notificationIntent.getStringExtra("body"));
+        }
         intent.putExtras(data);
         return PendingIntent.getActivity(context, (int) (System.currentTimeMillis() & 0xfffffff), intent, PendingIntent.FLAG_UPDATE_CURRENT);
     }

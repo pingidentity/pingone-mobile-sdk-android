@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/ping_authn_ui_main_nav"
+    app:startDestination="@id/spinnerFragment">
+
+    <fragment
+        android:id="@+id/spinnerFragment"
+        android:name="com.pingidentity.authenticationui.ui.SpinnerFragment"
+        android:label="fragment_spinner"
+        tools:layout="@layout/fragment_spinner" />
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="com.pingidentity.authenticationui.ui.LoginFragment"
+        android:label="fragment_login"
+        tools:layout="@layout/fragment_login">
+        <argument
+            android:name="state"
+            app:argType="com.pingidentity.authcore.models.AuthenticationState"/>
+    </fragment>
+    <fragment
+        android:id="@+id/actionSelectionFragment"
+        android:name="com.pingidentity.authenticationui.ui.ActionSelectionFragment"
+        android:label="fragment_action_selection"
+        tools:layout="@layout/fragment_action_selection">
+        <argument
+            android:name="state"
+            app:argType="com.pingidentity.authcore.models.AuthenticationState"/>
+    </fragment>
+    <fragment
+        android:id="@+id/promptFragment"
+        android:name="com.pingidentity.authenticationui.ui.PromptFragment"
+        android:label="fragment_prompt"
+        tools:layout="@layout/fragment_prompt">
+        <argument
+            android:name="state"
+            app:argType="com.pingidentity.authcore.models.AuthenticationState"/>
+    </fragment>
+    <fragment
+        android:id="@+id/deviceSelectionFragment"
+        android:name="com.pingidentity.authenticationui.ui.DeviceSelectionFragment"
+        android:label="fragment_device_selection"
+        tools:layout="@layout/fragment_device_selection">
+        <argument
+            android:name="state"
+            app:argType="com.pingidentity.authcore.models.AuthenticationState"/>
+    </fragment>
+</navigation>
