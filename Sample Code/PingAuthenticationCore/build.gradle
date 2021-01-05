@@ -1,0 +1,44 @@
+apply plugin: 'com.android.library'
+
+android {
+    compileSdkVersion 30
+
+    defaultConfig {
+        minSdkVersion 19
+        targetSdkVersion 30
+        versionCode 1
+        versionName "1.0.0"
+
+        buildConfigField "boolean", "USE_HTTPS", 'false' //for testing purposes this can be disabled
+        buildConfigField "int", "HTTP_CONNECT_TIMEOUT", '10000'
+        buildConfigField "int", "HTTP_READ_TIMEOUT", '20000'
+        /*
+         * Following values are injected at the build process from gradle.properties file
+         * Gradle inject values through its buildConfigField method to Java
+         */
+        buildConfigField "String", "SCOPE", SCOPE
+        buildConfigField "String", "GRANT_TYPE", GRANT_TYPE
+        buildConfigField "String", "RESPONSE_TYPE", RESPONSE_TYPE
+        buildConfigField "String", "RESPONSE_MODE", RESPONSE_MODE
+        buildConfigField "String", "OIDC_ISSUER", OIDC_ISSUER
+        buildConfigField "String", "CLIENT_ID", CLIENT_ID
+        buildConfigField "String", "CLIENT_SECRET", CLIENT_SECRET
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles "consumer-rules.pro"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+}
+
+dependencies {
+    implementation 'androidx.appcompat:appcompat:1.2.0'
+    //Google's gSon library to build and parse JSON format
+    implementation 'com.google.code.gson:gson:2.8.6'
+}
