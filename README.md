@@ -151,7 +151,7 @@ public void onMessageReceived(final RemoteMessage remoteMessage) {
 
 The sample code contains two modules: `PingAuthenticationUI` and `PingAuthenticationCore`.
 The following method starts an authentication process when the user taps "Authentication API" on the main screen. The authentication process is completed by the PingFederate Authentication API.
-**Note:** Before calling this method, you need to update your `OIDC_ISSUER` and `CLIENT_ID` in the `gradle.properties` class at `PingAuthenticationCore` module. See [Authentication API for Android Developers](http://TBD)
+**Note:** Before calling this method, you need to update your `OIDC_ISSUER` and `CLIENT_ID` in the `gradle.properties` class at `PingAuthenticationCore` module. See [Authentication API for Android Developers](https://github.com/pingidentity/mobile-authentication-framework-android)
  ```java
  public void authenticate(@NonNull Activity context, @NonNull String mobilePayload, @Nullable String dynamicData)
 ```
