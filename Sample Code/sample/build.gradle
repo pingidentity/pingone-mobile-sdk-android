@@ -8,8 +8,8 @@ android {
         applicationId "com.pingidentity.pingone"
         minSdkVersion 21
         targetSdkVersion 30
-        versionCode = 8
-        versionName "1.4.0"
+        versionCode = 9
+        versionName "1.4.1"
 
         // Make sure this is consistent with the redirect URI used in res/raw/auth_config.json,
         // or specify additional redirect URIs in AndroidManifest.xml
