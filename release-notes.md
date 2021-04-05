@@ -4,7 +4,8 @@
 Bug fixes:
  - Added a missing dependency in the project-level `build.gradle` file.
  - Fixed a dead link from README
-
+ 
+ 
 ## v1.4.0 - Jan 5th, 2021
 Features:
 

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
     android:padding="@dimen/fragment_vertical_margin"
     android:layout_width="match_parent"
@@ -34,6 +35,20 @@
         android:contentDescription="@string/button_send_logs"
         android:text="@string/button_send_logs_text"/>
 
+    <ToggleButton
+        android:id="@+id/toggle_allow_push"
+        android:contentDescription="@string/push_toggle"
+        android:layout_gravity="center_horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textOn="Disable Push Response"
+        android:textOff="Enable Push Response"/>
+
+    <Button android:id="@+id/btn_one_time_passcode"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:text="One Time Passcode"/>
     <TextView
         android:id="@+id/text_view_app_version"
         android:layout_width="wrap_content"
