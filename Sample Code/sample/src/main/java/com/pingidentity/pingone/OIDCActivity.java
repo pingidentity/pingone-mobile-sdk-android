@@ -12,11 +12,11 @@ import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
 
 import com.pingidentity.pingidsdkv2.PairingObject;
 import com.pingidentity.pingidsdkv2.PingOne;
 import com.pingidentity.pingidsdkv2.PingOneSDKError;
+import com.pingidentity.pingidsdkv2.types.PairingInfo;
 
 import net.openid.appauth.AppAuthConfiguration;
 import net.openid.appauth.AuthorizationException;
@@ -95,7 +95,7 @@ public class OIDCActivity extends SampleLifecycleActivity {
                     }
                     Log.i(TAG, "OpenIDConnect Authorization token retrieved");
 
-                    PingOne.processIdToken(response.idToken, new PingOne.PingOnePairingCallback() {
+                    PingOne.processIdToken(response.idToken, new PingOne.PingOnePairingObjectCallback() {
                         @Override
                         public void onComplete(@Nullable PairingObject pairingObject, @Nullable PingOneSDKError pingOneSDKError) {
                             if(pingOneSDKError!=null){
@@ -181,20 +181,24 @@ public class OIDCActivity extends SampleLifecycleActivity {
                 .setPositiveButton(R.string.approve_button_text, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        pairingObject.approve(OIDCActivity.this, new PingOne.PingOneSDKCallback() {
+                        pairingObject.approve(OIDCActivity.this, new PingOne.PingOneSDKPairingCallback() {
                             @Override
-                            public void onComplete(@Nullable final PingOneSDKError pingOneSDKError) {
+                            public void onComplete(PairingInfo pairingInfo, @Nullable PingOneSDKError error) {
+                                this.onComplete(error);
+                            }
+
+                            @Override
+                            public void onComplete(@Nullable final PingOneSDKError error) {
                                 runOnUiThread(new Runnable() {
                                     @Override
                                     public void run() {
-                                        if (pingOneSDKError != null) {
-                                            showOkDialog(pingOneSDKError.toString());
+                                        if (error != null) {
+                                            showOkDialog(error.toString());
                                         }else{
                                             showOkDialog("Device is paired");
                                         }
                                     }
                                 });
-
                             }
                         });
                     }

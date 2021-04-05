@@ -20,8 +20,10 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.iid.FirebaseInstanceId;
 import com.google.firebase.iid.InstanceIdResult;
+import com.google.firebase.messaging.FirebaseMessaging;
 import com.pingidentity.pingidsdkv2.PingOne;
 import com.pingidentity.pingidsdkv2.PingOneSDKError;
+import com.pingidentity.pingidsdkv2.types.PairingInfo;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -50,10 +52,15 @@ public class PairActivity extends SampleActivity {
             public void onClick(View v) {
                 buttonPair.setEnabled(false);
                 String activationCode = activationCodeInput.getText().toString();
-                PingOne.pair(PairActivity.this, activationCode, new PingOne.PingOneSDKCallback() {
+                PingOne.pair(PairActivity.this, activationCode, new PingOne.PingOneSDKPairingCallback() {
                     @Override
-                    public void onComplete(@Nullable final PingOneSDKError pingOneSDKError) {
-                        if (pingOneSDKError==null) {
+                    public void onComplete(PairingInfo pairingInfo, @Nullable PingOneSDKError error) {
+                            this.onComplete(error);
+                    }
+
+                    @Override
+                    public void onComplete(@Nullable final PingOneSDKError error) {
+                        if (error==null) {
                             logger.info("Pairing complete");
                             runOnUiThread(new Runnable() {
                                 @Override
@@ -71,7 +78,7 @@ public class PairActivity extends SampleActivity {
                                 @Override
                                 public void run() {
                                     buttonPair.setEnabled(true);
-                                    showOkDialog(pingOneSDKError.toString());
+                                    showOkDialog(error.toString());
                                 }
                             });
                         }
@@ -92,27 +99,24 @@ public class PairActivity extends SampleActivity {
     }
 
     private void setFcmRegistrationIdToken() {
-        FirebaseInstanceId.getInstance().getInstanceId()
-                .addOnCompleteListener(new OnCompleteListener<InstanceIdResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<InstanceIdResult> task) {
-                        if (!task.isSuccessful()) {
-                            Log.w(TAG, "getInstanceId failed", task.getException());
-                            return;
-                        }
-                        if(task.getResult()!=null) {
-                            // Get new Instance ID token
-                            String token = task.getResult().getToken();
-                            // Log and toast
-                            SharedPreferences.Editor editor = getSharedPreferences("InternalPrefs", MODE_PRIVATE).edit();
-                            editor.putString("pushToken", token);
-                            editor.apply();
-
-                        }
-
-
-                    }
-                });
+        FirebaseMessaging.getInstance().getToken().addOnCompleteListener(new OnCompleteListener<String>() {
+            @Override
+            public void onComplete(@NonNull Task<String> task) {
+                if (!task.isSuccessful()) {
+                    Log.w(TAG, "getToken failed", task.getException());
+                    return;
+                }
+                if(task.getResult()!=null) {
+                    // Get new Instance ID token
+                    String token = task.getResult();
+                    // Log and toast
+                    SharedPreferences.Editor editor = getSharedPreferences("InternalPrefs", MODE_PRIVATE).edit();
+                    editor.putString("pushToken", token);
+                    editor.apply();
+                    Log.d(TAG,"FCM Token = " + token);
+                }
+            }
+        });
     }
 
 

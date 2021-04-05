@@ -1,30 +1,26 @@
 package com.pingidentity.pingone;
 
-import android.app.Activity;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.util.Base64;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CompoundButton;
 import android.widget.TextView;
-import android.widget.Toast;
+import android.widget.ToggleButton;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
-import androidx.lifecycle.Lifecycle;
 
 import com.google.firebase.FirebaseApp;
-import com.pingidentity.authenticationui.PingAuthenticationUI;
-import com.pingidentity.pingidsdkv2.PairingObject;
 import com.pingidentity.pingidsdkv2.PingOne;
 import com.pingidentity.pingidsdkv2.PingOneSDKError;
-import com.pingidentity.pingone.util.ActivityLifecycleViewModel;
 
 public class MainActivity extends SampleActivity {
 
-
+    private static final String ALLOW_PUSH_KEY = "allow_push";
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -84,6 +80,29 @@ public class MainActivity extends SampleActivity {
                 });
             }
         });
+
+        ToggleButton toggleAllowPush = findViewById(R.id.toggle_allow_push);
+        boolean allowPush = getSharePrefs().getBoolean(ALLOW_PUSH_KEY, true);
+        toggleAllowPush.setChecked(allowPush);
+        toggleAllowPush.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                getSharePrefs().edit().putBoolean(ALLOW_PUSH_KEY, isChecked);
+                PingOne.allowPushNotifications(buttonView.getContext(), isChecked);
+            }
+        });
+
+        findViewById(R.id.btn_one_time_passcode).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this, TOTPActivity.class));
+            }
+        });
+    }
+
+    public SharedPreferences getSharePrefs(){
+        SharedPreferences sharedPreferences = getApplicationContext().getSharedPreferences("prefs_file", Context.MODE_PRIVATE);
+        return sharedPreferences;
     }
 
 }
