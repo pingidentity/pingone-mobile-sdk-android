@@ -182,23 +182,6 @@ PingOne.sendLogs(context, new PingOne.PingOneSendLogsCallback() {
 });
 ```
 
-### Get One Time Passcode
-
-Requests the SDK to provide One Time Passcode
-`@param context the context of calling application`
-`@param callback a callback that will be triggered at completion. Will contain the passcode data.`
-`public static void getOneTimePassCode(Context context, PingOneOneTimePasscodeCallback callback)`
-
-For example:
- ```java
-PingOne.getOneTimePassCode(context, new PingOne.PingOneOneTimePasscodeCallback() {
-                @Override
-                public void onComplete(@Nullable OneTimePasscodeInfo otpData, @Nullable PingOneSDKError error) {
-					//handle response
-				}
-};
-```
-
 ## Disclaimer
 
 THE SAMPLE CODE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
