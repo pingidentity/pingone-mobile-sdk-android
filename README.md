@@ -187,9 +187,8 @@ PingOne.sendLogs(context, new PingOne.PingOneSendLogsCallback() {
 Requests the SDK to provide One Time Passcode
 @param context the context of calling application
 @param callback a callback that will be triggered at completion. Will contain the passcode data.
-Method signature:
 ```public static void getOneTimePassCode(Context context, PingOneOneTimePasscodeCallback callback)
-```
+``` method.
 
 For example:
  ```java
