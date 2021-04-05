@@ -1,5 +1,12 @@
 # Release Notes
 
+## v1.5.0 - April 5th, 2021
+Features:
+
+- Updated SDK to version 1.4.0.
+- Added one time passcode in users screen.
+- Deprecated current pairing method and added support to new one with returned object of PairingInfo.
+
 ## v.1.4.1 - Feb 3rd, 2021
 Bug fixes:
  - Added a missing dependency in the project-level `build.gradle` file.
