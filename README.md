@@ -96,7 +96,7 @@ When configuring your PingOne SDK application in the PingOne admin web console (
 To manually pair the device, call the following method with your pairing key:
 
 ```java
-PingOne.pair(context, pairingKey, new PingOne.PingOneSDKCallback())
+PingOne.pair(context, pairingKey, new PingOne.PingOneSDKPairingCallback())
 ```
 
 To automatically pair the device using OpenID Connect:
