@@ -17,6 +17,7 @@ import com.pingidentity.authenticationui.PingAuthenticationUI;
 import com.pingidentity.pingidsdkv2.PairingObject;
 import com.pingidentity.pingidsdkv2.PingOne;
 import com.pingidentity.pingidsdkv2.PingOneSDKError;
+import com.pingidentity.pingidsdkv2.types.PairingInfo;
 
 public class MobileAuthenticationFrameworkActivity extends SampleLifecycleActivity {
 
@@ -43,7 +44,7 @@ public class MobileAuthenticationFrameworkActivity extends SampleLifecycleActivi
         if(requestCode == PingAuthenticationUI.AUTHENTICATION_UI_ACTIVITY_REQUEST_CODE){
             if (resultCode == Activity.RESULT_OK){
                 if(data!=null && data.hasExtra("serverPayload")){
-                    PingOne.processIdToken(data.getStringExtra("serverPayload"), new PingOne.PingOnePairingCallback() {
+                    PingOne.processIdToken(data.getStringExtra("serverPayload"), new PingOne.PingOnePairingObjectCallback() {
                         @Override
                         public void onComplete(@Nullable PairingObject pairingObject, @Nullable PingOneSDKError error) {
                             if (pairingObject!=null){
@@ -74,20 +75,24 @@ public class MobileAuthenticationFrameworkActivity extends SampleLifecycleActivi
                 .setPositiveButton(R.string.approve_button_text, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        pairingObject.approve(MobileAuthenticationFrameworkActivity.this, new PingOne.PingOneSDKCallback() {
+                        pairingObject.approve(MobileAuthenticationFrameworkActivity.this, new PingOne.PingOneSDKPairingCallback() {
                             @Override
-                            public void onComplete(@Nullable final PingOneSDKError pingOneSDKError) {
+                            public void onComplete(@Nullable final PingOneSDKError error) {
                                 runOnUiThread(new Runnable() {
                                     @Override
                                     public void run() {
-                                        if (pingOneSDKError != null) {
-                                            Log.e("Pairing failed", pingOneSDKError.getMessage());
+                                        if (error != null) {
+                                            Log.e("Pairing failed", error.getMessage());
                                         }else{
                                             pingAuthenticationUI.continueAuthentication(MobileAuthenticationFrameworkActivity.this);
                                         }
                                     }
                                 });
+                            }
 
+                            @Override
+                            public void onComplete(PairingInfo pairingInfo, @Nullable final PingOneSDKError pingOneSDKError) {
+                                this.onComplete(pingOneSDKError);
                             }
                         });
                     }
