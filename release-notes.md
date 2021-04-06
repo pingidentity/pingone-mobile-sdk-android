@@ -1,10 +1,24 @@
 # Release Notes
 
+## v1.5.0 - April 6th, 2021
+Features:
+- Updated SDK to version 1.4.0.
+- Added support for one time passcode and disable SDK push notifications.
+
+Compatibility notes:
+- Deprecated current pairing method and added support to new one with returned object of PairingInfo.
+- Deprecated current processRemoteNotification method and added support to new one with Context as a parameter.
+
+Dependencies updated:
+- com.android.tools.build:gradle:4.0.1
+- com.google.gms:google-services:4.3.4
+
 ## v.1.4.1 - Feb 3rd, 2021
 Bug fixes:
  - Added a missing dependency in the project-level `build.gradle` file.
  - Fixed a dead link from README
-
+ 
+ 
 ## v1.4.0 - Jan 5th, 2021
 Features:
 
