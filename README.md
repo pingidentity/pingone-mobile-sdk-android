@@ -96,7 +96,7 @@ When configuring your PingOne SDK application in the PingOne admin web console (
 To manually pair the device, call the following method with your pairing key:
 
 ```java
-PingOne.pair(context, pairingKey, new PingOne.PingOneSDKCallback())
+PingOne.pair(context, pairingKey, new PingOne.PingOneSDKPairingCallback())
 ```
 
 To automatically pair the device using OpenID Connect:
@@ -180,6 +180,25 @@ PingOne.sendLogs(context, new PingOne.PingOneSendLogsCallback() {
         }
      }
 });
+```
+
+### Get One Time Passcode
+
+Requests the SDK to provide One Time Passcode. 
+
+Signature:
+```java
+public static void getOneTimePassCode(Context context, PingOneOneTimePasscodeCallback callback)
+```
+
+For example:
+ ```java
+PingOne.getOneTimePassCode(context, new PingOne.PingOneOneTimePasscodeCallback() {
+                @Override
+                public void onComplete(@Nullable OneTimePasscodeInfo otpData, @Nullable PingOneSDKError error) {
+					//handle response
+				}
+};
 ```
 
 ## Disclaimer
