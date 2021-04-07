@@ -33,4 +33,5 @@
 
     <string name="channel_name">Notifications Channel</string>
     <string name="channel_description">Channel Description</string>
+    <string name="push_toggle">push_toggle</string>
 </resources>

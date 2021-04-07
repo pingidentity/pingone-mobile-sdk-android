@@ -54,6 +54,7 @@
         </activity>
 
         <activity android:name="com.pingidentity.authenticationui.PingAuthenticationUIActivity"/>
+        <activity android:name="com.pingidentity.pingone.TOTPActivity"/>
 
         <service
             android:name=".SampleMessagingService"
