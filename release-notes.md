@@ -3,8 +3,7 @@
 ## v1.6.0 - August 1st, 2021
 Features:
 
-- Supports device integrity validation for threat protection, using the latest SDK version 1.6.0
-- Added support for the Canadian Data Center.
+- Supports device integrity validation for threat protection, using the latest SDK v1.6.0
 
 Compatibility:
  - Dependencies updated to their latest versions:

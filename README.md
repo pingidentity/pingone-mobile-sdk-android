@@ -204,6 +204,23 @@ PingOne.getOneTimePassCode(context, new PingOne.PingOneOneTimePasscodeCallback()
 };
 ```
 
+### Device Integrity Validation
+
+PingOne uses Google's Safety Net to perform Device Integrity Validation for threat protection.
+To use this feature you should obtain a SafetyNet API Key, to learn how to do this please refer to [Obtain a SafetyNet API Key](https://developer.android.com/training/safetynet/attestation#obtain-api-key).
+The retrieved API key should be passed to the PingOneSDK using the following new API method:
+```java
+PingOne.setSafetyNetApiKey(context, apiKey);
+```
+### Device Integrity Validation
+
+PingOne uses Google's Safety Net to perform Device Integrity Validation for threat protection.
+To use this feature you should obtain a SafetyNet API Key, to learn how to do this please refer to [Obtain a SafetyNet API Key](https://developer.android.com/training/safetynet/attestation#obtain-api-key).
+The retrieved API key should be passed to the PingOneSDK using the following new API method:
+```java
+PingOne.setSafetyNetApiKey(context, apiKey);
+```
+
 ## Disclaimer
 
 THE SAMPLE CODE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
