@@ -3,7 +3,7 @@
 ## v1.6.0 - August 1st, 2021
 Features:
 
-- Supports device integrity validation for threat protection.
+- Added support for device integrity validation for threat protection.
 
 Compatibility:
  - Dependencies updated to their latest versions:
