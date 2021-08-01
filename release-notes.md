@@ -4,6 +4,7 @@
 Features:
 
 - Added support for device integrity validation for threat protection.
+- Updated SDK to version 1.6.0.
 
 Compatibility:
  - Dependencies updated to their latest versions:
