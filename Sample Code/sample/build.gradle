@@ -11,7 +11,7 @@ android {
         applicationId "com.pingidentity.pingone"
         minSdkVersion 21
         targetSdkVersion 30
-        versionCode = 11
+        versionCode = 12
         versionName "1.6.0"
 
         // Make sure this is consistent with the redirect URI used in res/raw/auth_config.json,
@@ -65,6 +65,7 @@ dependencies {
      * specification suite
      */
     implementation 'org.bitbucket.b_c:jose4j:0.7.1'
+    implementation "com.google.android.gms:play-services-safetynet:17.0.1"
 
     //Google's gSon library to build and parse JSON format
     implementation 'com.google.code.gson:gson:2.8.6'
