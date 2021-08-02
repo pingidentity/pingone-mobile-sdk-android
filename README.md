@@ -67,27 +67,30 @@ When configuring your PingOne SDK application in the PingOne admin web console (
 
     *  As the PingOne SDK component is loaded locally, you’ll have to add the PingOne SDK component’s dependencies manually in order to be able to compile and run it. Add these dependencies under the PingOne SDK component dependency:
 
-	```
-	
-	    implementation 'androidx.appcompat:appcompat:1.1.0'
+		```java
+		implementation 'androidx.appcompat:appcompat:1.3.0'
 
-	    implementation 'org.slf4j:slf4j-api:1.7.30'
-	    implementation 'com.github.tony19:logback-android:2.0.0'
+		implementation 'org.slf4j:slf4j-api:1.7.30'
+		implementation 'com.github.tony19:logback-android:2.0.0'
 
-	    implementation 'com.madgag.spongycastle:core:1.58.0.0'
-	    implementation 'com.madgag.spongycastle:bcpkix-jdk15on:1.58.0.0'
+		implementation 'com.madgag.spongycastle:core:1.58.0.0'
+		implementation 'com.madgag.spongycastle:bcpkix-jdk15on:1.58.0.0'
 
-	    //FireCloud Messaging Services
-	    implementation 'com.google.firebase:firebase-core:17.4.2'
-	    implementation 'com.google.firebase:firebase-messaging:20.2.0'
+		//Import the Firebase BoM (Bill of Materials)
+        implementation platform('com.google.firebase:firebase-bom:26.3.0')
 
-	    //Google's gSon library to build and parse JSON format
-	    implementation 'com.google.code.gson:gson:2.8.6'
+        //FireCloud Messaging Services
+        implementation 'com.google.firebase:firebase-core'
+        implementation 'com.google.firebase:firebase-messaging'
+		
+		//Google's gson library to build and parse JSON format
+		implementation 'com.google.code.gson:gson:2.8.6'
 
-	    //The jose.4.j library is an open source (Apache 2.0) implementation of JWT and the JOSE specification suite
- 	    implementation 'org.bitbucket.b_c:jose4j:0.7.0'
-        implementation "androidx.lifecycle:lifecycle-extensions:2.2.0"
-    ```
+		//The jose.4.j library is an open source (Apache 2.0) implementation of JWT and the JOSE specification suite
+		implementation 'org.bitbucket.b_c:jose4j:0.7.0'
+
+		implementation "androidx.lifecycle:lifecycle-extensions:2.2.0"
+		```						
        
 
 
@@ -199,6 +202,16 @@ PingOne.getOneTimePassCode(context, new PingOne.PingOneOneTimePasscodeCallback()
 					//handle response
 				}
 };
+```
+
+### Device Integrity Validation
+
+PingOne uses Google's SafetyNet to perform device integrity validation for threat protection.
+To use this feature, you should obtain a SafetyNet API Key. Refer to [Obtain a SafetyNet API Key](https://developer.android.com/training/safetynet/attestation#obtain-api-key).
+The retrieved API key should be passed to the PingOne SDK using the following new API method:
+
+```java
+PingOne.setSafetyNetApiKey(context, apiKey);
 ```
 
 ## Disclaimer
