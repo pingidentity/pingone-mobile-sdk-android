@@ -12,6 +12,7 @@ import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.pingidentity.authenticationui.PingAuthenticationUI;
 import com.pingidentity.pingidsdkv2.PairingObject;
@@ -19,7 +20,7 @@ import com.pingidentity.pingidsdkv2.PingOne;
 import com.pingidentity.pingidsdkv2.PingOneSDKError;
 import com.pingidentity.pingidsdkv2.types.PairingInfo;
 
-public class MobileAuthenticationFrameworkActivity extends SampleLifecycleActivity {
+public class MobileAuthenticationFrameworkActivity extends AppCompatActivity {
 
     private PingAuthenticationUI pingAuthenticationUI;
     AlertDialog alertDialog;

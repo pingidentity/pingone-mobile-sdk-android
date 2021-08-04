@@ -1,5 +1,26 @@
 # Release Notes
 
+## v1.6.0 - August 1st, 2021
+Features:
+
+- Updated SDK to version 1.6.0.
+- Added support for device integrity validation for threat protection.
+
+
+Compatibility:
+ - Dependencies updated to their latest versions:
+      * In the 'build.gradle' file at the **project** level:
+        * 'com.android.tools.build:gradle:**4.2.1**'
+        * 'com.google.gms:google-services:**4.3.8**'
+        * 'androidx.navigation:navigation-safe-args-gradle-plugin:**2.3.5**'
+     * In the 'build.gradle' file at the **app** level:
+        * Migrated to FireBase BOM:
+          * implementation platform('com.google.firebase:firebase-bom:26.3.0')
+          * implementation 'com.google.firebase:firebase-core'
+          * implementation 'com.google.firebase:firebase-messaging'
+         * 'androidx.appcompat:appcompat:**1.3.0**'
+           
+
 ## v1.5.0 - April 6th, 2021
 Features:
 - Updated SDK to version 1.4.0.

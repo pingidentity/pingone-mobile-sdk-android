@@ -7,20 +7,13 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.content.FileProvider;
 
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.iid.FirebaseInstanceId;
-import com.google.firebase.iid.InstanceIdResult;
-import com.google.firebase.messaging.FirebaseMessaging;
 import com.pingidentity.pingidsdkv2.PingOne;
 import com.pingidentity.pingidsdkv2.PingOneSDKError;
 import com.pingidentity.pingidsdkv2.types.PairingInfo;
@@ -36,15 +29,10 @@ public class PairActivity extends SampleActivity {
 
     private EditText activationCodeInput;
 
-
-
-
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pair);
-        setFcmRegistrationIdToken();
-
         activationCodeInput = findViewById(R.id.activation_code_input);
         final Button buttonPair = findViewById(R.id.button_pair);
         buttonPair.setOnClickListener(new View.OnClickListener() {
@@ -62,24 +50,18 @@ public class PairActivity extends SampleActivity {
                     public void onComplete(@Nullable final PingOneSDKError error) {
                         if (error==null) {
                             logger.info("Pairing complete");
-                            runOnUiThread(new Runnable() {
-                                @Override
-                                public void run() {
-                                    SharedPreferences.Editor sharedPreferences = getSharedPreferences("InternalPrefs", MODE_PRIVATE).edit();
-                                    sharedPreferences.putBoolean("paired", true);
-                                    sharedPreferences.apply();
-                                    showOkDialog("Device is paired successfully");
-                                    buttonPair.setEnabled(true);
+                            runOnUiThread(() -> {
+                                SharedPreferences.Editor sharedPreferences = getSharedPreferences("InternalPrefs", MODE_PRIVATE).edit();
+                                sharedPreferences.putBoolean("paired", true);
+                                sharedPreferences.apply();
+                                showOkDialog("Device is paired successfully");
+                                buttonPair.setEnabled(true);
 
-                                }
                             });
                         }else{
-                            runOnUiThread(new Runnable() {
-                                @Override
-                                public void run() {
-                                    buttonPair.setEnabled(true);
-                                    showOkDialog(error.toString());
-                                }
+                            runOnUiThread(() -> {
+                                buttonPair.setEnabled(true);
+                                showOkDialog(error.toString());
                             });
                         }
                     }
@@ -88,37 +70,11 @@ public class PairActivity extends SampleActivity {
         });
     }
 
-    private String getFcmRegistrationToken() {
-        SharedPreferences prefs = getSharedPreferences("InternalPrefs", MODE_PRIVATE);
-        return prefs.getString("pushToken", null);
 
-    }
 
     private boolean getPairingStatus(){
         return getSharedPreferences("InternalPrefs", MODE_PRIVATE).getBoolean("paired", false);
     }
-
-    private void setFcmRegistrationIdToken() {
-        FirebaseMessaging.getInstance().getToken().addOnCompleteListener(new OnCompleteListener<String>() {
-            @Override
-            public void onComplete(@NonNull Task<String> task) {
-                if (!task.isSuccessful()) {
-                    Log.w(TAG, "getToken failed", task.getException());
-                    return;
-                }
-                if(task.getResult()!=null) {
-                    // Get new Instance ID token
-                    String token = task.getResult();
-                    // Log and toast
-                    SharedPreferences.Editor editor = getSharedPreferences("InternalPrefs", MODE_PRIVATE).edit();
-                    editor.putString("pushToken", token);
-                    editor.apply();
-                    Log.d(TAG,"FCM Token = " + token);
-                }
-            }
-        });
-    }
-
 
     private void showOkDialog(String message){
         new AlertDialog.Builder(PairActivity.this)

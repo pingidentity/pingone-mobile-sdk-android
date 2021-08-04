@@ -20,7 +20,7 @@ import com.pingidentity.pingidsdkv2.NotificationObject;
 import com.pingidentity.pingidsdkv2.PingOne;
 import com.pingidentity.pingidsdkv2.PingOneSDKError;
 
-public class SampleActivity extends SampleLifecycleActivity {
+public class SampleActivity extends AppCompatActivity {
     AlertDialog alertDialog;
 
     @Override

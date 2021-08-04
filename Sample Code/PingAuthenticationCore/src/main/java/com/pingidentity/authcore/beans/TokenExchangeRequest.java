@@ -18,7 +18,7 @@ public class TokenExchangeRequest extends PingAuthenticationApiRequest {
     private String clientId = BuildConfig.CLIENT_ID;
 
     @SerializedName(PingAuthenticationApiContract.JSON.CLIENT_SECRET)
-    private String clientSecret = "";
+    private String clientSecret = BuildConfig.CLIENT_SECRET;
 
     public TokenExchangeRequest(String flowId) {
         super(flowId, PingAuthenticationApiContract.ACTIONS.TOKEN_EXCHANGE);
