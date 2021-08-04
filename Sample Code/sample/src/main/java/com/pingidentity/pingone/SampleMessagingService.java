@@ -1,6 +1,8 @@
 package com.pingidentity.pingone;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.util.Log;
 
 import androidx.annotation.NonNull;
@@ -14,7 +16,6 @@ import com.pingidentity.pingidsdkv2.NotificationObject;
 import com.pingidentity.pingidsdkv2.PingOne;
 import com.pingidentity.pingidsdkv2.PingOneSDKError;
 import com.pingidentity.pingone.notification.SampleNotificationsManager;
-import com.pingidentity.pingone.util.ActivityLifecycleViewModel;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -66,7 +67,7 @@ public class SampleMessagingService extends FirebaseMessagingService {
                     /*
                      * if application is in foreground process the push in activity
                      */
-                    if(new ActivityLifecycleViewModel().getStateMutableLiveData().getValue() == Lifecycle.State.RESUMED) {
+                    if(ProcessLifecycleOwner.get().getLifecycle().getCurrentState().isAtLeast(Lifecycle.State.STARTED)){
                         startActivity(handleNotificationObjectIntent);
                     }else {
                         /*
@@ -89,7 +90,7 @@ public class SampleMessagingService extends FirebaseMessagingService {
      * is initially generated so this is where you would retrieve the token.
      */
     @Override
-    public void onNewToken(String token) {
+    public void onNewToken(@NonNull String token) {
         // If you want to send messages to this application instance or
         // manage this apps subscriptions on the server side, send the
         // Instance ID token to your app server.
@@ -99,6 +100,7 @@ public class SampleMessagingService extends FirebaseMessagingService {
                 //check for an error and re-schedule service update
             }
         });
+        saveFcmRegistrationToken(token);
     }
 
     /**
@@ -116,6 +118,13 @@ public class SampleMessagingService extends FirebaseMessagingService {
                 e.printStackTrace();
             }
         }
+    }
+
+    private void saveFcmRegistrationToken(@NonNull String token){
+        SharedPreferences sharedPreferences = getSharedPreferences("InternalPrefs", MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString("pushToken", token);
+        editor.apply();
     }
 
 }

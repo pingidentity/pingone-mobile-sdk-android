@@ -16,6 +16,7 @@ public class TOTPActivity extends SampleActivity{
     private Handler handler = new Handler();
     private TextView passcode;
     private TextView passcode_timer;
+    private CountDownTimer countDownTimer;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -24,13 +25,27 @@ public class TOTPActivity extends SampleActivity{
 
         passcode = findViewById(R.id.tv_passcode);
         passcode_timer = findViewById(R.id.tv_timer);
-        startPassCodeSequence();
     }
 
+    
     @Override
     protected void onDestroy() {
         super.onDestroy();
         handler=null;
+    }
+    
+    @Override
+    protected void onResume(){
+        super.onResume();
+        startPassCodeSequence();
+    }
+
+    @Override
+    protected void onPause(){
+        super.onPause();
+        if(countDownTimer != null){
+            countDownTimer.cancel();
+        }
     }
 
     private void startPassCodeSequence(){
@@ -63,7 +78,7 @@ public class TOTPActivity extends SampleActivity{
             @Override
             public void run() {
                 passcode.setText(otpData.getPasscode());
-                new CountDownTimer(runTime, 1000) {
+                countDownTimer = new CountDownTimer(runTime, 1000) {
                     public void onTick(long millisUntilFinished) {
                         passcode_timer.setText(String.valueOf(millisUntilFinished / 1000) + "s");
                     }
