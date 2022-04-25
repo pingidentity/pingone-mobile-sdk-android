@@ -44,11 +44,18 @@
         android:textOn="Disable Push Response"
         android:textOff="Enable Push Response"/>
 
-    <Button android:id="@+id/btn_one_time_passcode"
+    <Button android:id="@+id/button_one_time_passcode"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:text="One Time Passcode"/>
+
+    <Button android:id="@+id/button_scan_qr"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:text="@string/button_qr_authentication"/>
+
     <TextView
         android:id="@+id/text_view_app_version"
         android:layout_width="wrap_content"

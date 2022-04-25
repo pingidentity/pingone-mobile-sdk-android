@@ -1,8 +1,14 @@
 package com.pingidentity.pingone;
 
+import static android.app.PendingIntent.FLAG_MUTABLE;
+
 import android.app.PendingIntent;
+import android.content.ClipData;
+import android.content.ClipboardManager;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
@@ -24,10 +30,6 @@ import net.openid.appauth.AuthorizationResponse;
 import net.openid.appauth.AuthorizationService;
 import net.openid.appauth.AuthorizationServiceConfiguration;
 import net.openid.appauth.ResponseTypeValues;
-import net.openid.appauth.browser.BrowserBlacklist;
-import net.openid.appauth.browser.Browsers;
-import net.openid.appauth.browser.VersionRange;
-import net.openid.appauth.browser.VersionedBrowserMatcher;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -47,17 +49,7 @@ public class OIDCActivity extends AppCompatActivity {
         setContentView(R.layout.activity_oidc);
 
         AppAuthConfiguration.Builder appAuthConfigurationBuilder = new AppAuthConfiguration.Builder();
-        /*
-         * Need the next string to resolve some bug with Samsung devices
-         * where custom tabs browser activity never returns result
-         */
-        appAuthConfigurationBuilder.setBrowserMatcher(new BrowserBlacklist(
-                new VersionedBrowserMatcher(
-                        Browsers.SBrowser.PACKAGE_NAME,
-                        Browsers.SBrowser.SIGNATURE_SET,
-                        true, // when this browser is used via a custom tab
-                        VersionRange.atMost("5.3")
-                )));
+
         authorizationService = new AuthorizationService(this, appAuthConfigurationBuilder.build());
 
         Button oidcButton = findViewById(R.id.button_pair_oidc);
@@ -135,7 +127,7 @@ public class OIDCActivity extends AppCompatActivity {
 
     private PendingIntent createPostAuthorizationIntent(){
         Intent intent = new Intent(this, this.getClass());
-        return PendingIntent.getActivity(this, 0, intent, 0);
+        return PendingIntent.getActivity(this, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT | FLAG_MUTABLE);
     }
 
     /*
@@ -172,7 +164,10 @@ public class OIDCActivity extends AppCompatActivity {
                                     if (error != null) {
                                         showOkDialog(error.toString());
                                     }else{
-                                        showOkDialog("Device is paired");
+                                        SharedPreferences.Editor sharedPreferences = getSharedPreferences("InternalPrefs", MODE_PRIVATE).edit();
+                                        sharedPreferences.putBoolean("paired", true);
+                                        sharedPreferences.apply();
+                                        showOkDialog("Device is paired successfully");
                                     }
                                 });
                             }
@@ -195,6 +190,12 @@ public class OIDCActivity extends AppCompatActivity {
         new AlertDialog.Builder(OIDCActivity.this)
                 .setMessage(message)
                 .setPositiveButton(android.R.string.ok, null)
+                .setNeutralButton("Copy", (dialog, which) -> {
+                    ClipboardManager manager = (ClipboardManager)
+                            getSystemService(Context.CLIPBOARD_SERVICE);
+                    manager.setPrimaryClip(ClipData.newPlainText("Message Content", message));
+                    Toast.makeText(OIDCActivity.this, "Copied", Toast.LENGTH_SHORT).show();
+                })
                 .show()
                 .getButton(DialogInterface.BUTTON_POSITIVE).setContentDescription(this.getString(R.string.alert_dialog_button_ok));
     }
