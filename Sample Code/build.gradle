@@ -1,18 +1,35 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
+//apply plugin: 'io.github.gradle-nexus.publish-plugin'
+//apply from: "${rootDir}/helpers/sonatype.gradle"
 
 buildscript {
     repositories {
-        // Gradle 4.1 and higher include support for Google's Maven repo using
-        // the google() method. And you need to include this repo to download
-        // Android Gradle plugin 3.0.0 or higher.
         google()
         mavenCentral()
+        maven {
+            url "https://plugins.gradle.org/m2/"
+        }
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:4.2.2'
-        classpath 'com.google.gms:google-services:4.3.8'
+        classpath 'com.android.tools.build:gradle:7.1.1'
+        classpath 'com.google.gms:google-services:4.3.10'
+        /*
+         * Gradle plugin called Safe Args that generates simple object and builder classes for
+         * type-safe navigation and access to any associated arguments.
+         * Safe Args is strongly recommended for navigating and passing data, because it ensures
+         * type-safety.
+         */
         classpath 'androidx.navigation:navigation-safe-args-gradle-plugin:2.3.5'
+        /*
+         * This plugin enables isolation of staging repositories so that you can reliably publish
+         * from CI, and each publication uses a brand new, explicitly created staging repo.
+         * Moreover, the plugin provides tasks to close and release staging repositories,
+         * covering the whole releasing process to Maven Central.
+         */
+        //classpath 'io.github.gradle-nexus:publish-plugin:1.1.0'
+
     }
+
 
 }
 
@@ -20,10 +37,9 @@ allprojects {
     repositories {
         google()
         mavenCentral()
-
-        flatDir {
-            dirs 'libs'
-        }
     }
 }
+
+
+
 
