@@ -80,12 +80,8 @@ public class SampleActivity extends AppCompatActivity {
     private void showOkDialog(String message){
         new AlertDialog.Builder(SampleActivity.this)
                 .setMessage(message)
-                .setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        finish();
-                    }
-                })
+                .setPositiveButton(android.R.string.ok,
+                        (dialog, which) -> finish())
                 .show()
                 .getButton(DialogInterface.BUTTON_POSITIVE).setContentDescription(this.getString(R.string.alert_dialog_button_ok));
     }
@@ -103,14 +99,11 @@ public class SampleActivity extends AppCompatActivity {
                         pingOneNotificationObject.approve(SampleActivity.this, "user", new PingOne.PingOneSDKCallback() {
                             @Override
                             public void onComplete(@Nullable final PingOneSDKError pingOneSDKError) {
-                                runOnUiThread(new Runnable() {
-                                    @Override
-                                    public void run() {
-                                        if (pingOneSDKError != null) {
-                                            showOkDialog(pingOneSDKError.toString());
-                                        }else{
-                                            finish();
-                                        }
+                                runOnUiThread(() -> {
+                                    if (pingOneSDKError != null) {
+                                        showOkDialog(pingOneSDKError.toString());
+                                    }else{
+                                        finish();
                                     }
                                 });
 
@@ -138,27 +131,10 @@ public class SampleActivity extends AppCompatActivity {
                         });
                     }
                 })
-                .setOnCancelListener(new DialogInterface.OnCancelListener() {
-                    @Override
-                    public void onCancel(DialogInterface dialog) {
-                        pingOneNotificationObject.deny(SampleActivity.this, new PingOne.PingOneSDKCallback() {
-                            @Override
-                            public void onComplete(@Nullable final PingOneSDKError error) {
-                                runOnUiThread(new Runnable() {
-                                    @Override
-                                    public void run() {
-                                        if (error != null) {
-                                            showOkDialog(error.toString());
-                                        }else{
-                                            finish();
-                                        }
-                                    }
-                                });
-                            }
-                        });
-                    }
-                })
+                .setOnCancelListener(
+                        dialog -> finish())
                 .create();
+        alertDialog.setCanceledOnTouchOutside(true);
         alertDialog.show();
 
         alertDialog.getButton(DialogInterface.BUTTON_POSITIVE).setContentDescription(getString(R.string.button_approve));
