@@ -1,5 +1,30 @@
 # Release Notes
 
+## v1.7.0 - April 25th, 2022
+Features:
+
+- Updated SDK to version 1.7.0
+- Added support for authentication using QR Code scanning or manual typing of an authentication code
+- Added Certificate Transparency mechanism to protect against mis-issued certificates
+- The JWT signature validation updated to use more strong EC algorithm. 
+
+
+Compatibility:
+- Minimal Android version is updated to 26 (Android 8)
+- Dependencies updated to their latest versions:
+    * In the 'build.gradle' file at the **project** level:
+        * 'com.android.tools.build:gradle:**7.1.1**'
+        * 'com.google.gms:google-services:**4.3.10**'
+        * 'androidx.navigation:navigation-safe-args-gradle-plugin:**2.3.5**'
+    * In the 'build.gradle' file at the **app** level:
+        * 'org.bitbucket.b_c:jose4j:**0.7.9**'
+        * 'com.google.android.gms:play-services-safetynet:**18.0.1**'
+        * 'com.google.code.gson:gson:**2.8.9**'  
+- Dependencies added:    
+    * In the 'build.gradle' file at the **app** level:
+        * 'com.appmattus.certificatetransparency:certificatetransparency-android:1.0.0'
+    
+
 ## v1.6.0 - August 1st, 2021
 Features:
 

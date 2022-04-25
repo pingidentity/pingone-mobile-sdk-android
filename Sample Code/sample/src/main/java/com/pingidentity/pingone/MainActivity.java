@@ -1,5 +1,7 @@
 package com.pingidentity.pingone;
 
+import android.content.ClipData;
+import android.content.ClipboardManager;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -8,6 +10,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 import android.widget.ToggleButton;
 
 import androidx.annotation.Nullable;
@@ -38,7 +41,8 @@ public class MainActivity extends SampleActivity {
         b2.setOnClickListener(v -> startActivity(new Intent(MainActivity.this, OIDCActivity.class)));
 
         Button b3 = findViewById(R.id.button_authentication_api);
-        b3.setOnClickListener(v -> startActivity(new Intent(MainActivity.this, MobileAuthenticationFrameworkActivity.class)));
+        b3.setOnClickListener(v ->
+                startActivity(new Intent(MainActivity.this, MobileAuthenticationFrameworkActivity.class)));
 
         Button b4 = findViewById(R.id.button_send_logs);
         b4.setOnClickListener(v -> PingOne.sendLogs(MainActivity.this, (supportId, pingOneSDKError) -> {
@@ -49,6 +53,13 @@ public class MainActivity extends SampleActivity {
                         .setPositiveButton(android.R.string.ok, null)
                         .show()
                         .getButton(DialogInterface.BUTTON_POSITIVE).setContentDescription(MainActivity.this.getString(R.string.alert_dialog_button_ok)));
+            }else if (pingOneSDKError!=null){
+                Log.e(MainActivity.TAG, pingOneSDKError.getMessage());
+                runOnUiThread(() -> new AlertDialog.Builder(MainActivity.this)
+                        .setTitle("Error")
+                        .setMessage(pingOneSDKError.getMessage())
+                        .setPositiveButton(android.R.string.ok, null)
+                        .show());
             }
         }));
 
@@ -60,7 +71,9 @@ public class MainActivity extends SampleActivity {
             PingOne.allowPushNotifications(buttonView.getContext(), isChecked);
         });
 
-        findViewById(R.id.btn_one_time_passcode).setOnClickListener(v -> startActivity(new Intent(MainActivity.this, TOTPActivity.class)));
+        findViewById(R.id.button_one_time_passcode).setOnClickListener(v -> startActivity(new Intent(MainActivity.this, TOTPActivity.class)));
+        findViewById(R.id.button_scan_qr).setOnClickListener(view ->
+                startActivity(new Intent(MainActivity.this, ManualAuthActivity.class)));
     }
 
     public SharedPreferences getSharedPreferences(){

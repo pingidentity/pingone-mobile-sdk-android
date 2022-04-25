@@ -24,6 +24,10 @@ Reference documentation is available for PingOne for Customers Mobile SDK, descr
 
 ## Set up a mobile app using the PingOne SDK sample code
 
+Note: PingOne for Customers Mobile SDK supports Android 8.0 (API level 26) and up, Gradle 7.2 and up, Java 11 and up.
+
+
+
 ### Prerequisites
 
 Prepare the FCM push messaging mandatory data from Firebase developers console:
@@ -68,8 +72,6 @@ When configuring your PingOne SDK application in the PingOne admin web console (
     *  As the PingOne SDK component is loaded locally, you’ll have to add the PingOne SDK component’s dependencies manually in order to be able to compile and run it. Add these dependencies under the PingOne SDK component dependency:
 
 		```java
-		implementation 'androidx.appcompat:appcompat:1.3.0'
-
 		implementation 'org.slf4j:slf4j-api:1.7.30'
 		implementation 'com.github.tony19:logback-android:2.0.0'
 
@@ -84,12 +86,21 @@ When configuring your PingOne SDK application in the PingOne admin web console (
         implementation 'com.google.firebase:firebase-messaging'
 		
 		//Google's gson library to build and parse JSON format
-		implementation 'com.google.code.gson:gson:2.8.6'
+		implementation 'com.google.code.gson:gson:2.8.9'
 
-		//The jose.4.j library is an open source (Apache 2.0) implementation of JWT and the JOSE specification suite
-		implementation 'org.bitbucket.b_c:jose4j:0.7.0'
+		/*
+		 * The jose.4.j library is an open source (Apache 2.0) implementation
+		 * of JWT and the JOSE specification suite
+		 */
+  		implementation 'org.bitbucket.b_c:jose4j:0.7.9'
 
 		implementation "androidx.lifecycle:lifecycle-extensions:2.2.0"
+
+		/*
+		* The library that provides ability to use Certificate Transparency
+		* https://www.certificate-transparency.org
+		*/
+		implementation("com.appmattus.certificatetransparency:certificatetransparency-android:1.0.0")
 		```						
        
 
@@ -212,6 +223,78 @@ The retrieved API key should be passed to the PingOne SDK using the following ne
 
 ```java
 PingOne.setSafetyNetApiKey(context, apiKey);
+```
+
+### Authentication via QR code scanning
+
+PingOne SDK provides an ability to authenticate via scanning the QR code (or typing the code manually). The code should
+be passed to the PingOne SDK using the following API method:
+
+```java
+PingOne.authenticate(context, authCode, new PingOne.PingOneAuthenticationCallback() {
+    @Override
+	public void onComplete(@Nullable AuthenticationObject authObject, @Nullable PingOneSDKError error){
+        if (authObject != null){
+            //parse authObject (see below)
+		}
+    }
+});
+```
+
+authCode should be passed as is or inside a URI. For example: "7F45HGf5", "https://myapp.com/pingonesdk?authentication_code=7F45HGf5", "pingonesdk?authentication_code=7F45HGf5"
+
+AuthenticationObject is implemented as Parcelable to provide the developers an ability to 
+pass it between activities and/or fragments and contains the following fields and methods:
+```java
+	public class AuthenticationObject{
+    	//for inner use
+    	String requestId;
+    	//for inner use
+		String authCode;
+		/*
+		 * a JsonArray of users. See UserModel below for further understanding
+		 * what it contains. 
+		 */
+		JsonArray users;
+		//for passing any data from server to end-user
+		String clientContext;
+		/*
+		 * a status String value returned from a server when user calls an authenticate API method
+		 * Possible values at this step:
+		 * CLAIMED
+		 * EXPIRED
+		 * COMPLETED	
+		 */
+		String status;
+		/*
+		 * String that determines if user approval is required to complete an authentication			
+		 * Possible values:
+		 * REQUIRED
+		 * NOT_REQUIRED
+		 */
+		String needsApproval;
+		
+		/*
+		 * if userApproval is "REQUIRED" the approve or deny method should be called with a userId
+		 * of the user, who triggered the method. The application should register for a callback
+		 * that will return Status with one of the following values:
+		 * COMPLETED
+		 * EXPIRED
+		 * DENIED 
+		 */
+		public void approve(Context context, String userId, PingOneAuthenticationStatusCallback callback);
+		public void deny(Context context, String userId, PingOneAuthenticationStatusCallback callback);
+}
+```
+The JsonArray of users may be parsed to the array of following model:
+```java
+public class UserModel{
+    String userId;
+	String email;
+	String given;
+	String family;
+	String username;
+}
 ```
 
 ## Disclaimer
