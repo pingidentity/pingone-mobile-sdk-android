@@ -1,12 +1,14 @@
 package com.pingidentity.pingone.notification;
 
+import static com.pingidentity.pingone.notification.SampleNotificationsActionsReceiver.ACTION_APPROVE;
+import static com.pingidentity.pingone.notification.SampleNotificationsActionsReceiver.ACTION_DENY;
+
 import android.app.Notification;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
-import android.os.Build;
 import android.os.Bundle;
 
 import androidx.core.app.NotificationCompat;
@@ -16,15 +18,12 @@ import com.pingidentity.pingidsdkv2.NotificationObject;
 import com.pingidentity.pingone.R;
 import com.pingidentity.pingone.SampleActivity;
 
-import static com.pingidentity.pingone.notification.SampleNotificationsActionsReceiver.ACTION_APPROVE;
-import static com.pingidentity.pingone.notification.SampleNotificationsActionsReceiver.ACTION_DENY;
-
 public class SampleNotificationsManager {
 
     private final String SAMPLE_NOTIFICATION_CHANNEL_ID = "pingOne.sample.channel";
     public static final int NOTIFICATION_ID_SAMPLE_APP = 1003;
 
-    private Context context;
+    private final Context context;
     public SampleNotificationsManager(Context context){
         this.context = context;
         createNotificationChannel(context);
@@ -40,20 +39,18 @@ public class SampleNotificationsManager {
          * Create the NotificationChannel, but only on API 26+ because
          * the NotificationChannel class is new and not in the support library
          */
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            CharSequence name = context.getString(R.string.channel_name);
-            String description = context.getString(R.string.channel_description);
-            int importance = NotificationManager.IMPORTANCE_HIGH;
-            NotificationChannel channel = new NotificationChannel(SAMPLE_NOTIFICATION_CHANNEL_ID, name, importance);
-            channel.setDescription(description);
-            /*
-             * Register the channel with the system; you can't change the importance
-             * or other notification behaviors after this
-             */
-            NotificationManager notificationManager = context.getSystemService(NotificationManager.class);
-            assert notificationManager != null;
-            notificationManager.createNotificationChannel(channel);
-        }
+        CharSequence name = context.getString(R.string.channel_name);
+        String description = context.getString(R.string.channel_description);
+        int importance = NotificationManager.IMPORTANCE_HIGH;
+        NotificationChannel channel = new NotificationChannel(SAMPLE_NOTIFICATION_CHANNEL_ID, name, importance);
+        channel.setDescription(description);
+        /*
+         * Register the channel with the system; you can't change the importance
+         * or other notification behaviors after this
+         */
+        NotificationManager notificationManager = context.getSystemService(NotificationManager.class);
+        assert notificationManager != null;
+        notificationManager.createNotificationChannel(channel);
     }
 
     public void buildAndSendNotification(Intent notificationIntent){
@@ -124,7 +121,9 @@ public class SampleNotificationsManager {
                 context,
                 1,
                 approveIntent,
-                PendingIntent.FLAG_UPDATE_CURRENT);
+                PendingIntent.FLAG_UPDATE_CURRENT
+                        //a must-have since Android 12
+                        | PendingIntent.FLAG_IMMUTABLE);
 
         return new NotificationCompat.Action.Builder(
                 0,
@@ -148,7 +147,9 @@ public class SampleNotificationsManager {
                 context,
                 2,
                 denyIntent,
-                PendingIntent.FLAG_UPDATE_CURRENT);
+                PendingIntent.FLAG_UPDATE_CURRENT
+                        //a must-have since Android 12
+                        | PendingIntent.FLAG_IMMUTABLE);
 
         return new NotificationCompat.Action.Builder(
                 0,
@@ -161,7 +162,8 @@ public class SampleNotificationsManager {
         NotificationObject notificationObject = notificationIntent.getParcelableExtra("PingOneNotification");
 
         Intent intent = new Intent(context, SampleActivity.class);
-        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK
+                | Intent.FLAG_ACTIVITY_CLEAR_TOP |Intent.FLAG_ACTIVITY_EXCLUDE_FROM_RECENTS);
         Bundle data = new Bundle();
         data.putParcelable("PingOneNotification", notificationObject);
         if(notificationIntent.hasExtra("title")) {
@@ -171,6 +173,6 @@ public class SampleNotificationsManager {
             data.putString("body", notificationIntent.getStringExtra("body"));
         }
         intent.putExtras(data);
-        return PendingIntent.getActivity(context, (int) (System.currentTimeMillis() & 0xfffffff), intent, PendingIntent.FLAG_UPDATE_CURRENT);
+        return PendingIntent.getActivity(context, (int) (System.currentTimeMillis() & 0xfffffff), intent, PendingIntent.FLAG_UPDATE_CURRENT |PendingIntent.FLAG_IMMUTABLE);
     }
 }

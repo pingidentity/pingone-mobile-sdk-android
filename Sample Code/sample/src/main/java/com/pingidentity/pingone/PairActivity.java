@@ -1,15 +1,19 @@
 package com.pingidentity.pingone;
 
 import android.app.AlertDialog;
+import android.content.ClipData;
+import android.content.ClipboardManager;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.core.content.FileProvider;
@@ -25,8 +29,6 @@ import java.io.File;
 
 public class PairActivity extends SampleActivity {
     private static final String TAG = PairActivity.class.getCanonicalName();
-    Logger logger = LoggerFactory.getLogger(PairActivity.class);
-
     private EditText activationCodeInput;
 
     @Override
@@ -49,7 +51,7 @@ public class PairActivity extends SampleActivity {
                     @Override
                     public void onComplete(@Nullable final PingOneSDKError error) {
                         if (error==null) {
-                            logger.info("Pairing complete");
+                            Log.i(TAG,"Pairing complete");
                             runOnUiThread(() -> {
                                 SharedPreferences.Editor sharedPreferences = getSharedPreferences("InternalPrefs", MODE_PRIVATE).edit();
                                 sharedPreferences.putBoolean("paired", true);
@@ -60,6 +62,7 @@ public class PairActivity extends SampleActivity {
                             });
                         }else{
                             runOnUiThread(() -> {
+                                Log.e(TAG, error.getMessage());
                                 buttonPair.setEnabled(true);
                                 showOkDialog(error.toString());
                             });
@@ -80,6 +83,12 @@ public class PairActivity extends SampleActivity {
         new AlertDialog.Builder(PairActivity.this)
                 .setMessage(message)
                 .setPositiveButton(android.R.string.ok, null)
+                .setNeutralButton("Copy", (dialog, which) -> {
+                    ClipboardManager manager = (ClipboardManager)
+                            getSystemService(Context.CLIPBOARD_SERVICE);
+                    manager.setPrimaryClip(ClipData.newPlainText("Message Content", message));
+                    Toast.makeText(PairActivity.this, "Copied", Toast.LENGTH_SHORT).show();
+                })
                 .show()
                 .getButton(DialogInterface.BUTTON_POSITIVE).setContentDescription(this.getString(R.string.alert_dialog_button_ok));
     }

@@ -16,6 +16,11 @@
     <string name="notification_action_approve">Approve</string>
     <string name="notification_action_deny">Deny</string>
 
+    <!--QR AUTHENTICATION STRINGS-->
+    <string name="edit_text_userless_auth">Enter authentication code manually</string>
+    <string name="button_qr_authentication">Qr Authentication</string>
+    <string name="alert_dialog_format_message">Status is %s</string>
+
     <!--NON TRANSLATABLE STRINGS FOR AUTOMATION!-->
 
     <string name="button_regular_pairing" translatable="false">button_regular_pair</string>
@@ -34,4 +39,5 @@
     <string name="channel_name">Notifications Channel</string>
     <string name="channel_description">Channel Description</string>
     <string name="push_toggle">push_toggle</string>
+
 </resources>
