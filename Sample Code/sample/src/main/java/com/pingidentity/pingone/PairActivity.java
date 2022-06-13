@@ -62,7 +62,7 @@ public class PairActivity extends SampleActivity {
                             });
                         }else{
                             runOnUiThread(() -> {
-                                Log.e(TAG, error.getMessage());
+                                Log.e(TAG, error.toString());
                                 buttonPair.setEnabled(true);
                                 showOkDialog(error.toString());
                             });

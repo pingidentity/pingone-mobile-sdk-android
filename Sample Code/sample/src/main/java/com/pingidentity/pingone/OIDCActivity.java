@@ -74,7 +74,8 @@ public class OIDCActivity extends AppCompatActivity {
 
                 PingOne.processIdToken(response.idToken, (pairingObject, pingOneSDKError) -> {
                     if(pingOneSDKError!=null){
-                        Log.i(TAG, pingOneSDKError.getMessage());
+                        Log.i(TAG, pingOneSDKError.toString());
+                        showOkDialog(pingOneSDKError.toString());
                         return;
                     }
                     if (pairingObject!=null){
@@ -87,6 +88,11 @@ public class OIDCActivity extends AppCompatActivity {
     }
 
     private void discoverAndAuthorize(){
+        if ((Uri.parse(BuildConfig.OIDC_ISSUER).getScheme() == null ||
+                !Uri.parse(BuildConfig.OIDC_ISSUER).getScheme().startsWith("https"))){
+            showOkDialog("Error: OIDC Issuer must start with https scheme");
+            return;
+        }
         AuthorizationServiceConfiguration.fetchFromIssuer(Uri.parse(BuildConfig.OIDC_ISSUER),
                 (serviceConfiguration, ex) -> {
             if(ex!=null){
