@@ -1,5 +1,23 @@
 # Release Notes
 
+
+## v1.7.1 - June 13th, 2022
+Features:
+ 
+- Updated SDK to version 1.7.1.
+
+Bug fixes:
+
+- Improvements to device integrity checks in the SDK.
+
+Compatibility:
+
+- Dependencies updated to their latest versions:
+    * In the 'build.gradle' file at the **project** level:
+        * 'com.android.tools.build:gradle:**7.1.2**'
+        * 'androidx.navigation:navigation-safe-args-gradle-plugin:**2.4.1**'
+
+
 ## v1.7.0 - April 25th, 2022
 Features:
 

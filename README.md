@@ -93,6 +93,11 @@ When configuring your PingOne SDK application in the PingOne admin web console (
 		 * of JWT and the JOSE specification suite
 		 */
   		implementation 'org.bitbucket.b_c:jose4j:0.7.9'
+		
+		
+	    // Google's SafetyNet library that allows validating device integrity
+	    implementation 'com.google.android.gms:play-services-safetynet:18.0.1'
+
 
 		implementation "androidx.lifecycle:lifecycle-extensions:2.2.0"
 

@@ -57,7 +57,7 @@ public class MainActivity extends SampleActivity {
                 Log.e(MainActivity.TAG, pingOneSDKError.getMessage());
                 runOnUiThread(() -> new AlertDialog.Builder(MainActivity.this)
                         .setTitle("Error")
-                        .setMessage(pingOneSDKError.getMessage())
+                        .setMessage(pingOneSDKError.toString())
                         .setPositiveButton(android.R.string.ok, null)
                         .show());
             }

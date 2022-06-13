@@ -1,11 +1,13 @@
 package com.pingidentity.pingone;
 
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.os.Handler;
 import android.widget.TextView;
 
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 
 import com.pingidentity.pingidsdkv2.PingOne;
 import com.pingidentity.pingidsdkv2.PingOneSDKError;
@@ -56,6 +58,9 @@ public class TOTPActivity extends SampleActivity{
                     if(otpData!=null){
                         startAnimation(otpData);
                     }else{
+                        if (error!=null){
+                            showOkDialog(error.toString());
+                        }
                         passcode.setText("Passcode error");
                         passcode_timer.setText("");
                     }
@@ -91,6 +96,15 @@ public class TOTPActivity extends SampleActivity{
                 }.start();
             }
         });
+    }
+
+    private void showOkDialog(String message){
+        new AlertDialog.Builder(TOTPActivity.this)
+                .setMessage(message)
+                .setPositiveButton(android.R.string.ok,
+                        (dialog, which) -> finish())
+                .show()
+                .getButton(DialogInterface.BUTTON_POSITIVE).setContentDescription(this.getString(R.string.alert_dialog_button_ok));
     }
 
 
