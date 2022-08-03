@@ -44,7 +44,7 @@ public class PairActivity extends SampleActivity {
                 String activationCode = activationCodeInput.getText().toString();
                 PingOne.pair(PairActivity.this, activationCode, new PingOne.PingOneSDKPairingCallback() {
                     @Override
-                    public void onComplete(PairingInfo pairingInfo, @Nullable PingOneSDKError error) {
+                    public void onComplete(@Nullable PairingInfo pairingInfo, @Nullable PingOneSDKError error) {
                             this.onComplete(error);
                     }
 

@@ -160,7 +160,7 @@ public class OIDCActivity extends AppCompatActivity {
                     public void onClick(DialogInterface dialog, int which) {
                         pairingObject.approve(OIDCActivity.this, new PingOne.PingOneSDKPairingCallback() {
                             @Override
-                            public void onComplete(PairingInfo pairingInfo, @Nullable PingOneSDKError error) {
+                            public void onComplete(@Nullable PairingInfo pairingInfo, @Nullable PingOneSDKError error) {
                                 this.onComplete(error);
                             }
 
