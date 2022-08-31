@@ -158,9 +158,31 @@ public class OIDCActivity extends AppCompatActivity {
                 .setPositiveButton(R.string.approve_button_text, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
+                        /*
+                         * the approve method will trigger the PingOneSDKPairingCallback object's
+                         * onComplete(@Nullable PairingInfo, @Nullable PingOneSDKError) method.
+                         * Since PingOneSDKPairingCallback extends PingOneSDKCallback (for backward
+                         * compatibility reasons) the onComplete(@Nullable PingOneSDKError) method should
+                         * be overridden as well. You can choose to do nothing in this method, it won't be
+                         * called by default.
+                         */
                         pairingObject.approve(OIDCActivity.this, new PingOne.PingOneSDKPairingCallback() {
                             @Override
-                            public void onComplete(PairingInfo pairingInfo, @Nullable PingOneSDKError error) {
+                            public void onComplete(@Nullable PairingInfo pairingInfo, @Nullable PingOneSDKError error) {
+                                Log.i(TAG, "PingOneSDKPairingCallback onComplete method triggered");
+                                /*
+                                 * you can parse a pairingInfo if needed:
+                                 *
+                                 * if(pairingInfo)!=null{
+                                 *     //do what you need
+                                 * }
+                                 */
+
+                                /*
+                                 * proceed with the process by handling the error object. You can parse
+                                 * the error here and never call this.onComplete(error) or separate error
+                                 * handling to the second callback for more clean code
+                                 */
                                 this.onComplete(error);
                             }
 
