@@ -16,16 +16,15 @@ Release notes can be found [here](./release-notes.md).
 
 ### Documentation
 
-Reference documentation is available for PingOne for Customers Mobile SDK, describing its capabilities, features, installation and setup, integration with mobile apps, deployment and more: 
+Reference documentation is available for PingOne for Customers Mobile SDK, describing its capabilities, features, installation and setup, integration with mobile apps, deployment and more:
 
-* [PingOne for Customers Mobile SDK release notes and admin related documentation](https://docs.pingidentity.com/bundle/p14c/)
-* [PingOne for Customers Mobile SDK developer documentation](https://apidocs.pingidentity.com/pingone/platform/v1/api/#mobile-sdk-api)
+* [PingOne for Customers Mobile SDK release notes and admin related documentation](https://docs.pingidentity.com/csh?Product=p1&context=p1mfa_c_introduction)
+* [PingOne for Customers Mobile SDK developer documentation](https://apidocs.pingidentity.com/pingone/native-sdks/v1/api/#pingone-mfa-native-sdks)
 
 
 ## Set up a mobile app using the PingOne SDK sample code
 
 Note: PingOne for Customers Mobile SDK supports Android 8.0 (API level 26) and up, Gradle 7.2 and up, Java 11 and up.
-
 
 
 ### Prerequisites
@@ -61,7 +60,7 @@ When configuring your PingOne SDK application in the PingOne admin web console (
 	    }
 	    ```
 
-    * Create a `libs` folder inside your module’s folder. Copy the PingOne SDK component file `PingOne.aar` into the `libs` folder. Add the following dependency to the modules that use the PingOne SDK component:
+	* Create a `libs` folder inside your module’s folder. Copy the PingOne SDK component file `PingOne.aar` into the `libs` folder. Add the following dependency to the modules that use the PingOne SDK component:
 
 	    ```
 	    {
@@ -69,46 +68,47 @@ When configuring your PingOne SDK application in the PingOne admin web console (
 	    }
 	    ```
 
-    *  As the PingOne SDK component is loaded locally, you’ll have to add the PingOne SDK component’s dependencies manually in order to be able to compile and run it. Add these dependencies under the PingOne SDK component dependency:
+	*  As the PingOne SDK component is loaded locally, you’ll have to add the PingOne SDK component’s dependencies manually in order to be able to compile and run it. Add these dependencies under the PingOne SDK component dependency:
 
-		```java
-		implementation 'org.slf4j:slf4j-api:1.7.30'
-		implementation 'com.github.tony19:logback-android:2.0.0'
+	   ```java
+       implementation 'org.slf4j:slf4j-api:1.7.30'
+       implementation 'com.github.tony19:logback-android:2.0.0'
 
-		implementation 'com.madgag.spongycastle:core:1.58.0.0'
-		implementation 'com.madgag.spongycastle:bcpkix-jdk15on:1.58.0.0'
+       implementation 'com.madgag.spongycastle:core:1.58.0.0'
+       implementation 'com.madgag.spongycastle:bcpkix-jdk15on:1.58.0.0'
 
-		//Import the Firebase BoM (Bill of Materials)
-        implementation platform('com.google.firebase:firebase-bom:26.3.0')
+       //Import the Firebase BoM (Bill of Materials)
+       implementation platform('com.google.firebase:firebase-bom:26.3.0')
 
-        //FireCloud Messaging Services
-        implementation 'com.google.firebase:firebase-core'
-        implementation 'com.google.firebase:firebase-messaging'
-		
-		//Google's gson library to build and parse JSON format
-		implementation 'com.google.code.gson:gson:2.8.9'
-
-		/*
-		 * The jose.4.j library is an open source (Apache 2.0) implementation
-		 * of JWT and the JOSE specification suite
-		 */
-  		implementation 'org.bitbucket.b_c:jose4j:0.7.9'
-		
-		
-	    // Google's SafetyNet library that allows validating device integrity
-	    implementation 'com.google.android.gms:play-services-safetynet:18.0.1'
-
-
-		implementation "androidx.lifecycle:lifecycle-extensions:2.2.0"
-
-		/*
-		* The library that provides ability to use Certificate Transparency
-		* https://www.certificate-transparency.org
-		*/
-		implementation("com.appmattus.certificatetransparency:certificatetransparency-android:1.0.0")
-		```						
+       //FireCloud Messaging Services
+       implementation 'com.google.firebase:firebase-core'
+       implementation 'com.google.firebase:firebase-messaging'
        
+       //Google's gson library to build and parse JSON format
+       implementation 'com.google.code.gson:gson:2.8.9'
 
+       /*
+        * The jose.4.j library is an open source (Apache 2.0) implementation
+        * of JWT and the JOSE specification suite
+        */
+         implementation 'org.bitbucket.b_c:jose4j:0.7.9'
+       
+       
+       // Google's SafetyNet library that allows validating device integrity
+       implementation 'com.google.android.gms:play-services-safetynet:18.0.1'
+
+
+       implementation "androidx.lifecycle:lifecycle-extensions:2.2.0"
+
+       /*
+       * The library that provides ability to use Certificate Transparency
+       * https://www.certificate-transparency.org
+       */
+       implementation("com.appmattus.certificatetransparency:certificatetransparency-android:1.0.0")
+       ```						
+
+
+Starting Android 13 (API level 33) the application needs to request the 'Post Notifications' permission from the user to be able to show notifications. For more information see [Notification Runtime Permission Documentation](https://developer.android.com/guide/topics/ui/notifiers/notification-permission)
 
 ### Pairing
 
@@ -138,7 +138,7 @@ In your app, add the appropriate section in your androidmanifest.xml file (FCM m
 
 #### Register device token on PingOne server
 
- Retrieve the FCM Registration Token Id from the FCM and set it in the PingOne Library by calling 	
+Retrieve the FCM Registration Token Id from the FCM and set it in the PingOne Library by calling
  ```java
 PingOne.setDeviceToken(context, token, new PingOne.PingOneSDKCallback())
 ```
@@ -188,7 +188,7 @@ The PingOne Mobile SDK bundle provides a sample app that includes all the basic 
 
 ### Send Logs
 
-The PingOne Mobile SDK bundle writes fixed size, encrypted log messages to memory. To send these logs to our server for support, call the ```public static void sendLogs(Context context, PingOneSendLogsCallback callback)``` method. 
+The PingOne Mobile SDK bundle writes fixed size, encrypted log messages to memory. To send these logs to our server for support, call the ```public static void sendLogs(Context context, PingOneSendLogsCallback callback)``` method.
 For example:
  ```java
 PingOne.sendLogs(context, new PingOne.PingOneSendLogsCallback() {
@@ -203,7 +203,7 @@ PingOne.sendLogs(context, new PingOne.PingOneSendLogsCallback() {
 
 ### Get One Time Passcode
 
-Requests the SDK to provide One Time Passcode. 
+Requests the SDK to provide One Time Passcode.
 
 Signature:
 ```java
@@ -248,7 +248,7 @@ PingOne.authenticate(context, authCode, new PingOne.PingOneAuthenticationCallbac
 
 authCode should be passed as is or inside a URI. For example: "7F45HGf5", "https://myapp.com/pingonesdk?authentication_code=7F45HGf5", "pingonesdk?authentication_code=7F45HGf5"
 
-AuthenticationObject is implemented as Parcelable to provide the developers an ability to 
+AuthenticationObject is implemented as Parcelable to provide the developers an ability to
 pass it between activities and/or fragments and contains the following fields and methods:
 ```java
 	public class AuthenticationObject{

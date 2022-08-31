@@ -17,6 +17,9 @@
     <uses-feature android:name="android.hardware.camera.any"/>
     <uses-permission android:name="android.permission.CAMERA" />
 
+    <!-- since Android 13 (API level 33) there is an explicit notification permission required -->
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS"/>
+
     <application
         android:allowBackup="false"
         android:icon="@mipmap/ic_launcher"

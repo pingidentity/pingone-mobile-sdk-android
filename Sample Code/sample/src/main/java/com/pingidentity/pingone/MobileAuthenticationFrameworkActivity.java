@@ -92,7 +92,7 @@ public class MobileAuthenticationFrameworkActivity extends AppCompatActivity {
                             }
 
                             @Override
-                            public void onComplete(PairingInfo pairingInfo, @Nullable final PingOneSDKError pingOneSDKError) {
+                            public void onComplete(@Nullable PairingInfo pairingInfo, @Nullable final PingOneSDKError pingOneSDKError) {
                                 this.onComplete(pingOneSDKError);
                             }
                         });

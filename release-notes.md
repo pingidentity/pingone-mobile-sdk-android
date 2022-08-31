@@ -1,9 +1,27 @@
 # Release Notes
 
 
+## v1.7.2 - Aug 31st, 2022
+Features:
+
+- Updated SDK to version 1.7.2.
+- Added support for alphanumeric pairing key.
+- Bug fixes and performance improvements.
+
+Compatibility:
+
+- Android **target** SDK version is updated to API level 33 (Android 13)
+- Dependencies updated to their latest versions:
+    * In the 'build.gradle' file at the **project** level:
+        * 'com.android.tools.build:gradle:**7.2.2**'
+        * 'com.google.gms:google-services:**4.3.13**'
+        * 'androidx.navigation:navigation-safe-args-gradle-plugin:**2.5.1**'
+    * In the 'build.gradle' file at the **app** level:
+        * 'com.google.code.gson:gson:**2.9.0**'
+
 ## v1.7.1 - June 13th, 2022
 Features:
- 
+
 - Updated SDK to version 1.7.1.
 
 Bug fixes:
@@ -24,7 +42,7 @@ Features:
 - Updated SDK to version 1.7.0
 - Added support for authentication using QR Code scanning or manual typing of an authentication code
 - Added Certificate Transparency mechanism to protect against mis-issued certificates
-- The JWT signature validation updated to use more strong EC algorithm. 
+- The JWT signature validation updated to use more strong EC algorithm.
 
 
 Compatibility:
@@ -37,11 +55,11 @@ Compatibility:
     * In the 'build.gradle' file at the **app** level:
         * 'org.bitbucket.b_c:jose4j:**0.7.9**'
         * 'com.google.android.gms:play-services-safetynet:**18.0.1**'
-        * 'com.google.code.gson:gson:**2.8.9**'  
-- Dependencies added:    
+        * 'com.google.code.gson:gson:**2.8.9**'
+- Dependencies added:
     * In the 'build.gradle' file at the **app** level:
         * 'com.appmattus.certificatetransparency:certificatetransparency-android:1.0.0'
-    
+
 
 ## v1.6.0 - August 1st, 2021
 Features:
@@ -51,18 +69,18 @@ Features:
 
 
 Compatibility:
- - Dependencies updated to their latest versions:
-      * In the 'build.gradle' file at the **project** level:
+- Dependencies updated to their latest versions:
+    * In the 'build.gradle' file at the **project** level:
         * 'com.android.tools.build:gradle:**4.2.1**'
         * 'com.google.gms:google-services:**4.3.8**'
         * 'androidx.navigation:navigation-safe-args-gradle-plugin:**2.3.5**'
-     * In the 'build.gradle' file at the **app** level:
+    * In the 'build.gradle' file at the **app** level:
         * Migrated to FireBase BOM:
-          * implementation platform('com.google.firebase:firebase-bom:26.3.0')
-          * implementation 'com.google.firebase:firebase-core'
-          * implementation 'com.google.firebase:firebase-messaging'
-         * 'androidx.appcompat:appcompat:**1.3.0**'
-           
+            * implementation platform('com.google.firebase:firebase-bom:26.3.0')
+            * implementation 'com.google.firebase:firebase-core'
+            * implementation 'com.google.firebase:firebase-messaging'
+        * 'androidx.appcompat:appcompat:**1.3.0**'
+
 
 ## v1.5.0 - April 6th, 2021
 Features:
@@ -79,15 +97,15 @@ Dependencies updated:
 
 ## v.1.4.1 - Feb 3rd, 2021
 Bug fixes:
- - Added a missing dependency in the project-level `build.gradle` file.
- - Fixed a dead link from README
- 
- 
+- Added a missing dependency in the project-level `build.gradle` file.
+- Fixed a dead link from README
+
+
 ## v1.4.0 - Jan 5th, 2021
 Features:
 
-- Added support for Mobile Authentication Framework for Android Developers. 
-See the files in the `PingAuthenticationUI` and `PingAuthenticationCore` folders.
+- Added support for Mobile Authentication Framework for Android Developers.
+  See the files in the `PingAuthenticationUI` and `PingAuthenticationCore` folders.
 
 
 ## v1.3.0 - June 18th, 2020
@@ -99,17 +117,17 @@ Features:
 
 Dependencies updated:
 
-  * 'com.android.tools.build:gradle:3.5.3'
-  * 'com.google.gms:google-services:4.3.3'
-  * 'com.google.firebase:firebase-core:17.4.2'
-  * 'com.google.firebase:firebase-messaging:20.2.0'
+* 'com.android.tools.build:gradle:3.5.3'
+* 'com.google.gms:google-services:4.3.3'
+* 'com.google.firebase:firebase-core:17.4.2'
+* 'com.google.firebase:firebase-messaging:20.2.0'
 
 
 Compatibility notes:
 
 - Deprecated method: `PingOne.processRemoteNotification(RemoteMessage remoteMessage, PingOne.PingOneNotificationCallback callback)`
   Instead please use:
- `PingOne.processRemoteNotification(Context context, RemoteMessage remoteMessage, PingOne.PingOneNotificationCallback callback)`
+  `PingOne.processRemoteNotification(Context context, RemoteMessage remoteMessage, PingOne.PingOneNotificationCallback callback)`
 
 
 ## v1.2.0 - March 31st, 2020
@@ -147,4 +165,3 @@ Compatibility notes:
 ## v1.0 - August 1st, 2019
 Features:
 - Provide MFA capability (using push notifications) for Android native apps.
-

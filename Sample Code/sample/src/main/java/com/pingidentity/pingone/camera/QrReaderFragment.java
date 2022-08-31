@@ -83,14 +83,16 @@ public class QrReaderFragment extends Fragment {
         requestPermissionLauncher =
                 registerForActivityResult(new ActivityResultContracts.RequestPermission(), isGranted -> {
                     if (isGranted) {
-                        // Permission is granted. Continue the action or workflow in your
-                        // app.
+                        /*
+                         * Permission is granted. Continue the action or workflow in your app
+                         */
                         startCameraPreview();
                     } else {
-                        // Explain to the user that the feature is unavailable because the
-                        // features requires a permission that the user has denied.
-                        Toast.makeText(requireContext(), "You should allow camera permission to use this feature", Toast.LENGTH_LONG).show();
-                        requireActivity().finish();
+                        /*
+                         * Explain to the user that the feature is unavailable because the
+                         * features requires a permission that the user has denied.
+                         */
+
                     }
                 });
 
@@ -112,8 +114,9 @@ public class QrReaderFragment extends Fragment {
                 PackageManager.PERMISSION_GRANTED) {
             startCameraPreview();
         }else if(shouldShowRequestPermissionRationale(Manifest.permission.CAMERA)){
-            Toast.makeText(requireContext(), "You should allow camera permission to use this feature", Toast.LENGTH_LONG).show();
-            requireActivity().finish();
+            /*
+             * prompt the user with explanation about the reason you request camera permission
+             */
         } else {
             requestPermissionLauncher.launch(Manifest.permission.CAMERA);
         }

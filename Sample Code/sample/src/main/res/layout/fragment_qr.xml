@@ -22,7 +22,10 @@
                 android:id="@+id/manual_authentication_input"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="20dp"
+                android:paddingTop="20dp"
+                android:paddingBottom="20dp"
+                android:paddingStart="10dp"
+                android:paddingEnd="10dp"
                 android:autofillHints="false"
                 android:inputType="text"
                 android:hint="@string/edit_text_userless_auth"/>
