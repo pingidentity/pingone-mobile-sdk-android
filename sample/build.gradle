@@ -8,8 +8,8 @@ android {
         applicationId "com.pingidentity.pingone"
         minSdkVersion 26
         targetSdkVersion 33
-        versionCode = 16
-        versionName "1.7.2"
+        versionCode = 17
+        versionName "1.8.1"
 
         // Make sure this is consistent with the redirect URI used in res/raw/auth_config.json,
         // or specify additional redirect URIs in AndroidManifest.xml
@@ -36,17 +36,21 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
+        debug {
+        }
     }
 
 }
 dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.aar'])
+    /*
+     * import the PingOne for Customer Android SDK. Get the latest version from
+     * https://search.maven.org/search?q=g:com.pingidentity.pingonemfa
+     */
+    implementation 'com.pingidentity.pingonemfa:android-sdk:1.8.1'
+    /*
+     * import the PingOne for Customer Mobile Authentication Framework
+     */
     implementation project(':PingAuthenticationUI')
-    implementation 'org.slf4j:slf4j-api:1.7.30'
-    implementation 'com.github.tony19:logback-android:2.0.0'
-
-    implementation 'com.madgag.spongycastle:core:1.58.0.0'
-    implementation 'com.madgag.spongycastle:bcpkix-jdk15on:1.58.0.0'
 
     //Import the Firebase BoM (Bill of Materials)
     implementation platform('com.google.firebase:firebase-bom:26.3.0')
@@ -54,21 +58,14 @@ dependencies {
     implementation 'com.google.firebase:firebase-core'
     implementation 'com.google.firebase:firebase-messaging'
 
-    /*
-     * The jose.4.j library is an open source (Apache 2.0) implementation of JWT and the JOSE
-     * specification suite
-     */
-    implementation 'org.bitbucket.b_c:jose4j:0.7.9'
-    implementation 'com.google.android.gms:play-services-safetynet:18.0.1'
-
     //Google's gSon library to build and parse JSON format
     implementation 'com.google.code.gson:gson:2.9.0'
 
     //to manage lifecycle easily
     implementation "androidx.lifecycle:lifecycle-extensions:2.2.0"
-    implementation 'androidx.appcompat:appcompat:1.4.2'
+    implementation 'androidx.appcompat:appcompat:1.5.1'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
-    implementation 'androidx.navigation:navigation-fragment:2.5.1'
+    implementation 'androidx.navigation:navigation-fragment:2.5.3'
 
     /*
      * To easily build cameraX preview
@@ -82,7 +79,7 @@ dependencies {
      * ML Kit's APIs all run on-device, allowing for real-time use cases where you want to process
      * a live camera stream. This also means that the functionality is available offline.
      */
-    implementation 'com.google.mlkit:barcode-scanning:17.0.2'
+    implementation 'com.google.mlkit:barcode-scanning:17.0.3'
 
     /*
      * AppAuth for Android is a client SDK for communicating with OAuth 2.0 and OpenID Connect providers
@@ -90,12 +87,15 @@ dependencies {
      */
     implementation 'net.openid:appauth:0.11.1'
 
-    /*
-     * The library that provides ability to use Certificate Transparency
-     * https://www.certificate-transparency.org
-     */
-    implementation("com.appmattus.certificatetransparency:certificatetransparency-android:1.0.0")
+    /* EnableHuaweiMobileServices
+    // Push kit HMS Core SDK
+    implementation 'com.huawei.hms:push:6.3.0.302'
+    EnableHuaweiMobileServices */
 
     testImplementation 'junit:junit:4.13.2'
 }
 apply plugin: 'com.google.gms.google-services'
+/* EnableHuaweiMobileServices
+apply plugin: 'com.huawei.agconnect'
+EnableHuaweiMobileServices */
+

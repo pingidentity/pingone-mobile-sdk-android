@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -29,6 +30,7 @@ import java.util.ArrayList;
 public class QrParserFragment extends Fragment {
 
     private ProgressBar progressBar;
+    private TextView clientContextTextView;
     private ListView listView;
     private AuthenticationObject authenticationObject;
     private static final String TAG = "QrParserFragment";
@@ -43,6 +45,7 @@ public class QrParserFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         progressBar = view.findViewById(R.id.qr_authentication_progress_bar);
+        clientContextTextView = view.findViewById(R.id.client_context_view);
         listView = view.findViewById(R.id.usersList);
         if (getArguments()!=null && getArguments().containsKey("qrCodeContent")) {
             showVerifyingLayout();
@@ -123,7 +126,8 @@ public class QrParserFragment extends Fragment {
     }
 
 
-    private void handleClaimedStatusOfAuthentication(AuthenticationObject authenticationObject){
+    private void handleClaimedStatusOfAuthentication(@NonNull AuthenticationObject authenticationObject){
+        handleClientContext(authenticationObject.getClientContext());
         if (authenticationObject.getUsers().size()>1){
             handleSeveralUsersFlow(authenticationObject);
         }else{
@@ -131,7 +135,7 @@ public class QrParserFragment extends Fragment {
         }
     }
 
-    private void handleSeveralUsersFlow(AuthenticationObject authenticationObject) {
+    private void handleSeveralUsersFlow(@NonNull AuthenticationObject authenticationObject) {
         ArrayList<UserModel> users = new ArrayList<>();
         for (JsonElement user: authenticationObject.getUsers()){
             UserModel userModel = new UserModel();
@@ -208,5 +212,16 @@ public class QrParserFragment extends Fragment {
                  mDialog.show();
                 });
 
+    }
+
+    /*
+     * handle client context value retrieved from the server in the AuthenticationObject
+     */
+    private void handleClientContext(String clientContext){
+        if (clientContext==null || clientContext.length()==0){
+            Log.d(TAG, "Client context is empty");
+            return;
+        }
+        clientContextTextView.setText(clientContext);
     }
 }

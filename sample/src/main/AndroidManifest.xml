@@ -27,6 +27,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="false"
         android:theme="@style/AppTheme"
+        android:resizeableActivity="false"
         tools:replace="android:name"
         android:name=".SampleApplication">
         <activity android:name=".MainActivity"
@@ -72,5 +73,12 @@
             </intent-filter>
         </service>
         <receiver android:name=".notification.SampleNotificationsActionsReceiver"/>
+        <!-- EnableHuaweiMobileServices
+       <service android:name=".SampleHmsMessagingService" android:exported="false">
+            <intent-filter>
+               <action android:name="com.huawei.push.action.MESSAGING_EVENT"/>
+            </intent-filter>
+       </service>
+      EnableHuaweiMobileServices -->
     </application>
 </manifest>

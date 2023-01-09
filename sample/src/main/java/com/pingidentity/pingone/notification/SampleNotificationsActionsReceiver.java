@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.app.NotificationManagerCompat;
 
@@ -21,7 +22,7 @@ public class SampleNotificationsActionsReceiver extends BroadcastReceiver {
     public static final String ACTION_DENY = "sample_action_deny";
 
     @Override
-    public void onReceive(Context context, Intent intent) {
+    public void onReceive(Context context, @NonNull Intent intent) {
         Bundle bundle = intent.getBundleExtra("extra");
         NotificationObject notificationObject = bundle.getParcelable("NotificationObject");
 

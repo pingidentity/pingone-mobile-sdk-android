@@ -20,7 +20,13 @@ import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AlertDialog;
 import androidx.core.content.ContextCompat;
 
+import com.google.android.gms.common.ConnectionResult;
+import com.google.android.gms.common.GoogleApiAvailability;
 import com.google.firebase.messaging.FirebaseMessaging;
+/* EnableHuaweiMobileServices
+import com.huawei.hms.api.HuaweiApiAvailability;
+import com.huawei.hms.push.HmsMessaging;
+EnableHuaweiMobileServices */
 import com.pingidentity.pingidsdkv2.PingOne;
 
 public class MainActivity extends SampleActivity {
@@ -32,6 +38,11 @@ public class MainActivity extends SampleActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        /* EnableHuaweiMobileServices
+        if (isHmsAvailable(this))
+            HmsMessaging.getInstance(this).setAutoInitEnabled(true);
+        else
+         EnableHuaweiMobileServices */
         logFCMRegistrationToken();
         /*
          * since Android 13 (API level 33) notifications must be explicitly approved by the
@@ -40,6 +51,7 @@ public class MainActivity extends SampleActivity {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
             requestNotificationsPermission();
         }
+
         //show the version in a text field
         TextView textViewVersion = findViewById(R.id.text_view_app_version);
         textViewVersion.setText(String.format("%s (%s)",
@@ -92,6 +104,11 @@ public class MainActivity extends SampleActivity {
     }
 
     private void logFCMRegistrationToken(){
+        if(GoogleApiAvailability.getInstance().
+                isGooglePlayServicesAvailable(this)!= ConnectionResult.SUCCESS){
+            Log.d(TAG,"GooglePlayServices is not available on this device.");
+            return;
+        }
         SharedPreferences prefs = getSharedPreferences("InternalPrefs", MODE_PRIVATE);
         String token = prefs.getString("pushToken", null);
         if(token==null){
@@ -154,4 +171,15 @@ public class MainActivity extends SampleActivity {
         });
     }
 
+    /* EnableHuaweiMobileServices
+    private boolean isHmsAvailable(Context context) {
+        boolean isAvailable = false;
+        if (null != context) {
+            int result = HuaweiApiAvailability.getInstance().isHuaweiMobileServicesAvailable(context);
+            isAvailable = (com.huawei.hms.api.ConnectionResult.SUCCESS == result);
+        }
+        Log.i(TAG, "isHmsAvailable: " + isAvailable);
+        return isAvailable;
+    }
+    EnableHuaweiMobileServices */
 }
