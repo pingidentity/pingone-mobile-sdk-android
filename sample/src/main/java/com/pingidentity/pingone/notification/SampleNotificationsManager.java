@@ -10,11 +10,14 @@ import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 
+import androidx.annotation.NonNull;
 import androidx.core.app.NotificationCompat;
 import androidx.core.app.NotificationManagerCompat;
 
 import com.pingidentity.pingidsdkv2.NotificationObject;
+import com.pingidentity.pingone.MainActivity;
 import com.pingidentity.pingone.R;
 import com.pingidentity.pingone.SampleActivity;
 
@@ -30,15 +33,11 @@ public class SampleNotificationsManager {
     }
 
     /*
-     * Because you must create the notification channel before posting any notifications on Android 8.0
-     * and higher, you should execute this code as soon as your app starts. It's safe to call this
+     * Create the notification channel before posting any notifications. It's safe to call this
      * repeatedly because creating an existing notification channel performs no operation.
      */
     private void createNotificationChannel(Context context) {
-        /*
-         * Create the NotificationChannel, but only on API 26+ because
-         * the NotificationChannel class is new and not in the support library
-         */
+
         CharSequence name = context.getString(R.string.channel_name);
         String description = context.getString(R.string.channel_description);
         int importance = NotificationManager.IMPORTANCE_HIGH;
@@ -53,7 +52,41 @@ public class SampleNotificationsManager {
         notificationManager.createNotificationChannel(channel);
     }
 
-    public void buildAndSendNotification(Intent notificationIntent){
+    /*
+     * there are several possible types of categories in remoteMessage data, build a
+     * notification accordingly:
+     * 1. category is null: build a notification without action buttons in analogy with iOS
+     * 2. category "auth": build a "usual" notification with approve/deny buttons
+     * 3. category "auth_open": build a notification with approve/deny buttons where approve action
+     * will also open the application
+     */
+    public void buildAndSendNotificationAccordingToCategory(@NonNull Intent notificationIntent){
+        String category = notificationIntent.getStringExtra("category");
+        Log.i(SampleNotificationsManager.class.getCanonicalName(),
+                "build notification for category " + category);
+        if (category==null){
+            buildAndSendPlainNotification(notificationIntent, true);
+            return;
+        }
+        switch (category){
+            case ("auth"):
+                buildAndSendActionsNotification(notificationIntent, false);
+                break;
+            case ("auth_open"):
+                buildAndSendActionsNotification(notificationIntent, true);
+                break;
+            default:
+                buildAndSendPlainNotification(notificationIntent, true);
+                break;
+        }
+    }
+
+    /*
+     * Every notification should respond to a tap, usually to open an activity in your app that
+     * corresponds to the notification. To do so, you must specify a content intent defined with
+     * a PendingIntent object and pass it to setContentIntent().
+     */
+    public void buildAndSendPlainNotification(@NonNull Intent notificationIntent, boolean openApplicationOnTap){
         NotificationCompat.Builder builder = new NotificationCompat.Builder(context, SAMPLE_NOTIFICATION_CHANNEL_ID);
         builder.setPriority(NotificationCompat.PRIORITY_MAX);
         builder.setSmallIcon(R.mipmap.ic_launcher);
@@ -67,14 +100,16 @@ public class SampleNotificationsManager {
         if (notificationIntent.hasExtra("body")){
             builder.setContentText(notificationIntent.getStringExtra("body"));
         }
+        if (openApplicationOnTap){
+            builder.setContentIntent(createOnTapPendingIntent(notificationIntent));
+        }
         //cancel this notification "on-click" as it doesn't have any action items
         builder.setAutoCancel(true);
-        Notification newMessageNotification = builder.build();
-        NotificationManagerCompat notificationManager = NotificationManagerCompat.from(context);
-        notificationManager.notify(1234, newMessageNotification);
+
+        sendNotification(builder);
     }
 
-    public void buildAndShowActionsNotification(Intent notificationIntent){
+    public void buildAndSendActionsNotification(@NonNull Intent notificationIntent, boolean openOnApprove){
         NotificationCompat.Builder builder = new NotificationCompat.Builder(context, SAMPLE_NOTIFICATION_CHANNEL_ID);
         builder.setPriority(NotificationCompat.PRIORITY_MAX);
         builder.setSmallIcon(R.mipmap.ic_launcher);
@@ -97,18 +132,21 @@ public class SampleNotificationsManager {
         Bundle extra = new Bundle();
         extra.putParcelable("NotificationObject", notificationObject);
 
+        if (openOnApprove){
+            builder.addAction(createApproveAndOpenAction(notificationIntent));
+        }else{
+            builder.addAction(createApproveAction(extra));
+        }
         builder.addAction(createDenyAction(extra));
-        builder.addAction(createApproveAction(extra));
-        builder.setAutoCancel(true);
         builder.setContentIntent(createOnTapPendingIntent(notificationIntent));
-        Notification newMessageNotification = builder.build();
-        NotificationManagerCompat notificationManager = NotificationManagerCompat.from(context);
-        notificationManager.notify(NOTIFICATION_ID_SAMPLE_APP, newMessageNotification);
+        builder.setAutoCancel(true);
+        sendNotification(builder);
     }
 
     /*
      * create an action that sends approve intent to the broadcast receiver
      */
+    @NonNull
     private NotificationCompat.Action createApproveAction(Bundle bundle){
         Intent approveIntent = new Intent(context, SampleNotificationsActionsReceiver.class);
         approveIntent.setAction(ACTION_APPROVE);
@@ -135,6 +173,7 @@ public class SampleNotificationsManager {
     /*
      * create an action that sends deny intent to the broadcast receiver
      */
+    @NonNull
     private NotificationCompat.Action createDenyAction(Bundle bundle){
         Intent denyIntent = new Intent(context, SampleNotificationsActionsReceiver.class);
         denyIntent.setAction(ACTION_DENY);
@@ -158,7 +197,30 @@ public class SampleNotificationsManager {
                 .build();
     }
 
-    private PendingIntent createOnTapPendingIntent(Intent notificationIntent){
+    /*
+     * Since Android 10 it is restricted to start Activity from BroadcastReceiver.
+     * Thus, to achieve expected functionality we create a PendingIntent to an Activity instead
+     * of Broadcast.
+     */
+    @NonNull
+    private NotificationCompat.Action createApproveAndOpenAction(@NonNull Intent notificationIntent){
+        Intent approveAndOpenIntent = new Intent(context, MainActivity.class);
+        Bundle data = new Bundle();
+        NotificationObject notificationObject = notificationIntent.getParcelableExtra("PingOneNotification");
+        data.putParcelable("PingOneNotification", notificationObject);
+
+        approveAndOpenIntent.putExtras(data);
+        approveAndOpenIntent.setAction(ACTION_APPROVE);
+        approveAndOpenIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        PendingIntent approveAndOpenPendingIntent =  PendingIntent.getActivity(context, (int) (System.currentTimeMillis() & 0xfffffff), approveAndOpenIntent, PendingIntent.FLAG_UPDATE_CURRENT | PendingIntent.FLAG_IMMUTABLE);
+        return new NotificationCompat.Action.Builder(
+                0,
+                context.getString(R.string.notification_action_approve), approveAndOpenPendingIntent)
+                .build();
+
+    }
+
+    private PendingIntent createOnTapPendingIntent(@NonNull Intent notificationIntent){
         NotificationObject notificationObject = notificationIntent.getParcelableExtra("PingOneNotification");
 
         Intent intent = new Intent(context, SampleActivity.class);
@@ -174,5 +236,11 @@ public class SampleNotificationsManager {
         }
         intent.putExtras(data);
         return PendingIntent.getActivity(context, (int) (System.currentTimeMillis() & 0xfffffff), intent, PendingIntent.FLAG_UPDATE_CURRENT |PendingIntent.FLAG_IMMUTABLE);
+    }
+
+    private void sendNotification(@NonNull NotificationCompat.Builder builder) {
+        Notification newMessageNotification = builder.build();
+        NotificationManagerCompat notificationManager = NotificationManagerCompat.from(context);
+        notificationManager.notify(NOTIFICATION_ID_SAMPLE_APP, newMessageNotification);
     }
 }

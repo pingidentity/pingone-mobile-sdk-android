@@ -1,5 +1,9 @@
 package com.pingidentity.pingone;
 
+import static com.pingidentity.pingone.notification.SampleNotificationsActionsReceiver.ACTION_APPROVE;
+import static com.pingidentity.pingone.notification.SampleNotificationsManager.NOTIFICATION_ID_SAMPLE_APP;
+
+import android.app.NotificationManager;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
@@ -7,12 +11,13 @@ import android.os.Bundle;
 import android.text.Spannable;
 import android.text.SpannableString;
 import android.text.style.ForegroundColorSpan;
-import android.widget.TextView;
+import android.util.Log;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
+import androidx.core.app.NotificationManagerCompat;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
@@ -27,26 +32,7 @@ public class SampleActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if(getIntent().hasExtra("PingOneNotification")){
-            NotificationObject pingOneNotificationObject = (NotificationObject) getIntent().getExtras().get("PingOneNotification");
-            String title = "Authenticate?";
-            String body = null;
-            if(getIntent().hasExtra("title")){
-                title = getIntent().getStringExtra("title");
-            }
-            if (getIntent().hasExtra("body")){
-                body = getIntent().getStringExtra("body");
-            }
-            if (pingOneNotificationObject!=null && pingOneNotificationObject.getClientContext()!=null) {
-                JsonObject jsonObject = new Gson().fromJson(pingOneNotificationObject.getClientContext(), JsonObject.class);
-                if (jsonObject.has("header_font_color")){
-                    changeTitleColor(jsonObject.get("header_font_color").getAsString());
-                }
-            }
-            if(pingOneNotificationObject.isTest()){
-                showOkDialog(body);
-            }else {
-                showApproveDenyDialog(pingOneNotificationObject, title, body);
-            }
+            handleNotificationObjectIntent(getIntent());
         }
     }
 
@@ -54,24 +40,53 @@ public class SampleActivity extends AppCompatActivity {
     protected void onNewIntent(Intent intent) {
         super.onNewIntent(intent);
         if(intent.hasExtra("PingOneNotification")){
-            NotificationObject pingOneNotificationObject = (NotificationObject) intent.getExtras().get("PingOneNotification");
+            handleNotificationObjectIntent(intent);
+        }
+    }
+
+    private void handleNotificationObjectIntent(@NonNull Intent intent){
+        NotificationObject pingOneNotificationObject = (NotificationObject) intent.getExtras().get("PingOneNotification");
+        if (pingOneNotificationObject!=null) {
+            /*
+             * in "auth_open" push category scenario we want to silent-approve the auth, this means
+             * we trigger the approve() method of the NotificationObject without asking user approval
+             * and dismiss the notification
+             */
+            if (intent.getAction()!=null && intent.getAction().equalsIgnoreCase(ACTION_APPROVE)){
+                NotificationManagerCompat.from(this).cancel(NOTIFICATION_ID_SAMPLE_APP);
+                pingOneNotificationObject.approve(this, "auth_approve", new PingOne.PingOneSDKCallback() {
+                    @Override
+                    public void onComplete(@Nullable PingOneSDKError pingOneSDKError) {
+                        if (pingOneSDKError!=null){
+                            Log.e("Sample activity", "Silent approve action returned error " + pingOneSDKError.getMessage());
+                        }else{
+                            Log.i("Sample activity", "Silent approve action completed");
+                        }
+                    }
+                });
+                /*
+                 * in "auth_open" push category scenario do not build the approve/deny user dialog
+                 * as notification object already approved at this point
+                 */
+                return;
+            }
             String title = "Authenticate?";
             String body = null;
-            if(intent.hasExtra("title")){
+            if (intent.hasExtra("title")) {
                 title = intent.getStringExtra("title");
             }
-            if (intent.hasExtra("body")){
+            if (intent.hasExtra("body")) {
                 body = intent.getStringExtra("body");
             }
-            if (pingOneNotificationObject!=null && pingOneNotificationObject.getClientContext()!=null) {
+            if (pingOneNotificationObject.getClientContext() != null) {
                 JsonObject jsonObject = new Gson().fromJson(pingOneNotificationObject.getClientContext(), JsonObject.class);
-                if (jsonObject.has("header_font_color")){
+                if (jsonObject.has("header_font_color")) {
                     changeTitleColor(jsonObject.get("header_font_color").getAsString());
                 }
             }
-            if(pingOneNotificationObject.isTest()){
+            if (pingOneNotificationObject.isTest()) {
                 showOkDialog(body);
-            }else {
+            } else {
                 showApproveDenyDialog(pingOneNotificationObject, title, body);
             }
         }
@@ -117,14 +132,11 @@ public class SampleActivity extends AppCompatActivity {
                         pingOneNotificationObject.deny(SampleActivity.this, new PingOne.PingOneSDKCallback() {
                             @Override
                             public void onComplete(@Nullable final PingOneSDKError pingOneSDKError) {
-                                runOnUiThread(new Runnable() {
-                                    @Override
-                                    public void run() {
-                                        if (pingOneSDKError != null) {
-                                            showOkDialog(pingOneSDKError.toString());
-                                        }else{
-                                            finish();
-                                        }
+                                runOnUiThread(() -> {
+                                    if (pingOneSDKError != null) {
+                                        showOkDialog(pingOneSDKError.toString());
+                                    }else{
+                                        finish();
                                     }
                                 });
                             }
@@ -142,8 +154,10 @@ public class SampleActivity extends AppCompatActivity {
     }
 
     private void changeTitleColor(String color){
-        Spannable text = new SpannableString(getSupportActionBar().getTitle());
-        text.setSpan(new ForegroundColorSpan(Color.parseColor(color)), 0, text.length(), Spannable.SPAN_INCLUSIVE_INCLUSIVE);
-        getSupportActionBar().setTitle(text);
+        if (getSupportActionBar()!=null) {
+            Spannable text = new SpannableString(getSupportActionBar().getTitle());
+            text.setSpan(new ForegroundColorSpan(Color.parseColor(color)), 0, text.length(), Spannable.SPAN_INCLUSIVE_INCLUSIVE);
+            getSupportActionBar().setTitle(text);
+        }
     }
 }

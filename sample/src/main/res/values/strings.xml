@@ -21,6 +21,7 @@
     <string name="button_qr_authentication">Qr Authentication</string>
     <string name="alert_dialog_format_message">Status is %s</string>
 
+    <string name="client_context_placeholder">clientContext will be placed here if returned from the SDK</string>
     <!--NON TRANSLATABLE STRINGS FOR AUTOMATION!-->
 
     <string name="button_regular_pairing" translatable="false">button_regular_pair</string>
