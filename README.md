@@ -132,7 +132,9 @@ Make sure you set the device’s push token before you call `PingOne.pair`, and 
 
 ### 1.6 Handling Push Notifications
 
-PingOne SDK will only handle push notifications which were issued by the PingOne SDK server. For other push notifications, `PingOneSDKError` with the code `10002, unrecognizedRemoteNotification` will be returned.
+PingOne SDK will only handle push notifications which were issued by the PingOne SDK server. For other push notifications, `PingOneSDKError` with the code `10002, unrecognizedRemoteNotification` will be returned. 
+PingOne SDK uses "category" field to add the possibility to customize the notification behavior according to the value set on the PingOne server. Retrieve the category of the push message by calling `remoteMessage.getData().get("category")`. 
+For information on selecting a category on the server side, see: [edit a notification template](https://docs.pingidentity.com/r/en-us/pingone/p1_c_edit_notification).
 
 #### 1.6.1 FCM
 Implement the PingOne library’s push handling by passing the RemoteMessage received from FCM to the PingOne Library. (Note: you must override the `onMessageReceived` method of the `FirebaseMessagingService`)
@@ -323,11 +325,11 @@ authenticationUI.authenticate(context, mobilePayload, dynamicData);
 
 ## 4. Migrate from PingID SDK to PingOne SDK 
 
-If your application currently integrated with PingID SDK it is possible to migrate to PingOne SDK. 
-First, make sure to set up the PingOne environment in the admin console following convergence documentation.
+If your application is currently integrated with PingID SDK, it is possible to migrate to PingOne SDK.
+First, make sure to set up the PingOne environment in the admin console following the convergence documentation.
 Then set up mobile application as follows:
- 1. Remove the `PingID_SDK.aar` library file from the `libs` folder of your application and any API methods that call that SDK.
- 2. Setup a PingOne mobile SDK as described in [set-up section](#1-set-up-a-mobile-app-using-the-pingone-sdk-sample-code) and implement the API methods as described in the [PingOne Mobile SDK sample app](#2-pingone-mobile-sdk-sample-app)
+ 1. Remove the `PingID_SDK.aar` library file from the `libs` folder of your application and any methods that call that SDK.
+ 2. Setup a PingOne mobile SDK as described in [set-up section](#1-set-up-a-mobile-app-using-the-pingone-sdk-sample-code) and implement the API methods as described in the [PingOne Mobile SDK sample app](#2-pingone-mobile-sdk-sample-app).
 
 ### 4.1 Manual flow    
 
@@ -341,7 +343,7 @@ Call the migration API method:
  */
 PingOne.migrateFromPingID(Context context, PingOneMigrationStatusCallback callback);
 ```
-The `onComplete()` method of the callback will be triggered at the migration process completion and will receive `MigrationStatus` object, `PairingInfo` object and `PingOneSDKError` object where `MigrationStatus` is a following Enum:
+The `onComplete()` method of the callback will be triggered at the migration process completion and will receive `MigrationStatus` object, `PairingInfo` object and `PingOneSDKError` object, where `MigrationStatus` is one of the following:
 ```java
 /**
  * enum that represents the migration status returned from the SDK
@@ -356,15 +358,15 @@ public enum MigrationStatus {
     */
    DONE,
    /*
-    * The migration process was failed
+    * The migration process failed
     */
    FAILED,
    /*
-    * The migration process was failed due to server error, client can try again
+    * The migration process failed due to server error, client can try again
     */
    TEMPORARILY_FAILED,
    /*
-    * The migration process in progress
+    * The migration process is in progress
     */
    IN_PROGRESS
 }
