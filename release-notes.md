@@ -1,6 +1,24 @@
 # Release Notes
 
 
+## v1.9.0 - April 19th, 2023
+Features:
+
+- Updated SDK to version 1.9.0
+- **Device integrity validation migrated from SafetyNet API to Play Integrity API.
+    Note that this version of the SDK is not backward-compatible with previous versions in terms of integrity validation. If you want to use the new version of the SDK, you will need to configure Play Integrity to ensure the integrity of your data. If you have not done so, and integrity checking is enabled for the application, users may be blocked.**
+- Performance improvements.
+
+Compatibility:
+
+- Dependencies updated to their latest versions:
+    * In the 'build.gradle' file at the **app** level:
+        * 'com.pingidentity.pingonemfa:android-sdk:**1.9.0**'
+- Dependencies added:
+    * In the 'build.gradle' file at the **app** level:
+        *  'com.google.android.play:integrity:**1.1.0**'
+
+
 ## v1.8.1 - Jan 9th, 2023
 Features:
 
