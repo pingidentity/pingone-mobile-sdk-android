@@ -5,13 +5,15 @@ buildscript {
         google()
         mavenCentral()
         maven {url "https://plugins.gradle.org/m2/"}
+        /* EnableHuaweiMobileServices
         maven {url 'https://developer.huawei.com/repo/'}
+        EnableHuaweiMobileServices */
 
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:7.2.2'
+        classpath 'com.android.tools.build:gradle:7.3.1'
         classpath 'com.google.gms:google-services:4.3.14'
-        classpath 'org.jetbrains.kotlin:kotlin-gradle-plugin:1.7.10'
+        classpath 'org.jetbrains.kotlin:kotlin-gradle-plugin:1.8.0'
         /*
          * Gradle plugin called Safe Args that generates simple object and builder classes for
          * type-safe navigation and access to any associated arguments.
@@ -22,7 +24,7 @@ buildscript {
 
         /* EnableHuaweiMobileServices
         classpath 'com.huawei.agconnect:agcp:1.7.0.300'
-        //EnableHuaweiMobileServices */
+        EnableHuaweiMobileServices */
     }
 
 
@@ -32,9 +34,9 @@ allprojects {
     repositories {
         google()
         mavenCentral()
-         /* EnableHuaweiMobileServices
+        /* EnableHuaweiMobileServices
         maven {url 'https://developer.huawei.com/repo/'}
-        //EnableHuaweiMobileServices */
+        EnableHuaweiMobileServices */
     }
 }
 
