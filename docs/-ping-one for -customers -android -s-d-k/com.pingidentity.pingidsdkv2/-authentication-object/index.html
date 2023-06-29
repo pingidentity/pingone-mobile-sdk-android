@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
+    <title>AuthenticationObject</title>
+    <link href="../../../images/logo-icon.svg" rel="icon" type="image/svg">
+    <script>var pathToRoot = "../../../";</script>
+    <script>const storage = localStorage.getItem("dokka-dark-mode")
+    if (storage == null) {
+        const osDarkSchemePreferred = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
+        if (osDarkSchemePreferred === true) {
+            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+    } else {
+        const savedDarkMode = JSON.parse(storage)
+        if(savedDarkMode === true) {
+            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+    }
+    </script>
+<script type="text/javascript" src="../../../scripts/sourceset_dependencies.js" async="async"></script>
+<link href="../../../styles/style.css" rel="Stylesheet">
+<link href="../../../styles/jetbrains-mono.css" rel="Stylesheet">
+<link href="../../../styles/main.css" rel="Stylesheet">
+<link href="../../../styles/prism.css" rel="Stylesheet">
+<link href="../../../styles/logo-styles.css" rel="Stylesheet">
+<script type="text/javascript" src="../../../scripts/clipboard.js" async="async"></script>
+<script type="text/javascript" src="../../../scripts/navigation-loader.js" async="async"></script>
+<script type="text/javascript" src="../../../scripts/platform-content-handler.js" async="async"></script>
+<script type="text/javascript" src="../../../scripts/main.js" defer="defer"></script>
+<script type="text/javascript" src="../../../scripts/prism.js" async="async"></script>
+<script type="text/javascript" src="../../../scripts/symbol-parameters-wrapper_deferred.js" defer="defer"></script>
+</head>
+<body>
+<div class="navigation-wrapper" id="navigation-wrapper">
+    <div id="leftToggler"><span class="icon-toggler"></span></div>
+    <div class="library-name">
+            <a href="../../../index.html">
+                    <span>PingOne for Customers Android SDK</span>
+            </a>
+    </div>
+    <div>
+    </div>
+    <div class="pull-right d-flex">
+        <div class="filter-section" id="filter-section">
+                <button class="platform-tag platform-selector jvm-like" data-active="" data-filter=":pingidsdkv2:dokkaHtml/release">androidJvm</button>
+        </div>
+        <button id="theme-toggle-button"><span id="theme-toggle"></span></button>
+        <div id="searchBar"></div>
+    </div>
+</div>
+<div id="container">
+    <div id="leftColumn">
+        <div id="sideMenu"></div>
+    </div>
+    <div id="main">
+<div class="main-content" data-page-type="classlike" id="content" pageIds="PingOne for Customers Android SDK::com.pingidentity.pingidsdkv2/AuthenticationObject///PointingToDeclaration//127369257">
+  <div class="breadcrumbs"><a href="../../../index.html">PingOne for Customers Android SDK</a><span class="delimiter">/</span><a href="../index.html">com.pingidentity.pingidsdkv2</a><span class="delimiter">/</span><span class="current">AuthenticationObject</span></div>
+  <div class="cover ">
+    <h1 class="cover"><span>Authentication</span><wbr></wbr><span><span>Object</span></span></h1>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":pingidsdkv2:dokkaHtml/release"><div class="symbol monospace"><span class="token keyword">public </span><span class="token keyword">class </span><a href="index.html">AuthenticationObject</a><span class="token keyword"> implements </span><a href="https://developer.android.com/reference/kotlin/android/os/Parcelable.html">Parcelable</a></div><p class="paragraph"> An object returned when PingOne.authenticate() flow completes successfully. </p><p class="paragraph"> Implements Parcelable so the developer will be able to pass it via intents.</p></div></div>
+  </div>
+  <div class="tabbedcontent">
+    <div class="tabs-section" tabs-section="tabs-section"><button class="section-tab" data-active="" data-togglable="CONSTRUCTOR,TYPE,PROPERTY,FUNCTION">Members</button></div>
+    <div class="tabs-section-body">
+      <div data-togglable="PROPERTY">
+        <h2 class="">Properties</h2>
+        <div class="table"><a data-name="1403781562%2FProperties%2F127369257" anchor-label="clientContext" id="1403781562%2FProperties%2F127369257" data-filterable-set=":pingidsdkv2:dokkaHtml/release"></a>
+          <div class="table-row" data-filterable-current=":pingidsdkv2:dokkaHtml/release" data-filterable-set=":pingidsdkv2:dokkaHtml/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="index.html#1403781562%2FProperties%2F127369257"><span>client</span><wbr></wbr><span><span>Context</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1403781562%2FProperties%2F127369257"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":pingidsdkv2:dokkaHtml/release"><div class="symbol monospace block"><span class="token keyword">public </span><span class="token keyword"></span><a href="https://developer.android.com/reference/kotlin/java/lang/String.html">String</a> <a href="index.html#1403781562%2FProperties%2F127369257">clientContext</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-490319714%2FProperties%2F127369257" anchor-label="needsApproval" id="-490319714%2FProperties%2F127369257" data-filterable-set=":pingidsdkv2:dokkaHtml/release"></a>
+          <div class="table-row" data-filterable-current=":pingidsdkv2:dokkaHtml/release" data-filterable-set=":pingidsdkv2:dokkaHtml/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="index.html#-490319714%2FProperties%2F127369257"><span>needs</span><wbr></wbr><span><span>Approval</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-490319714%2FProperties%2F127369257"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":pingidsdkv2:dokkaHtml/release"><div class="symbol monospace block"><span class="token keyword">public </span><span class="token keyword"></span><a href="https://developer.android.com/reference/kotlin/java/lang/String.html">String</a> <a href="index.html#-490319714%2FProperties%2F127369257">needsApproval</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="22904394%2FProperties%2F127369257" anchor-label="status" id="22904394%2FProperties%2F127369257" data-filterable-set=":pingidsdkv2:dokkaHtml/release"></a>
+          <div class="table-row" data-filterable-current=":pingidsdkv2:dokkaHtml/release" data-filterable-set=":pingidsdkv2:dokkaHtml/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="index.html#22904394%2FProperties%2F127369257"><span><span>status</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="22904394%2FProperties%2F127369257"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":pingidsdkv2:dokkaHtml/release"><div class="symbol monospace block"><span class="token keyword">public </span><span class="token keyword"></span><a href="https://developer.android.com/reference/kotlin/java/lang/String.html">String</a> <a href="index.html#22904394%2FProperties%2F127369257">status</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1923353450%2FProperties%2F127369257" anchor-label="users" id="-1923353450%2FProperties%2F127369257" data-filterable-set=":pingidsdkv2:dokkaHtml/release"></a>
+          <div class="table-row" data-filterable-current=":pingidsdkv2:dokkaHtml/release" data-filterable-set=":pingidsdkv2:dokkaHtml/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="index.html#-1923353450%2FProperties%2F127369257"><span><span>users</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1923353450%2FProperties%2F127369257"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":pingidsdkv2:dokkaHtml/release"><div class="symbol monospace block"><span class="token keyword">public </span><span class="token keyword"></span><span data-unresolved-link="com.google.gson/JsonArray///PointingToDeclaration/">JsonArray</span> <a href="index.html#-1923353450%2FProperties%2F127369257">users</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div data-togglable="FUNCTION">
+        <h2 class="">Functions</h2>
+        <div class="table"><a data-name="-1602059672%2FFunctions%2F127369257" anchor-label="approve" id="-1602059672%2FFunctions%2F127369257" data-filterable-set=":pingidsdkv2:dokkaHtml/release"></a>
+          <div class="table-row" data-filterable-current=":pingidsdkv2:dokkaHtml/release" data-filterable-set=":pingidsdkv2:dokkaHtml/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="approve.html"><span><span>approve</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1602059672%2FFunctions%2F127369257"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":pingidsdkv2:dokkaHtml/release"><div class="symbol monospace block"><span class="token keyword">public </span><span class="token keyword"></span>void <a href="approve.html"><span class="token function">approve</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword"></span><a href="https://developer.android.com/reference/kotlin/android/content/Context.html">Context</a> context<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword"></span><a href="https://developer.android.com/reference/kotlin/java/lang/String.html">String</a> userId<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword"></span><a href="../-ping-one/-ping-one-authentication-status-callback/index.html">PingOne.PingOneAuthenticationStatusCallback</a> callback</span></span><span class="token punctuation">)</span></div><div class="brief ">Approves authentication.</div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1977339447%2FFunctions%2F127369257" anchor-label="deny" id="-1977339447%2FFunctions%2F127369257" data-filterable-set=":pingidsdkv2:dokkaHtml/release"></a>
+          <div class="table-row" data-filterable-current=":pingidsdkv2:dokkaHtml/release" data-filterable-set=":pingidsdkv2:dokkaHtml/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="deny.html"><span><span>deny</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1977339447%2FFunctions%2F127369257"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":pingidsdkv2:dokkaHtml/release"><div class="symbol monospace block"><span class="token keyword">public </span><span class="token keyword"></span>void <a href="deny.html"><span class="token function">deny</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword"></span><a href="https://developer.android.com/reference/kotlin/android/content/Context.html">Context</a> context<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword"></span><a href="https://developer.android.com/reference/kotlin/java/lang/String.html">String</a> userId<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword"></span><a href="../-ping-one/-ping-one-authentication-status-callback/index.html">PingOne.PingOneAuthenticationStatusCallback</a> callback</span></span><span class="token punctuation">)</span></div><div class="brief ">Denies authentication.</div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1984074930%2FFunctions%2F127369257" anchor-label="getClientContext" id="-1984074930%2FFunctions%2F127369257" data-filterable-set=":pingidsdkv2:dokkaHtml/release"></a>
+          <div class="table-row" data-filterable-current=":pingidsdkv2:dokkaHtml/release" data-filterable-set=":pingidsdkv2:dokkaHtml/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="get-client-context.html"><span>get</span><wbr></wbr><span>Client</span><wbr></wbr><span><span>Context</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1984074930%2FFunctions%2F127369257"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":pingidsdkv2:dokkaHtml/release"><div class="symbol monospace block"><span class="token keyword">public </span><span class="token keyword"></span><a href="https://developer.android.com/reference/kotlin/java/lang/String.html">String</a> <a href="get-client-context.html"><span class="token function">getClientContext</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span></div><div class="brief ">Gets client context - a custom String designed for passing any data as a String from server to end-user</div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="416791090%2FFunctions%2F127369257" anchor-label="getNeedsApproval" id="416791090%2FFunctions%2F127369257" data-filterable-set=":pingidsdkv2:dokkaHtml/release"></a>
+          <div class="table-row" data-filterable-current=":pingidsdkv2:dokkaHtml/release" data-filterable-set=":pingidsdkv2:dokkaHtml/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="get-needs-approval.html"><span>get</span><wbr></wbr><span>Needs</span><wbr></wbr><span><span>Approval</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="416791090%2FFunctions%2F127369257"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":pingidsdkv2:dokkaHtml/release"><div class="symbol monospace block"><span class="token keyword">public </span><span class="token keyword"></span><a href="https://developer.android.com/reference/kotlin/java/lang/String.html">String</a> <a href="get-needs-approval.html"><span class="token function">getNeedsApproval</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span></div><div class="brief ">Gets the <code class="lang-kotlin">needsApproval</code> object property.</div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1525222602%2FFunctions%2F127369257" anchor-label="getStatus" id="-1525222602%2FFunctions%2F127369257" data-filterable-set=":pingidsdkv2:dokkaHtml/release"></a>
+          <div class="table-row" data-filterable-current=":pingidsdkv2:dokkaHtml/release" data-filterable-set=":pingidsdkv2:dokkaHtml/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="get-status.html"><span>get</span><wbr></wbr><span><span>Status</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1525222602%2FFunctions%2F127369257"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":pingidsdkv2:dokkaHtml/release"><div class="symbol monospace block"><span class="token keyword">public </span><span class="token keyword"></span><a href="https://developer.android.com/reference/kotlin/java/lang/String.html">String</a> <a href="get-status.html"><span class="token function">getStatus</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span></div><div class="brief ">Gets the status String value returned from a server when user calls an authenticate API method.</div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1419103702%2FFunctions%2F127369257" anchor-label="getUsers" id="-1419103702%2FFunctions%2F127369257" data-filterable-set=":pingidsdkv2:dokkaHtml/release"></a>
+          <div class="table-row" data-filterable-current=":pingidsdkv2:dokkaHtml/release" data-filterable-set=":pingidsdkv2:dokkaHtml/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="get-users.html"><span>get</span><wbr></wbr><span><span>Users</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1419103702%2FFunctions%2F127369257"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":pingidsdkv2:dokkaHtml/release"><div class="symbol monospace block"><span class="token keyword">public </span><span class="token keyword"></span><span data-unresolved-link="com.google.gson/JsonArray///PointingToDeclaration/">JsonArray</span> <a href="get-users.html"><span class="token function">getUsers</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span></div><div class="brief ">Gets an array of the users paired to the device.</div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      <div class="footer">
+        <span class="go-to-top-icon"><a href="#content" id="go-to-top-link"></a></span><span>© 2023 Copyright</span><span
+                class="pull-right"><span>Generated by </span><a
+                href="https://github.com/Kotlin/dokka"><span>dokka</span><span class="padded-icon"></span></a></span>
+      </div>
+    </div>
+</div>
+</body>
+</html>
