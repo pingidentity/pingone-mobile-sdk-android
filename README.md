@@ -1,21 +1,21 @@
-# PingOne for Customers Mobile SDK
+# PingOne MFA Mobile SDK
 
 ## Overview
 [![Maven Central](https://img.shields.io/maven-central/v/com.pingidentity.pingonemfa/android-sdk.svg?label=Maven%20Central)](https://search.maven.org/search?q=g:com.pingidentity.pingonemfa)
 
-PingOne for Customers Mobile SDK is a set of components and services targeted at enabling organizations to include multifactor authentication (MFA) into native applications.  
+PingOne MFA Mobile SDK is a set of components and services targeted at enabling organizations to include multifactor authentication (MFA) into native applications.  
 This solution leverages Ping Identity’s expertise in MFA technology, as a component that can be embedded easily and quickly into a new or existing application. 
 Release notes can be found [here](./release-notes.md).
 
 ### Documentation
 
-Reference documentation is available for PingOne for Customers Mobile SDK, describing its capabilities, features, installation and setup, integration with mobile apps, deployment and more:
+Reference documentation is available for PingOne MFA Mobile SDK, describing its capabilities, features, installation and setup, integration with mobile apps, deployment and more:
 
-* [PingOne for Customers Mobile SDK release notes and admin related documentation](https://docs.pingidentity.com/csh?Product=p1&context=p1mfa_c_introduction)
-* [PingOne for Customers Mobile SDK developer documentation](https://apidocs.pingidentity.com/pingone/native-sdks/v1/api/#pingone-mfa-sdk-for-android)
-* [PingOne for Customers Mobile SDK API Documentation](https://pingidentity.github.io/pingone-mobile-sdk-android/index.html)
-* [PingOne for Customers Mobile SDK](https://github.com/pingidentity/pingone-sample-app-android)
-* [Authenticator sample app](https://github.com/pingidentity/pingone-authenticator-sample-app-android)
+* [Introduction to PingOne MFA](https://docs.pingidentity.com/csh?Product=p1&context=p1mfa_c_introduction)
+* [PingOne MFA Mobile SDK Overview](https://apidocs.pingidentity.com/pingone/native-sdks/v1/api/#pingone-mfa-sdk-for-android)
+* [PingOne MFA Mobile SDK API Documentation](https://pingidentity.github.io/pingone-mobile-sdk-android/index.html)
+* [PingOne MFA Mobile SDK Sample App](https://github.com/pingidentity/pingone-sample-app-android)
+* [PingOne MFA SDK Ready-For-Use Authenticator App](https://github.com/pingidentity/pingone-authenticator-sample-app-android)
 
 ### Content
 1. [Prerequisites](#1-prerequisites)
@@ -26,7 +26,7 @@ Reference documentation is available for PingOne for Customers Mobile SDK, descr
    5. [Configure push messaging on the PingOne Portal](#15-configure-push-messaging-on-the-pingone-portal)
       1. [FCM Push Notification](#151-fcm-push-notification-)
       2. [HMS Push Notification](#152-hms-push-notification-)
-   6. [Add the PingOne SDK component into your existing project](#16-add-the-pingone-sdk-component-into-your-existing-project)
+   6. [Add the PingOne MFA SDK component into your existing project](#16-add-the-pingone-mfa-sdk-component-into-your-existing-project)
    7. [Working with push messages in Android](#17-working-with-push-messages-in-android)
       1. [Register device token on PingOne server](#171-register-device-token-on-pingone-server)
    8. [Handling Push Notifications](#18-handling-push-notifications)
@@ -38,7 +38,7 @@ Reference documentation is available for PingOne for Customers Mobile SDK, descr
 
 ### 1.1 Minimum requirements: 
 
-PingOne for Customers Mobile SDK supports Android 8.0 (API level 26) and up, Gradle 7.2 and up, Java 17 and up. Starting Android 13 (API level 33) the application needs to request the 'Post Notifications' permission from the user in order to show notifications. For more information see [Notification Runtime Permission Documentation](https://developer.android.com/guide/topics/ui/notifiers/notification-permission).
+PingOne MFA Mobile SDK supports Android 8.0 (API level 26) and up, Gradle 7.2 and up, Java 17 and up. Starting Android 13 (API level 33) the application needs to request the 'Post Notifications' permission from the user in order to show notifications. For more information see [Notification Runtime Permission Documentation](https://developer.android.com/guide/topics/ui/notifiers/notification-permission).
 
 
 ### 1.2 Known limitations:
@@ -80,17 +80,17 @@ Refer to: [Integrating Push Kit](https://developer.huawei.com/consumer/en/codela
 
 Add the google-services.json retrieved from the Firebase developers console to your project.
 
-When configuring your PingOne SDK application in the PingOne admin web console you should fill in the Package Name and the Server Key. See [Edit an application](https://docs.pingidentity.com/bundle/pingone/page/avw1564020489881.html) in the administration guide.
+When configuring your PingOne MFA SDK application in the PingOne admin web console you should fill in the Package Name and the Server Key. See [Edit an application](https://docs.pingidentity.com/bundle/pingone/page/avw1564020489881.html) in the administration guide.
 
 #### 1.5.2 HMS Push Notification:
 
 Add the agconnect-services.json retrieved from the Huawei developers console to your project.
 
-When configuring your PingOne SDK application in the PingOne admin web console you should fill in the Package Name, App ID, Client ID and the Client Secret. See [Edit an application](https://docs.pingidentity.com/bundle/pingone/page/avw1564020489881.html) in the administration guide.
+When configuring your PingOne MFA SDK application in the PingOne admin web console you should fill in the Package Name, App ID, Client ID and the Client Secret. See [Edit an application](https://docs.pingidentity.com/bundle/pingone/page/avw1564020489881.html) in the administration guide.
 
 
 
-### 1.6 Add the PingOne SDK component into your existing project
+### 1.6 Add the PingOne MFA SDK component into your existing project
 
 1. In the Project `build.gradle` file, make sure you have the `mavenCentral` repository:
 ```groovy
@@ -100,7 +100,7 @@ repositories {
 }
 // ...  
  ```
-2. In the application `build.gradle` file add the  [latest version of the PingOne Android SDK](https://search.maven.org/search?q=g:com.pingidentity.pingonemfa):
+2. In the application `build.gradle` file add the  [latest version of the PingOne MFA Android SDK](https://search.maven.org/search?q=g:com.pingidentity.pingonemfa):
 ```groovy
  dependencies {
    // Check for the latest version at https://search.maven.org/search?q=g:com.pingidentity.pingonemfa 
@@ -111,7 +111,7 @@ repositories {
 
 ### 1.7 Working with push messages in Android
 
-PingOne SDK utilizes push messaging in order to authenticate end users. PingOne SDK can work side by side within an app that uses push messaging. This page details the steps needed in order to work with push messages in Android. Your application may receive push messages from the PingOne SDK server, and also from other sources. As a result, your implementation of the FirebaseMessagingService or HmsMessageService will have to differentiate between push messages sent from the PingOne SDK server and other messages, and pass them to the PingOne SDK component for processing.  
+PingOne MFA SDK utilizes push messaging in order to authenticate end users. PingOne MFA SDK can work side by side within an app that uses push messaging. This page details the steps needed in order to work with push messages in Android. Your application may receive push messages from the PingOne SDK server, and also from other sources. As a result, your implementation of the FirebaseMessagingService or HmsMessageService will have to differentiate between push messages sent from the PingOne SDK server and other messages, and pass them to the PingOne SDK component for processing.  
 In your app, add the appropriate section in your AndroidManifest.xml file (FCM or HMS messaging service), and add the appropriate class.
 
 
@@ -129,11 +129,11 @@ For HMS:
  ```java
  PingOne.setDeviceToken(context, token, NotificationProvider.HMS, new PingOne.PingOneSDKCallback())  
 ```  
-Make sure you set the device’s push token before you call `PingOne.pair`, and make sure you update the PingOne SDK Library with the new device's push token each time it changes.
+Make sure you set the device’s push token before you call `PingOne.pair`, and make sure you update the PingOne MFA SDK Library with the new device's push token each time it changes.
 
 ### 1.8 Handling Push Notifications
 
-PingOne SDK will only handles push notifications which were issued by the PingOne SDK server. For other push notifications, the `PingOneSDKError` object with the code `10002, unrecognizedRemoteNotification` will be returned.
+PingOne MFA SDK will only handles push notifications which were issued by the PingOne SDK server. For other push notifications, the `PingOneSDKError` object with the code `10002, unrecognizedRemoteNotification` will be returned.
 You can use the "category" field to customize the notification behavior according to the value set on the PingOne server. Retrieve the category of the push message by calling `remoteMessage.getData().get("category")`.
 For information on selecting a category on the server side, see: [edit a notification template](https://docs.pingidentity.com/r/en-us/pingone/p1_c_edit_notification).
 
