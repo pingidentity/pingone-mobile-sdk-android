@@ -1,5 +1,12 @@
 # Release Notes
 
+## v1.11.0 - December 24th, 2023
+Bug fixes:
+
+- Relocated the SDK obfuscated classes to unique names to prevent conflicts with other dependencies using default settings.
+- Enhanced start-up flow to prevent blocking the main thread during application start.
+- Removed `android:name` from the application tag in the library AndroidManifest.
+
 
 ## v1.10.0 - June 29th, 2023
 Features:
