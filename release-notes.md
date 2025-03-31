@@ -1,5 +1,27 @@
 # Release Notes
 
+## v2.0.0 - April 1st, 2025
+Features:
+
+- The PingOne MFA SDK has been updated to allow the same device to be paired in multiple geographic regions.
+- The SDK now has a method called `testRemoteNotification` that allows you to test and debug push notification functionality.
+- A new mandatory method called `configure` has been added. This method is used to set up the SDK.
+- The following methods have been deprecated: `getInfo`, `generateMobilePayload`.
+- The method `setDeviceToken` was updated to return an array of errors.
+- Cancel Authentication feature added: lets PingOne server send a new notification with `authCanceled` notification type, to the user’s device if they switch to a different device during the authentication process. This notification type tells the app that the authentication was canceled, so the app can remove any pop-up without waiting for a timeout, ensuring a smoother user experience.
+- Number Matching feature added: This is an enhanced authentication method where a number is displayed on the web interface, and the user must input the same number on their mobile device after receiving a push notification, with parameter `numberPicked`, in the `NotificationObject.approve()` method. This ensures that the user controls both devices, adding an extra layer of security to prevent accidental or unauthorized approvals.
+
+Known issue:
+- If your app enables obfuscation, you need to add specific ProGuard rules to prevent re-obfuscation of the PingOne MFA SDK. Failure to do so may cause unexpected behavior or malfunctions in certain library features.
+  To avoid issues, add the following rules to your ProGuard rules file:
+```gradle
+# Prevent re-obfuscation of the PingOne MFA SDK classes.
+-keep class com.pingidentity.pingidsdkv2.** {*;}
+-keep class com.pingidentity.pingonemfa.** {*;}
+```
+Ensure your app's ProGuard configuration includes these rules before building a release.
+
+
 ## v1.11.0 - December 24th, 2023
 Bug fixes:
 
