@@ -112,7 +112,7 @@ When configuring your PingOne MFA SDK application in the PingOne admin web conso
     ```groovy
     dependencies {
     // Check for the latest version at https://search.maven.org/search?q=g:com.pingidentity.pingonemfa 
-    implementation 'com.pingidentity.pingonemfa:android-sdk:2.0.0'
+    implementation 'com.pingidentity.pingonemfa:android-sdk:2.1.0'
     }  
     ```  
 
@@ -146,7 +146,12 @@ enum class PingOneGeo {
     /**
      * Australia geographic region for connecting to the PingOne data center.
      */
-    AUSTRALIA
+    AUSTRALIA,
+
+   /**
+    * Singapore geographic region for connecting to the PingOne data center.
+    */
+   SINGAPORE
 }
  ```
 
