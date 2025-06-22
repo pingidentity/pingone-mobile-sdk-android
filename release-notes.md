@@ -1,5 +1,11 @@
 # Release Notes
 
+## v.2.1.0 - June 22nd, 2025
+Features:
+
+- Added support for the PingOne Singapore geography
+- Bug fixes and security improvements 
+
 ## v2.0.0 - April 1st, 2025
 Features:
 
