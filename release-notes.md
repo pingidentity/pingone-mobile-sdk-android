@@ -1,5 +1,11 @@
 # Release Notes
 
+## v2.1.1 - July 6th, 2025
+Features:
+
+- Removed custom support for Certificate Transparency verification, which was unstable and caused communication issues. Certificate Transparency verification can now be enabled natively in Android 16 as described in [this guide.](https://developer.android.com/privacy-and-security/security-config#CertificateTransparencySummary)
+  To avoid end user issues and disruptions, it is highly recommended that app owners upgrade to this version of the SDK as soon as feasible.
+
 ## v.2.1.0 - June 22nd, 2025
 Features:
 
