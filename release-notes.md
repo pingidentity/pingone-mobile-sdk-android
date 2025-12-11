@@ -1,5 +1,11 @@
 # Release Notes
 
+## v2.2.0 - December 11th, 2025
+Features:
+
+- The Android version of the SDK is now targeted for Android 16.
+- Bug fixes
+
 ## v2.1.1 - July 6th, 2025
 Features:
 
@@ -10,7 +16,7 @@ Features:
 Features:
 
 - Added support for the PingOne Singapore geography
-- Bug fixes and security improvements 
+- Bug fixes and security improvements
 
 ## v2.0.0 - April 1st, 2025
 Features:
