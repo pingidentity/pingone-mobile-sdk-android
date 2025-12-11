@@ -35,7 +35,8 @@ Reference documentation is available for PingOne MFA Mobile SDK, describing its 
     2. [Handling Push Notifications](#52-handling-push-notifications)
         1. [FCM](#511-fcm)
         2. [HMS](#512-hms)
-6. [Device Integrity Validation](#6-device-integrity-validation)
+6. [Test Push Notifications](#6-test-push-notifications)
+7. [Device Integrity Validation](#7-device-integrity-validation)
 
 ## 1. Prerequisites
 
@@ -112,7 +113,7 @@ When configuring your PingOne MFA SDK application in the PingOne admin web conso
     ```groovy
     dependencies {
     // Check for the latest version at https://search.maven.org/search?q=g:com.pingidentity.pingonemfa 
-    implementation 'com.pingidentity.pingonemfa:android-sdk:2.1.0'
+    implementation 'com.pingidentity.pingonemfa:android-sdk:2.2.0'
     }  
     ```  
 
@@ -225,9 +226,70 @@ public void onMessageReceived(final RemoteMessage remoteMessage) {
         }
     });
 }  
-```  
+```
 
-## 6 Device Integrity Validation
+## 6. Test Push Notifications
+
+For paired devices, it is possible to test push notification functionality using the `testRemoteNotification` method:
+
+```java
+/**
+ * Method that tests the push notification flow for a specified paired geography.
+ * @param context The context of the calling application
+ * @param geo {@link PingOneGeo} to be used for sending the test push notifications.
+ * @param callback {@link PingOneTestRemoteNotificationCallback} is triggered upon completion of the flow.
+ */
+public static void testRemoteNotification(Context context, PingOneGeo geo, PingOneTestRemoteNotificationCallback callback)
+```
+
+This method returns a status from the `TestResult` enum, summarizing the test result:
+
+```swift
+public enum TestResult{
+        /**
+         * Represents passed test
+         */
+        PASS,
+        /**
+         * Represents warning state: the test has failed, but the testRemoteNotification flow can still continue
+         */
+        WARNING,
+        /**
+         * Represents failed test
+         */
+        FAIL
+    }
+```
+
+The SDK runs the following tests, which are returned in the results array as NotificationTest objects with different test types:
+For each `NotificationTest`, developers can access the following information to understand the test content and results:
+
+```java   
+/// Public enum that describes the notification of all tests name, description, and results Info.
+public enum TestType {
+        TEST_PUSH_ALLOWED_BY_SDK
+        TEST_DEVICE_TOKEN_WAS_SET
+        TEST_NOTIFICATIONS_PERMISSION_ENABLED,
+        TEST_NETWORK_CONNECTION,
+        TEST_SEND_REMOTE_NOTIFICATION,
+        TEST_RECEIVED_NOTIFICATION_INFO;
+
+        /// The name of the test.
+        public String getTestName();
+        /// The description of the test.
+        public String getDescription()
+        /// The test result represented by `TestResult`.
+        public TestResult getResult()
+        /// In case the test didn't pass, information that explains the failure reason and how to overcome it.
+        public String getResultsInfo()
+       
+    }
+```
+
+See the PingOne MFA Mobile SDK Sample App [repository](https://github.com/pingidentity/pingone-sample-app-ios) for sample code on how to utilize the testRemoteNotification method for debugging push notifications.
+
+
+## 7 Device Integrity Validation
 
 Beginning with version 1.9.0, PingOne Android SDK uses the [Google Play Integrity API](https://developer.android.com/google/play/integrity/overview#security-considerations) to perform device integrity validation for threat protection. Previously, the SDK used Google's SafetyNet API.
 Use of the SafetyNet API has been deprecated, and device integrity validation will fail for applications using SDK version 1.9.0 and higher if they have not been updated to use the Play Integrity API.
