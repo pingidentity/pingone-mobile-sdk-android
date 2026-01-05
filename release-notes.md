@@ -39,6 +39,10 @@ Known issue:
 ```
 Ensure your app's ProGuard configuration includes these rules before building a release.
 
+## v1.11.1 - July 27th, 2025
+Features:
+
+- Removed custom support for Certificate Transparency verification, which was unstable and caused communication issues. Certificate Transparency verification can now be enabled natively in Android 16 as described in [this guide.](https://developer.android.com/privacy-and-security/security-config#CertificateTransparencySummary)
 
 ## v1.11.0 - December 24th, 2023
 Bug fixes:
