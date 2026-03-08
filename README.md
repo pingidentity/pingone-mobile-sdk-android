@@ -46,6 +46,13 @@ PingOne MFA Mobile SDK supports Android 8.0 (API level 26) and up, Gradle 7.2 an
 
 ### 1.2 Known limitations
 
+* **Version 2.2.0**: In rare cases, if key rotation is required at the time a paired user is upgraded to v2.2.0, the device trust relationship may become invalid.
+This issue is resolved in version 2.2.1. **We strongly recommend upgrading directly to version 2.2.1.**
+
+* **Kony / Temenos Platform**: Beginning with version 2.0.0, the SDK is not compatible with applications built using the Kony / Temenos platform.
+Due to differences in the way the Kony runtime generates and loads Java bridge classes, applications may experience unexpected runtime behavior when interacting with the SDK.
+**The Kony / Temenos environment is currently not supported.**
+
 * Version 2.0.0 of the PingOne MFA SDK for Android may cause unexpected behaviour or malfunctions in certain library features if re-obfuscated. To avoid issues, add the following rules to your application's ProGuard rules file:
 ```gradle
 # Prevent re-obfuscation of the PingOne MFA SDK classes.

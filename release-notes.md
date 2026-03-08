@@ -1,5 +1,10 @@
 # Release Notes
 
+## v2.2.1 - March 8th, 2026
+Bug fixes:
+
+- Resolved the issue introduced in version 2.2.0, where the trust relationship could become invalid if key rotation was required at the time of upgrade
+
 ## v2.2.0 - December 11th, 2025
 Features:
 
@@ -12,7 +17,7 @@ Features:
 - Removed custom support for Certificate Transparency verification, which was unstable and caused communication issues. Certificate Transparency verification can now be enabled natively in Android 16 as described in [this guide.](https://developer.android.com/privacy-and-security/security-config#CertificateTransparencySummary)
   To avoid end user issues and disruptions, it is highly recommended that app owners upgrade to this version of the SDK as soon as feasible.
 
-## v.2.1.0 - June 22nd, 2025
+## v2.1.0 - June 22nd, 2025
 Features:
 
 - Added support for the PingOne Singapore geography
@@ -39,10 +44,6 @@ Known issue:
 ```
 Ensure your app's ProGuard configuration includes these rules before building a release.
 
-## v1.11.1 - July 27th, 2025
-Features:
-
-- Removed custom support for Certificate Transparency verification, which was unstable and caused communication issues. Certificate Transparency verification can now be enabled natively in Android 16 as described in [this guide.](https://developer.android.com/privacy-and-security/security-config#CertificateTransparencySummary)
 
 ## v1.11.0 - December 24th, 2023
 Bug fixes:
