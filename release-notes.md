@@ -1,5 +1,17 @@
 # Release Notes
 
+## v2.3.0 - April 26th, 2026
+Features:
+
+- NotificationObject.approve() now returns a `confirmationInfo` object to support future capabilities, as well as specific error codes for device-related approval failures.
+- Added the `DenyReason enum` to specify the reason for a denial for `NotificationObject.deny()`.
+
+Deprecations:
+
+- Deprecated `NotificationObject.approve(Context, String, Integer, PingOneSDKCallback)`. Use `NotificationObject.approve(Context, String, Integer, PingOneMobileConfirmationCallback)` instead.
+- Deprecated `NotificationObject.deny(Context, PingOneSDKCallback)`. Use `NotificationObject.deny(Context, DenyReason, PingOneSDKCallback)` instead.
+
+
 ## v2.2.1 - March 8th, 2026
 Bug fixes:
 

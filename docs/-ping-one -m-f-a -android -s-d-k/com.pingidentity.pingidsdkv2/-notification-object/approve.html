@@ -1,71 +1,131 @@
 <!DOCTYPE html>
-<html>
+<html class="no-js" lang="en">
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
     <title>approve</title>
     <link href="../../../images/logo-icon.svg" rel="icon" type="image/svg">
-    <script>var pathToRoot = "../../../";</script>
+        <script>var pathToRoot = "../../../";</script>
+    <script>document.documentElement.classList.replace("no-js", "js");</script>
     <script>const storage = localStorage.getItem("dokka-dark-mode")
-    if (storage == null) {
+      if (storage == null) {
         const osDarkSchemePreferred = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
         if (osDarkSchemePreferred === true) {
-            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+          document.getElementsByTagName("html")[0].classList.add("theme-dark")
         }
-    } else {
+      } else {
         const savedDarkMode = JSON.parse(storage)
-        if(savedDarkMode === true) {
-            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        if (savedDarkMode === true) {
+          document.getElementsByTagName("html")[0].classList.add("theme-dark")
         }
-    }
+      }
     </script>
+<script type="text/javascript" src="https://unpkg.com/kotlin-playground@1/dist/playground.min.js" async="async"></script>
 <script type="text/javascript" src="../../../scripts/sourceset_dependencies.js" async="async"></script>
 <link href="../../../styles/style.css" rel="Stylesheet">
-<link href="../../../styles/jetbrains-mono.css" rel="Stylesheet">
 <link href="../../../styles/main.css" rel="Stylesheet">
 <link href="../../../styles/prism.css" rel="Stylesheet">
 <link href="../../../styles/logo-styles.css" rel="Stylesheet">
-<script type="text/javascript" src="../../../scripts/clipboard.js" async="async"></script>
+<link href="../../../ui-kit/ui-kit.min.css" rel="Stylesheet">
+<script type="text/javascript" src="../../../scripts/safe-local-storage_blocking.js"></script>
 <script type="text/javascript" src="../../../scripts/navigation-loader.js" async="async"></script>
 <script type="text/javascript" src="../../../scripts/platform-content-handler.js" async="async"></script>
 <script type="text/javascript" src="../../../scripts/main.js" defer="defer"></script>
 <script type="text/javascript" src="../../../scripts/prism.js" async="async"></script>
-<script type="text/javascript" src="../../../scripts/symbol-parameters-wrapper_deferred.js" defer="defer"></script>
+<script type="text/javascript" src="../../../ui-kit/ui-kit.min.js" defer="defer"></script>
 </head>
 <body>
-<div class="navigation-wrapper" id="navigation-wrapper">
-    <div id="leftToggler"><span class="icon-toggler"></span></div>
-    <div class="library-name">
-            <a href="../../../index.html">
-                    <span>PingOne MFA Android SDK</span>
+<div class="root">
+    <header class="navigation theme-dark" id="navigation-wrapper" role="banner">
+            <a class="library-name--link" href="../../../index.html" tabindex="1">
+                    PingOne MFA Android SDK
             </a>
-    </div>
-    <div>
-    </div>
-    <div class="pull-right d-flex">
-        <div class="filter-section" id="filter-section">
-                <button class="platform-tag platform-selector jvm-like" data-active="" data-filter=":pingidsdkv2:dokkaHtml/release">androidJvm</button>
+        <button class="navigation-controls--btn navigation-controls--btn_toc ui-kit_mobile-only" id="toc-toggle"
+                type="button">Toggle table of contents
+        </button>
+        <div class="navigation-controls--break ui-kit_mobile-only"></div>
+        <div class="library-version" id="library-version">
         </div>
-        <button id="theme-toggle-button"><span id="theme-toggle"></span></button>
-        <div id="searchBar"></div>
-    </div>
-</div>
-<div id="container">
-    <div id="leftColumn">
-        <div id="sideMenu"></div>
-    </div>
-    <div id="main">
-<div class="main-content" data-page-type="member" id="content" pageIds="PingOne MFA Android SDK::com.pingidentity.pingidsdkv2/NotificationObject/approve/#android.content.Context#java.lang.String#java.lang.Integer#com.pingidentity.pingidsdkv2.PingOne.PingOneSDKCallback/PointingToDeclaration//127369257">
+        <div class="navigation-controls">
+        <ul class="filter-section filter-section_loading" id="filter-section" aria-label="Target filter">
+                <button class="platform-tag platform-selector jvm-like" data-active="" aria-pressed="true"
+                        data-filter=":pingidsdkv2/main">androidJvm</button>
+            <div class="dropdown filter-section--dropdown" data-role="dropdown" id="filter-section-dropdown">
+                <button class="button button_dropdown filter-section--dropdown-toggle" role="combobox"
+                        data-role="dropdown-toggle"
+                        aria-controls="platform-tags-listbox"
+                        aria-haspopup="listbox"
+                        aria-expanded="false"
+                        aria-label="Toggle source sets"
+                ></button>
+                <ul role="listbox" id="platform-tags-listbox" class="dropdown--list" data-role="dropdown-listbox" aria-label="Target filter">
+                    <div class="dropdown--header"><span>Target filter</span>
+                        <button class="button" data-role="dropdown-toggle" aria-label="Close target filter">
+                            <i class="ui-kit-icon ui-kit-icon_cross"></i>
+                        </button>
+                    </div>
+                        <li role="option" class="dropdown--option platform-selector-option jvm-like" tabindex="0">
+                            <label class="checkbox">
+                                <input type="checkbox" class="checkbox--input" id=":pingidsdkv2/main"
+                                       data-filter=":pingidsdkv2/main"/>
+                                <span class="checkbox--icon"></span>
+                                androidJvm
+                            </label>
+                        </li>
+                </ul>
+                <div class="dropdown--overlay"></div>
+            </div>
+        </ul>
+            <button class="navigation-controls--btn navigation-controls--btn_theme" id="theme-toggle-button"
+                    type="button">Switch theme
+            </button>
+            <div class="navigation-controls--btn navigation-controls--btn_search" id="searchBar" role="button">Search in
+                API
+            </div>
+        </div>
+    </header>
+    <div id="container">
+        <nav id="leftColumn" class="sidebar" data-item-type="SECTION" data-item-config='{"defaultSize": 280, "minSize": 200, "maxSize": 400}'>
+            <a class="toc--skip-link" href="#main">Skip to content</a>
+            <div class="dropdown theme-dark_mobile" data-role="dropdown" id="toc-dropdown">
+                <ul role="listbox" id="toc-listbox" class="dropdown--list dropdown--list_toc-list"
+                    data-role="dropdown-listbox" aria-label="Table of contents">
+                    <div class="dropdown--header">
+                            <span>
+                                    PingOne MFA Android SDK
+                            </span>
+                        <button class="button" data-role="dropdown-toggle" aria-label="Close table of contents">
+                            <i class="ui-kit-icon ui-kit-icon_cross"></i>
+                        </button>
+                    </div>
+                    <div class="sidebar--inner" id="sideMenu"></div>
+                </ul>
+                <div class="dropdown--overlay"></div>
+            </div>
+        </nav>
+        <div id="resizer" class="resizer" data-item-type="BAR"></div>
+        <div id="main" data-item-type="SECTION" role="main">
+<div class="main-content" data-page-type="member" id="content" pageIds="PingOne MFA Android SDK::com.pingidentity.pingidsdkv2/NotificationObject/approve/#android.content.Context#java.lang.String#java.lang.Integer#com.pingidentity.pingidsdkv2.PingOne.PingOneMobileConfirmationCallback/PointingToDeclaration//191549138">
   <div class="breadcrumbs"><a href="../../../index.html">PingOne MFA Android SDK</a><span class="delimiter">/</span><a href="../index.html">com.pingidentity.pingidsdkv2</a><span class="delimiter">/</span><a href="index.html">NotificationObject</a><span class="delimiter">/</span><span class="current">approve</span></div>
   <div class="cover ">
     <h1 class="cover"><span><span>approve</span></span></h1>
   </div>
-  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":pingidsdkv2:dokkaHtml/release"><div class="symbol monospace block"><span class="token keyword">public </span><span class="token keyword"></span>void <a href="approve.html"><span class="token function">approve</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword"></span><a href="https://developer.android.com/reference/kotlin/android/content/Context.html">Context</a> context<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword"></span><a href="https://developer.android.com/reference/kotlin/java/lang/String.html">String</a> authenticationMethod<span class="token punctuation">, </span></span><span class="parameter "><span><span class="token annotation builtin">@</span><a href="https://developer.android.com/reference/kotlin/androidx/annotation/Nullable.html"><span class="token annotation builtin">Nullable</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span> </span><span class="token keyword"></span><a href="https://developer.android.com/reference/kotlin/java/lang/Integer.html">Integer</a> numberMatchingPickedValue<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword"></span><a href="../-ping-one/-ping-one-s-d-k-callback/index.html">PingOne.PingOneSDKCallback</a> callback</span></span><span class="token punctuation">)</span></div><p class="paragraph">Approve authentication</p><h4 class="">Parameters</h4><div class="table"><div class="table-row" data-filterable-current=":pingidsdkv2:dokkaHtml/release" data-filterable-set=":pingidsdkv2:dokkaHtml/release"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><u><span><span>context</span></span></u></div></span></div><div><div class="title"><p class="paragraph">application context</p></div></div></div></div><div class="table-row" data-filterable-current=":pingidsdkv2:dokkaHtml/release" data-filterable-set=":pingidsdkv2:dokkaHtml/release"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><u><span>authentication</span><wbr></wbr><span><span>Method</span></span></u></div></span></div><div><div class="title"><p class="paragraph">a String representing the authentication method that was used to authenticate the user on the authenticating device, for example, fpt (fingerprint), face (facial recognition) etc. <a href="https://tools.ietf.org/html/rfc8176/#section-2"> Refer to the &quot;amr&quot; (Authentication Method Reference)</a>.</p></div></div></div></div><div class="table-row" data-filterable-current=":pingidsdkv2:dokkaHtml/release" data-filterable-set=":pingidsdkv2:dokkaHtml/release"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><u><span>number</span><wbr></wbr><span>Matching</span><wbr></wbr><span>Picked</span><wbr></wbr><span><span>Value</span></span></u></div></span></div><div><div class="title"><p class="paragraph">an Integer representing the number matching value picked by the user. This can be null if no number matching was used.</p></div></div></div></div><div class="table-row" data-filterable-current=":pingidsdkv2:dokkaHtml/release" data-filterable-set=":pingidsdkv2:dokkaHtml/release"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><u><span><span>callback</span></span></u></div></span></div><div><div class="title"><p class="paragraph">a callback notifies a completion</p></div></div></div></div></div><hr><div class="symbol monospace block"><div class="block"><div class="block"><span class="token annotation builtin">@</span><a href="https://developer.android.com/reference/kotlin/java/lang/Deprecated.html"><span class="token annotation builtin">Deprecated</span></a><span class="token punctuation">(</span><span>since<span class="token operator"> = </span><span class="breakable-word"><span class="token string">&quot;1.1.0&quot;</span></span></span><wbr></wbr><span class="token punctuation">)</span></div></div><span class="token keyword">public </span><span class="token keyword"></span>void <a href="approve.html"><span class="token function"><strike>approve</strike></span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword"></span><a href="https://developer.android.com/reference/kotlin/android/content/Context.html">Context</a> context<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword"></span><a href="../-ping-one/-ping-one-s-d-k-callback/index.html">PingOne.PingOneSDKCallback</a> callback</span></span><span class="token punctuation">)</span></div><div class="deprecation-content"><h3 class="">Deprecated</h3><div class="footnote">Since version 1.1.0</div></div><p class="paragraph">Approve authentication</p><h4 class="">Parameters</h4><div class="table"><div class="table-row" data-filterable-current=":pingidsdkv2:dokkaHtml/release" data-filterable-set=":pingidsdkv2:dokkaHtml/release"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><u><span><span>context</span></span></u></div></span></div><div><div class="title"><p class="paragraph">application context</p></div></div></div></div><div class="table-row" data-filterable-current=":pingidsdkv2:dokkaHtml/release" data-filterable-set=":pingidsdkv2:dokkaHtml/release"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><u><span><span>callback</span></span></u></div></span></div><div><div class="title"><p class="paragraph">a callback notifies a completion Deprecated: please use approve(Context, String, Integer, PingOneSDKCallback) instead</p></div></div></div></div></div></div></div>
+  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":pingidsdkv2/main"><div class="symbol monospace block"><span class="token keyword">public </span><span class="token keyword"></span>void <a href="approve.html"><span class="token function">approve</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword"></span><a href="https://developer.android.com/reference/kotlin/android/content/Context.html">Context</a> context<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword"></span><a href="https://developer.android.com/reference/kotlin/java/lang/String.html">String</a> authenticationMethod<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword"></span><a href="https://developer.android.com/reference/kotlin/java/lang/Integer.html">Integer</a> numberMatchingPickedValue<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword"></span><a href="../-ping-one/-ping-one-mobile-confirmation-callback/index.html">PingOne.PingOneMobileConfirmationCallback</a> callback</span></span><span class="token punctuation">)</span></div><p class="paragraph">Approves the current mobile push authentication request. </p><p class="paragraph"> This method should be invoked after the user approves the push notification on their device (for example, using fingerprint, face recognition, or number matching). It reports the authentication result back to the PingOne platform. </p><p class="paragraph"> The <code class="lang-kotlin">authenticationMethod</code> parameter identifies the method used to authenticate the user, as defined in <a href="https://www.rfc-editor.org/rfc/rfc8176#section-2">RFC 8176 — Authentication Method Reference (AMR)</a>. Examples include: </p><ul><li><strong>fpt</strong> — Fingerprint</li><li><strong>face</strong> — Facial recognition</li><li><strong>otp</strong> — One-time passcode</li></ul><h4 class="tableheader">Parameters</h4><div class="table"><div class="table-row table-row_content" data-filterable-current=":pingidsdkv2/main" data-filterable-set=":pingidsdkv2/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><u><span><span>context</span></span></u></div></span></div><div><div class="title"><p class="paragraph">the application <a href="https://developer.android.com/reference/kotlin/android/content/Context.html">Context</a>.</p></div></div></div></div><div class="table-row table-row_content" data-filterable-current=":pingidsdkv2/main" data-filterable-set=":pingidsdkv2/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><u><span>authentication</span><wbr></wbr><span><span>Method</span></span></u></div></span></div><div><div class="title"><p class="paragraph">the authentication method used on the device.</p></div></div></div></div><div class="table-row table-row_content" data-filterable-current=":pingidsdkv2/main" data-filterable-set=":pingidsdkv2/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><u><span>number</span><wbr></wbr><span>Matching</span><wbr></wbr><span>Picked</span><wbr></wbr><span><span>Value</span></span></u></div></span></div><div><div class="title"><p class="paragraph">the number selected by the user during number matching, or <code class="lang-kotlin">null</code> if number matching was not used.</p></div></div></div></div><div class="table-row table-row_content" data-filterable-current=":pingidsdkv2/main" data-filterable-set=":pingidsdkv2/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><u><span><span>callback</span></span></u></div></span></div><div><div class="title"><p class="paragraph">the <a href="../-ping-one/-ping-one-mobile-confirmation-callback/index.html">PingOne.PingOneMobileConfirmationCallback</a> to receive completion results or errors from the approval process.</p></div></div></div></div></div><hr><div class="symbol monospace block"><div class="block"><div class="block"><span class="token annotation builtin">@</span><a href="https://developer.android.com/reference/kotlin/java/lang/Deprecated.html"><span class="token annotation builtin">Deprecated</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span></div></div><span class="token keyword">public </span><span class="token keyword"></span>void <a href="approve.html"><span class="token function"><strike>approve</strike></span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword"></span><a href="https://developer.android.com/reference/kotlin/android/content/Context.html">Context</a> context<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword"></span><a href="https://developer.android.com/reference/kotlin/java/lang/String.html">String</a> authenticationMethod<span class="token punctuation">, </span></span><span class="parameter "><span><span class="token annotation builtin">@</span><a href="https://developer.android.com/reference/kotlin/androidx/annotation/Nullable.html"><span class="token annotation builtin">Nullable</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span> </span><span class="token keyword"></span><a href="https://developer.android.com/reference/kotlin/java/lang/Integer.html">Integer</a> numberMatchingPickedValue<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword"></span><a href="../-ping-one/-ping-one-s-d-k-callback/index.html">PingOne.PingOneSDKCallback</a> callback</span></span><span class="token punctuation">)</span></div><div class="deprecation-content"><h3 class="">Deprecated</h3><p class="paragraph"><p class="paragraph"><p class="paragraph">Use <a href="approve.html">approve</a> instead.</p></p></p></div><p class="paragraph">Approves a mobile push authentication request. </p><p class="paragraph"> This method should be called after the user confirms the push notification on their device (for example, by approving via fingerprint, face recognition, or number matching). It reports the authentication result to the PingOne platform. </p><p class="paragraph"> The <code class="lang-kotlin">authenticationMethod</code> parameter should specify the method used to authenticate the user on the device, as defined in <a href="https://www.rfc-editor.org/rfc/rfc8176#section-2">RFC 8176 — Authentication Method Reference (AMR)</a>. </p><h4 class="tableheader">Parameters</h4><div class="table"><div class="table-row table-row_content" data-filterable-current=":pingidsdkv2/main" data-filterable-set=":pingidsdkv2/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><u><span><span>context</span></span></u></div></span></div><div><div class="title"><p class="paragraph">the application <a href="https://developer.android.com/reference/kotlin/android/content/Context.html">Context</a>.</p></div></div></div></div><div class="table-row table-row_content" data-filterable-current=":pingidsdkv2/main" data-filterable-set=":pingidsdkv2/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><u><span>authentication</span><wbr></wbr><span><span>Method</span></span></u></div></span></div><div><div class="title"><p class="paragraph">the authentication method used by the user, for example: <code class="lang-kotlin">&quot;fpt&quot;</code> for fingerprint, <code class="lang-kotlin">&quot;face&quot;</code> for facial recognition, <code class="lang-kotlin">&quot;otp&quot;</code> for one-time passcode, etc.</p></div></div></div></div><div class="table-row table-row_content" data-filterable-current=":pingidsdkv2/main" data-filterable-set=":pingidsdkv2/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><u><span>number</span><wbr></wbr><span>Matching</span><wbr></wbr><span>Picked</span><wbr></wbr><span><span>Value</span></span></u></div></span></div><div><div class="title"><p class="paragraph">the number selected by the user during number matching, or <code class="lang-kotlin">null</code> if number matching was not used.</p></div></div></div></div><div class="table-row table-row_content" data-filterable-current=":pingidsdkv2/main" data-filterable-set=":pingidsdkv2/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><u><span><span>callback</span></span></u></div></span></div><div><div class="title"><p class="paragraph">the <a href="../-ping-one/-ping-one-s-d-k-callback/index.html">PingOne.PingOneSDKCallback</a> that will be invoked upon completion of the approval process, providing either success information or an error.</p></div></div></div></div></div></div></div>
 </div>
-      <div class="footer">
-        <span class="go-to-top-icon"><a href="#content" id="go-to-top-link"></a></span><span>© 2025 Copyright</span><span
-                class="pull-right"><span>Generated by </span><a
-                href="https://github.com/Kotlin/dokka"><span>dokka</span><span class="padded-icon"></span></a></span>
-      </div>
+    <div class="footer">
+        <div class="footer--container">
+            <a href="#content" id="go-to-top-link" class="footer--button footer--button_go-to-top"></a>
+            <div class="footer--content">
+                <div>
+                    <span>Generated by </span>
+                    <a class="footer--link footer--link_external" href="https://github.com/Kotlin/dokka">
+                        Dokka
+                    </a>
+                    <div>© 2026 Copyright</div>
+                </div>
+            </div>
+        </div>
+    </div>
+        </div>
     </div>
 </div>
 </body>

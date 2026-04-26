@@ -33,8 +33,8 @@ Reference documentation is available for PingOne MFA Mobile SDK, describing its 
 5. [Working with push messages in Android](#5-working-with-push-messages-in-android)
     1. [Register device token on PingOne server](#51-register-device-token-on-pingone-server)
     2. [Handling Push Notifications](#52-handling-push-notifications)
-        1. [FCM](#511-fcm)
-        2. [HMS](#512-hms)
+        1. [FCM](#521-fcm)
+        2. [HMS](#522-hms)
 6. [Test Push Notifications](#6-test-push-notifications)
 7. [Device Integrity Validation](#7-device-integrity-validation)
 
@@ -42,7 +42,7 @@ Reference documentation is available for PingOne MFA Mobile SDK, describing its 
 
 ### 1.1 Minimum requirements
 
-PingOne MFA Mobile SDK supports Android 8.0 (API level 26) and up, Gradle 7.2 and up, Java 17 and up. Starting with Android 13 (API level 33) the application needs to request the 'Post Notifications' permission from the user in order to show notifications. For more information see [Notification Runtime Permission Documentation](https://developer.android.com/guide/topics/ui/notifiers/notification-permission).
+The SDK supports Android 8.0 (API level 26) and higher. Applications integrating the SDK must build with an Android toolchain that supports Java 17 bytecode. Starting with Android 13 (API level 33) the application needs to request the 'Post Notifications' permission from the user in order to show notifications. For more information see [Notification Runtime Permission Documentation](https://developer.android.com/guide/topics/ui/notifiers/notification-permission).
 
 ### 1.2 Known limitations
 
@@ -120,7 +120,7 @@ When configuring your PingOne MFA SDK application in the PingOne admin web conso
     ```groovy
     dependencies {
     // Check for the latest version at https://search.maven.org/search?q=g:com.pingidentity.pingonemfa 
-    implementation 'com.pingidentity.pingonemfa:android-sdk:2.2.0'
+    implementation 'com.pingidentity.pingonemfa:android-sdk:2.3.0'
     }  
     ```  
 
@@ -173,19 +173,19 @@ In your app, add the appropriate section in your AndroidManifest.xml file (FCM o
 Retrieve the Push Registration Token from the FCM or HMS and set it in the PingOne Library by calling
 
 ```java
-public static void setDeviceToken(Context context, String token, NotificationProvider provider, PingOneSDKCallback callback);
+public static void setDeviceToken(Context context, String token, NotificationProvider provider, PingOneSetDeviceTokenCallback callback);
 ```
 
 For FCM:
 
  ```java
- PingOne.setDeviceToken(context, token, NotificationProvider.FCM, new PingOne.PingOneSDKCallback())  
+ PingOne.setDeviceToken(context, token, NotificationProvider.FCM, new PingOne.PingOneSetDeviceTokenCallback())  
 ```  
 
 For HMS:
 
  ```java
- PingOne.setDeviceToken(context, token, NotificationProvider.HMS, new PingOne.PingOneSDKCallback())  
+ PingOne.setDeviceToken(context, token, NotificationProvider.HMS, new PingOne.PingOneSetDeviceTokenCallback())  
 ```  
 
 Make sure you set the device’s push token before you call `PingOne.pair`, and make sure you update the PingOne MFA SDK Library with the new device's push token each time it changes.
@@ -197,7 +197,7 @@ PingOne MFA SDK will only handle push notifications that were issued by the Ping
 You can use the "category" field to customize the notification behavior according to the value set on the PingOne server. Retrieve the category of the push message by calling `remoteMessage.getData().get("category")`.
 For information on selecting a category on the server side, see: [Editing a notification template](https://docs.pingidentity.com/pingone/user_experience/p1_edit_notification.html).
 
-#### 5.1.1 FCM
+#### 5.2.1 FCM
 
 Implement the PingOne library’s push handling by passing the RemoteMessage received from FCM to the PingOne Library. (Note: you must override the `onMessageReceived` method of the `FirebaseMessagingService`)
 
@@ -216,7 +216,7 @@ public void onMessageReceived(final RemoteMessage remoteMessage) {
 }  
 ```
 
-#### 5.1.2 HMS
+#### 5.2.2 HMS
 
 Implement the PingOne library’s push handling by passing the RemoteMessage **data** received from HMS to the PingOne Library.  (Note: you must override the `onMessageReceived` method of the `HmsMessageService`)
 
@@ -251,7 +251,7 @@ public static void testRemoteNotification(Context context, PingOneGeo geo, PingO
 
 This method returns a status from the `TestResult` enum, summarizing the test result:
 
-```swift
+```java
 public enum TestResult{
         /**
          * Represents passed test
@@ -268,32 +268,47 @@ public enum TestResult{
     }
 ```
 
-The SDK runs the following tests, which are returned in the results array as NotificationTest objects with different test types:
+The SDK runs the following tests, which are returned in the `notificationTests` array as `NotificationTest` objects.
+The tests can have the following `NotificationTest.TestType` values:
+
+```java
+public enum TestType {
+    TEST_PUSH_ALLOWED_BY_SDK,
+    TEST_DEVICE_TOKEN_WAS_SET,
+    TEST_NOTIFICATIONS_PERMISSION_ENABLED,
+    TEST_NETWORK_CONNECTION,
+    TEST_SEND_REMOTE_NOTIFICATION,
+    TEST_RECEIVED_NOTIFICATION_INFO
+}
+```
+
 For each `NotificationTest`, developers can access the following information to understand the test content and results:
 
 ```java   
-/// Public enum that describes the notification of all tests name, description, and results Info.
-public enum TestType {
-        TEST_PUSH_ALLOWED_BY_SDK
-        TEST_DEVICE_TOKEN_WAS_SET
-        TEST_NOTIFICATIONS_PERMISSION_ENABLED,
-        TEST_NETWORK_CONNECTION,
-        TEST_SEND_REMOTE_NOTIFICATION,
-        TEST_RECEIVED_NOTIFICATION_INFO;
+public class NotificationTest {
+    /**
+     * The display name of the test.
+     */
+    public String getName();
 
-        /// The name of the test.
-        public String getTestName();
-        /// The description of the test.
-        public String getDescription()
-        /// The test result represented by `TestResult`.
-        public TestResult getResult()
-        /// In case the test didn't pass, information that explains the failure reason and how to overcome it.
-        public String getResultsInfo()
-       
-    }
+    /**
+     * The description of the test.
+     */
+    public String getDescription();
+
+    /**
+     * The test result represented by `TestResult`.
+     */
+    public TestResult getResult();
+
+    /**
+     * If the test did not pass, information that explains the failure reason and how to resolve it.
+     */
+    public String getResultsInfo();
+}
 ```
 
-See the PingOne MFA Mobile SDK Sample App [repository](https://github.com/pingidentity/pingone-sample-app-ios) for sample code on how to utilize the testRemoteNotification method for debugging push notifications.
+See the PingOne MFA Mobile SDK Sample App [repository](https://github.com/pingidentity/pingone-sample-app-android) for sample code on how to utilize the testRemoteNotification method for debugging push notifications.
 
 
 ## 7 Device Integrity Validation
