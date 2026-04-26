@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
+    <title>PingOneMobileConfirmationCallback</title>
+    <link href="../../../../images/logo-icon.svg" rel="icon" type="image/svg">
+        <script>var pathToRoot = "../../../../";</script>
+    <script>document.documentElement.classList.replace("no-js", "js");</script>
+    <script>const storage = localStorage.getItem("dokka-dark-mode")
+      if (storage == null) {
+        const osDarkSchemePreferred = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
+        if (osDarkSchemePreferred === true) {
+          document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+      } else {
+        const savedDarkMode = JSON.parse(storage)
+        if (savedDarkMode === true) {
+          document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+      }
+    </script>
+<script type="text/javascript" src="https://unpkg.com/kotlin-playground@1/dist/playground.min.js" async="async"></script>
+<script type="text/javascript" src="../../../../scripts/sourceset_dependencies.js" async="async"></script>
+<link href="../../../../styles/style.css" rel="Stylesheet">
+<link href="../../../../styles/main.css" rel="Stylesheet">
+<link href="../../../../styles/prism.css" rel="Stylesheet">
+<link href="../../../../styles/logo-styles.css" rel="Stylesheet">
+<link href="../../../../ui-kit/ui-kit.min.css" rel="Stylesheet">
+<script type="text/javascript" src="../../../../scripts/safe-local-storage_blocking.js"></script>
+<script type="text/javascript" src="../../../../scripts/navigation-loader.js" async="async"></script>
+<script type="text/javascript" src="../../../../scripts/platform-content-handler.js" async="async"></script>
+<script type="text/javascript" src="../../../../scripts/main.js" defer="defer"></script>
+<script type="text/javascript" src="../../../../scripts/prism.js" async="async"></script>
+<script type="text/javascript" src="../../../../ui-kit/ui-kit.min.js" defer="defer"></script>
+</head>
+<body>
+<div class="root">
+    <header class="navigation theme-dark" id="navigation-wrapper" role="banner">
+            <a class="library-name--link" href="../../../../index.html" tabindex="1">
+                    PingOne MFA Android SDK
+            </a>
+        <button class="navigation-controls--btn navigation-controls--btn_toc ui-kit_mobile-only" id="toc-toggle"
+                type="button">Toggle table of contents
+        </button>
+        <div class="navigation-controls--break ui-kit_mobile-only"></div>
+        <div class="library-version" id="library-version">
+        </div>
+        <div class="navigation-controls">
+        <ul class="filter-section filter-section_loading" id="filter-section" aria-label="Target filter">
+                <button class="platform-tag platform-selector jvm-like" data-active="" aria-pressed="true"
+                        data-filter=":pingidsdkv2/main">androidJvm</button>
+            <div class="dropdown filter-section--dropdown" data-role="dropdown" id="filter-section-dropdown">
+                <button class="button button_dropdown filter-section--dropdown-toggle" role="combobox"
+                        data-role="dropdown-toggle"
+                        aria-controls="platform-tags-listbox"
+                        aria-haspopup="listbox"
+                        aria-expanded="false"
+                        aria-label="Toggle source sets"
+                ></button>
+                <ul role="listbox" id="platform-tags-listbox" class="dropdown--list" data-role="dropdown-listbox" aria-label="Target filter">
+                    <div class="dropdown--header"><span>Target filter</span>
+                        <button class="button" data-role="dropdown-toggle" aria-label="Close target filter">
+                            <i class="ui-kit-icon ui-kit-icon_cross"></i>
+                        </button>
+                    </div>
+                        <li role="option" class="dropdown--option platform-selector-option jvm-like" tabindex="0">
+                            <label class="checkbox">
+                                <input type="checkbox" class="checkbox--input" id=":pingidsdkv2/main"
+                                       data-filter=":pingidsdkv2/main"/>
+                                <span class="checkbox--icon"></span>
+                                androidJvm
+                            </label>
+                        </li>
+                </ul>
+                <div class="dropdown--overlay"></div>
+            </div>
+        </ul>
+            <button class="navigation-controls--btn navigation-controls--btn_theme" id="theme-toggle-button"
+                    type="button">Switch theme
+            </button>
+            <div class="navigation-controls--btn navigation-controls--btn_search" id="searchBar" role="button">Search in
+                API
+            </div>
+        </div>
+    </header>
+    <div id="container">
+        <nav id="leftColumn" class="sidebar" data-item-type="SECTION" data-item-config='{"defaultSize": 280, "minSize": 200, "maxSize": 400}'>
+            <a class="toc--skip-link" href="#main">Skip to content</a>
+            <div class="dropdown theme-dark_mobile" data-role="dropdown" id="toc-dropdown">
+                <ul role="listbox" id="toc-listbox" class="dropdown--list dropdown--list_toc-list"
+                    data-role="dropdown-listbox" aria-label="Table of contents">
+                    <div class="dropdown--header">
+                            <span>
+                                    PingOne MFA Android SDK
+                            </span>
+                        <button class="button" data-role="dropdown-toggle" aria-label="Close table of contents">
+                            <i class="ui-kit-icon ui-kit-icon_cross"></i>
+                        </button>
+                    </div>
+                    <div class="sidebar--inner" id="sideMenu"></div>
+                </ul>
+                <div class="dropdown--overlay"></div>
+            </div>
+        </nav>
+        <div id="resizer" class="resizer" data-item-type="BAR"></div>
+        <div id="main" data-item-type="SECTION" role="main">
+<div class="main-content" data-page-type="classlike" id="content" pageIds="PingOne MFA Android SDK::com.pingidentity.pingidsdkv2/PingOne.PingOneMobileConfirmationCallback///PointingToDeclaration//191549138">
+  <div class="breadcrumbs"><a href="../../../../index.html">PingOne MFA Android SDK</a><span class="delimiter">/</span><a href="../../index.html">com.pingidentity.pingidsdkv2</a><span class="delimiter">/</span><a href="../index.html">PingOne</a><span class="delimiter">/</span><span class="current">PingOneMobileConfirmationCallback</span></div>
+  <div class="cover ">
+    <h1 class="cover"><span>Ping</span><wbr></wbr><span>One</span><wbr></wbr><span>Mobile</span><wbr></wbr><span>Confirmation</span><wbr></wbr><span><span>Callback</span></span></h1>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":pingidsdkv2/main"><div class="symbol monospace"><span class="token keyword">public </span><span class="token keyword">interface </span><a href="index.html">PingOneMobileConfirmationCallback</a><span class="token keyword"> implements </span><a href="../-ping-one-s-d-k-callback/index.html">PingOne.PingOneSDKCallback</a></div><p class="paragraph">A callback interface for receiving the result of a mobile push authentication approval. </p><p class="paragraph"> Implementations of this interface are notified when the user has approved/denied a push authentication request using <a href="../../-notification-object/approve.html">approve</a>. </p><p class="paragraph"> When the process completes, the <code class="lang-kotlin">confirmationInfo</code> parameter will contain public information about the confirmed authentication. This JSON may include the <code class="lang-kotlin">deviceRequirementsEvaluation</code> object, which contains the result of the server-side device requirements evaluation, including its status, an optional failure reason, and an optional device requirements data hash. If the process fails, the <code class="lang-kotlin">error</code> parameter will provide details about the failure. </p><p class="paragraph"><strong>Example usage:</strong></p><div class="sample-container"><pre><code class="block lang-kotlin" theme="idea">
+notificationObject.approve(context, &quot;fpt&quot;, null, new PingOneMobileConfirmationCallback() {
+    
+    public void onComplete(@Nullable JsonObject confirmationInfo, @Nullable PingOneSDKError error) {
+        if (error == null) {
+            Log.d(&quot;PingOne&quot;, &quot;Push approval succeeded: &quot; + confirmationInfo.toString());
+            JsonObject deviceRequirementsEvaluation =
+                    confirmationInfo != null
+                            ? confirmationInfo.getAsJsonObject(&quot;deviceRequirementsEvaluation&quot;)
+                            : null;
+            if (deviceRequirementsEvaluation != null) {
+                Log.d(&quot;PingOne&quot;, &quot;Device requirements evaluation status: &quot;
+                        + deviceRequirementsEvaluation.get(&quot;status&quot;).getAsString());
+            }
+        } else {
+            Log.e(&quot;PingOne&quot;, &quot;Push approval failed: &quot; + error.getMessage());
+        }
+    }
+});
+</code></pre><span class="copy-tooltip"><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div><span class="copy-icon"></span></span></div><p class="paragraph"> This interface extends <a href="../-ping-one-s-d-k-callback/index.html">PingOneSDKCallback</a>, which provides a simpler completion method. By default, <a href="on-complete.html">onComplete</a> is a no-op; use <a href="on-complete.html">onComplete</a> for detailed results. </p><p class="paragraph"><strong>Example </strong><code class="strong lang-kotlin"><strong>confirmationInfo</strong></code><strong> when device requirements evaluation fails:</strong></p><div class="sample-container"><pre><code class="block lang-kotlin" theme="idea">
+{
+  &quot;deviceRequirementsEvaluation&quot;: {
+    &quot;status&quot;: &quot;Failed&quot;,
+    &quot;reason&quot;: &quot;deviceBrandsDisAllowed&quot;,
+    &quot;deviceRequirementsDataHash&quot;: &quot;tK3pi0+/RSd0m7O3S0Q+IpOYu+Q/kOE5sLVFx9rAAXk=&quot;
+  }
+}
+</code></pre><span class="copy-tooltip"><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div><span class="copy-icon"></span></span></div><p class="paragraph"><strong>Example </strong><code class="strong lang-kotlin"><strong>confirmationInfo</strong></code><strong> when device requirements evaluation passes:</strong></p><div class="sample-container"><pre><code class="block lang-kotlin" theme="idea">
+{
+  &quot;deviceRequirementsEvaluation&quot;: {
+    &quot;status&quot;: &quot;Passed&quot;,
+    &quot;reason&quot;: null,
+    &quot;deviceRequirementsDataHash&quot;: &quot;tK3pi0+/RSd0m7O3S0Q+IpOYu+Q/kOE5sLVFx9rAAXk=&quot;
+  }
+}
+</code></pre><span class="copy-tooltip"><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div><span class="copy-icon"></span></span></div><p class="paragraph"> The <code class="lang-kotlin">deviceRequirementsEvaluation</code> object, when present inside <code class="lang-kotlin">confirmationInfo</code>, corresponds to <a href="../../../com.pingidentity.pingidsdkv2.communication.models/-device-requirements-evaluation/index.html">com.pingidentity.pingidsdkv2.communication.models.DeviceRequirementsEvaluation</a>. </p><h4 class="tableheader">See also</h4><div class="table"><div class="table-row table-row_content" data-filterable-current=":pingidsdkv2/main" data-filterable-set=":pingidsdkv2/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="../../-notification-object/approve.html"><span>Notification</span><wbr></wbr><span><span>Object</span></span></a></div></span></div><div></div></div></div></div></div></div>
+  </div>
+  <div class="tabbedcontent">
+    <div class="tabs-section" tabs-section="tabs-section"><button class="section-tab" data-active="" data-togglable="CONSTRUCTOR,TYPE,PROPERTY,FUNCTION">Members</button></div>
+    <div class="tabs-section-body">
+      <div data-togglable="FUNCTION">
+        <h2 class="tableheader">Functions</h2>
+        <div class="table"><a data-name="-253327107%2FFunctions%2F191549138" anchor-label="onComplete" id="-253327107%2FFunctions%2F191549138" data-filterable-set=":pingidsdkv2/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":pingidsdkv2/main" data-filterable-set=":pingidsdkv2/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="on-complete.html"><span>on</span><wbr></wbr><span><span>Complete</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-253327107%2FFunctions%2F191549138"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":pingidsdkv2/main"><div class="symbol monospace block"><span class="token keyword">public </span><span class="token keyword"></span>void <a href="on-complete.html"><span class="token function">onComplete</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span><span class="token annotation builtin">@</span><a href="https://developer.android.com/reference/kotlin/androidx/annotation/Nullable.html"><span class="token annotation builtin">Nullable</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span> </span><span class="token keyword"></span><a href="../../-ping-one-s-d-k-error/index.html">PingOneSDKError</a> error</span></span><span class="token punctuation">)</span></div><div class="symbol monospace block"><span class="token keyword">public </span><span class="token keyword">abstract </span><span class="token keyword"></span>void <a href="on-complete.html"><span class="token function">onComplete</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span><span class="token annotation builtin">@</span><a href="https://developer.android.com/reference/kotlin/androidx/annotation/Nullable.html"><span class="token annotation builtin">Nullable</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span> </span><span class="token keyword"></span><span data-unresolved-link="com.google.gson/JsonObject///PointingToDeclaration/">JsonObject</span> confirmationInfo<span class="token punctuation">, </span></span><span class="parameter "><span><span class="token annotation builtin">@</span><a href="https://developer.android.com/reference/kotlin/androidx/annotation/Nullable.html"><span class="token annotation builtin">Nullable</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span> </span><span class="token keyword"></span><a href="../../-ping-one-s-d-k-error/index.html">PingOneSDKError</a> error</span></span><span class="token punctuation">)</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    <div class="footer">
+        <div class="footer--container">
+            <a href="#content" id="go-to-top-link" class="footer--button footer--button_go-to-top"></a>
+            <div class="footer--content">
+                <div>
+                    <span>Generated by </span>
+                    <a class="footer--link footer--link_external" href="https://github.com/Kotlin/dokka">
+                        Dokka
+                    </a>
+                    <div>© 2026 Copyright</div>
+                </div>
+            </div>
+        </div>
+    </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
