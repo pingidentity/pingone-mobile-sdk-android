@@ -1,5 +1,11 @@
 # Release Notes
 
+## v2.3.1 - June 28th, 2026
+Bug fixes:
+
+- Resolved an issue where **converged** devices upgraded from version 1.x to 2.x could experience authentication malfunctions due to stale migration data left in local storage.
+
+
 ## v2.3.0 - April 26th, 2026
 Features:
 
