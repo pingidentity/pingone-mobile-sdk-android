@@ -1,5 +1,18 @@
 # Release Notes
 
+## v2.4.0 - July 27th, 2026
+Features:
+
+- Introduced a coroutine-based (suspend) API alongside the existing callback API. All primary `PingOne` public classes have been converted to Kotlin, enabling first-class coroutine support.
+- Added Play Integrity device posture attestation with server-issued challenges, replacing the previous approach and providing stronger attestation signals. The SDK now uses the Play Integrity **Standard** API instead of the Classic API.
+- Bug fixes and security improvements
+
+
+Compatibility:
+
+- **Minimum Android version raised to API 28 (Android 9).** Apps targeting API levels below 28 must update before integrating this version.`
+
+
 ## v2.3.1 - June 28th, 2026
 Bug fixes:
 

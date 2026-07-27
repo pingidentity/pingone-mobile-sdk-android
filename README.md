@@ -42,7 +42,7 @@ Reference documentation is available for PingOne MFA Mobile SDK, describing its 
 
 ### 1.1 Minimum requirements
 
-The SDK supports Android 8.0 (API level 26) and higher. Applications integrating the SDK must build with an Android toolchain that supports Java 17 bytecode. Starting with Android 13 (API level 33) the application needs to request the 'Post Notifications' permission from the user in order to show notifications. For more information see [Notification Runtime Permission Documentation](https://developer.android.com/guide/topics/ui/notifiers/notification-permission).
+The SDK supports Android 9.0 (API level 28) and higher. Applications integrating the SDK must build with an Android toolchain that supports Java 17 bytecode. Starting with Android 13 (API level 33) the application needs to request the 'Post Notifications' permission from the user in order to show notifications. For more information see [Notification Runtime Permission Documentation](https://developer.android.com/guide/topics/ui/notifiers/notification-permission).
 
 ### 1.2 Known limitations
 
@@ -120,7 +120,7 @@ When configuring your PingOne MFA SDK application in the PingOne admin web conso
     ```groovy
     dependencies {
     // Check for the latest version at https://search.maven.org/search?q=g:com.pingidentity.pingonemfa 
-    implementation 'com.pingidentity.pingonemfa:android-sdk:2.3.0'
+    implementation 'com.pingidentity.pingonemfa:android-sdk:2.4.0'
     }  
     ```  
 
@@ -323,7 +323,7 @@ To use the Play Integrity API:
 
    ```groovy
    dependencies{
-      implementation "com.google.android.play:integrity:1.3.0"
+      implementation "com.google.android.play:integrity:1.6.0"
    }
    ```
 
