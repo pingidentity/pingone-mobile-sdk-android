@@ -1,5 +1,12 @@
 # Release Notes
 
+## v2.4.1 - November 16th, 2026
+Features:
+
+- Improved Play Integrity token-provider recovery, including automatic provider refresh.
+- Bug fixes and security improvements
+
+
 ## v2.4.0 - July 27th, 2026
 Features:
 

@@ -108,24 +108,163 @@
   <div class="breadcrumbs"><a href="../../../index.html">PingOne MFA Android SDK</a><span class="delimiter">/</span><a href="../index.html">com.pingidentity.pingidsdkv2</a><span class="delimiter">/</span><span class="current">NotificationObject</span></div>
   <div class="cover ">
     <h1 class="cover"><span>Notification</span><wbr></wbr><span><span>Object</span></span></h1>
-    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":pingidsdkv2/main"><div class="symbol monospace"><span class="token keyword">public </span><span class="token keyword">class </span><a href="index.html">NotificationObject</a><span class="token keyword"> implements </span><a href="https://developer.android.com/reference/kotlin/android/os/Parcelable.html">Parcelable</a></div><p class="paragraph"> An object returned if PingOne.processRemoteNotification() completes successfully. </p><p class="paragraph"> NotificationObject represents an authentication request via remote notification. It can be approved or denied. </p><p class="paragraph"> Implements Parcelable so the developer will be able to pass it via intents.</p></div></div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":pingidsdkv2/main"><div class="symbol monospace"><span class="token keyword">public </span><span class="token keyword">final </span><span class="token keyword">class </span><a href="index.html">NotificationObject</a><span class="token keyword"> implements </span><a href="https://developer.android.com/reference/kotlin/android/os/Parcelable.html">Parcelable</a></div><p class="paragraph">An object returned if <a href="../-ping-one/process-remote-notification.html">PingOne.processRemoteNotification</a> completes successfully.</p><p class="paragraph">NotificationObject represents an authentication request via remote notification. It can be approved or denied.</p><p class="paragraph">Implements <a href="https://developer.android.com/reference/kotlin/android/os/Parcelable.html">Parcelable</a> so the developer will be able to pass it via intents.</p></div></div>
   </div>
   <div class="tabbedcontent">
     <div class="tabs-section" tabs-section="tabs-section"><button class="section-tab" data-active="" data-togglable="CONSTRUCTOR,TYPE,PROPERTY,FUNCTION">Members</button></div>
     <div class="tabs-section-body">
-      <div data-togglable="FUNCTION">
-        <h2 class="tableheader">Functions</h2>
-        <div class="table"><a data-name="370931131%2FFunctions%2F191549138" anchor-label="approve" id="370931131%2FFunctions%2F191549138" data-filterable-set=":pingidsdkv2/main"></a>
+      <div data-togglable="PROPERTY">
+        <h2 class="tableheader">Properties</h2>
+        <div class="table"><a data-name="949817232%2FProperties%2F191549138" anchor-label="applicationContext" id="949817232%2FProperties%2F191549138" data-filterable-set=":pingidsdkv2/main"></a>
           <div class="table-row table-row_content" data-filterable-current=":pingidsdkv2/main" data-filterable-set=":pingidsdkv2/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
-                  <div><a href="approve.html"><span><span>approve</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="370931131%2FFunctions%2F191549138"></span>
+                  <div><a href="index.html#949817232%2FProperties%2F191549138"><span>application</span><wbr></wbr><span><span>Context</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="949817232%2FProperties%2F191549138"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":pingidsdkv2/main"><div class="symbol monospace block"><span class="token keyword">public </span><span class="token keyword"></span>void <a href="approve.html"><span class="token function">approve</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword"></span><a href="https://developer.android.com/reference/kotlin/android/content/Context.html">Context</a> context<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword"></span><a href="https://developer.android.com/reference/kotlin/java/lang/String.html">String</a> authenticationMethod<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword"></span><a href="https://developer.android.com/reference/kotlin/java/lang/Integer.html">Integer</a> numberMatchingPickedValue<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword"></span><a href="../-ping-one/-ping-one-mobile-confirmation-callback/index.html">PingOne.PingOneMobileConfirmationCallback</a> callback</span></span><span class="token punctuation">)</span></div><div class="brief ">Approves the current mobile push authentication request.</div><div class="symbol monospace block"><div class="block"><div class="block"><span class="token annotation builtin">@</span><a href="https://developer.android.com/reference/kotlin/java/lang/Deprecated.html"><span class="token annotation builtin">Deprecated</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span></div></div><span class="token keyword">public </span><span class="token keyword"></span>void <a href="approve.html"><span class="token function"><strike>approve</strike></span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword"></span><a href="https://developer.android.com/reference/kotlin/android/content/Context.html">Context</a> context<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword"></span><a href="https://developer.android.com/reference/kotlin/java/lang/String.html">String</a> authenticationMethod<span class="token punctuation">, </span></span><span class="parameter "><span><span class="token annotation builtin">@</span><a href="https://developer.android.com/reference/kotlin/androidx/annotation/Nullable.html"><span class="token annotation builtin">Nullable</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span> </span><span class="token keyword"></span><a href="https://developer.android.com/reference/kotlin/java/lang/Integer.html">Integer</a> numberMatchingPickedValue<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword"></span><a href="../-ping-one/-ping-one-s-d-k-callback/index.html">PingOne.PingOneSDKCallback</a> callback</span></span><span class="token punctuation">)</span></div><div class="brief ">Approves a mobile push authentication request.</div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":pingidsdkv2/main"><div class="symbol monospace block"><span class="token keyword">private </span><span class="token keyword">final </span><span data-unresolved-link="com.google.gson/JsonObject///PointingToDeclaration/">JsonObject</span> <a href="index.html#949817232%2FProperties%2F191549138">applicationContext</a></div><div class="brief "><p class="paragraph">Returns application context as JSON object. Internal use only.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="470847591%2FProperties%2F191549138" anchor-label="clientContext" id="470847591%2FProperties%2F191549138" data-filterable-set=":pingidsdkv2/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":pingidsdkv2/main" data-filterable-set=":pingidsdkv2/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="index.html#470847591%2FProperties%2F191549138"><span>client</span><wbr></wbr><span><span>Context</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="470847591%2FProperties%2F191549138"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":pingidsdkv2/main"><div class="symbol monospace block"><span class="token keyword">private </span><span class="token keyword">final </span><a href="https://developer.android.com/reference/kotlin/java/lang/String.html">String</a> <a href="index.html#470847591%2FProperties%2F191549138">clientContext</a></div><div class="brief "><p class="paragraph">Returns client-context String object or null if no context was passed by the server.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1835693085%2FProperties%2F191549138" anchor-label="isCancelAuth" id="-1835693085%2FProperties%2F191549138" data-filterable-set=":pingidsdkv2/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":pingidsdkv2/main" data-filterable-set=":pingidsdkv2/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="is-cancel-auth.html"><span>is</span><wbr></wbr><span>Cancel</span><wbr></wbr><span><span>Auth</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1835693085%2FProperties%2F191549138"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":pingidsdkv2/main"><div class="symbol monospace block"><span class="token keyword">private </span><span class="token keyword">final </span><a href="https://developer.android.com/reference/kotlin/java/lang/Boolean.html">Boolean</a> <a href="is-cancel-auth.html">isCancelAuth</a></div><div class="brief "><p class="paragraph">Checks if the push type is cancel authentication.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-139259245%2FProperties%2F191549138" anchor-label="isTest" id="-139259245%2FProperties%2F191549138" data-filterable-set=":pingidsdkv2/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":pingidsdkv2/main" data-filterable-set=":pingidsdkv2/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="is-test.html"><span>is</span><wbr></wbr><span><span>Test</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-139259245%2FProperties%2F191549138"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":pingidsdkv2/main"><div class="symbol monospace block"><span class="token keyword">private </span><span class="token keyword">final </span><a href="https://developer.android.com/reference/kotlin/java/lang/Boolean.html">Boolean</a> <a href="is-test.html">isTest</a></div><div class="brief "><p class="paragraph">Checks if the push was sent for testing purpose.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1869291789%2FProperties%2F191549138" anchor-label="numberMatchingOptions" id="-1869291789%2FProperties%2F191549138" data-filterable-set=":pingidsdkv2/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":pingidsdkv2/main" data-filterable-set=":pingidsdkv2/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="index.html#-1869291789%2FProperties%2F191549138"><span>number</span><wbr></wbr><span>Matching</span><wbr></wbr><span><span>Options</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1869291789%2FProperties%2F191549138"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":pingidsdkv2/main"><div class="symbol monospace block"><span class="token keyword">private </span><span class="token keyword">final </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int-array/index.html">IntArray</a> <a href="index.html#-1869291789%2FProperties%2F191549138">numberMatchingOptions</a></div><div class="brief "><p class="paragraph">Returns number matching options int array object or null.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-750539217%2FProperties%2F191549138" anchor-label="numberMatchingType" id="-750539217%2FProperties%2F191549138" data-filterable-set=":pingidsdkv2/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":pingidsdkv2/main" data-filterable-set=":pingidsdkv2/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="index.html#-750539217%2FProperties%2F191549138"><span>number</span><wbr></wbr><span>Matching</span><wbr></wbr><span><span>Type</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-750539217%2FProperties%2F191549138"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":pingidsdkv2/main"><div class="symbol monospace block"><span class="token keyword">private </span><span class="token keyword">final </span><a href="https://developer.android.com/reference/kotlin/java/lang/String.html">String</a> <a href="index.html#-750539217%2FProperties%2F191549138">numberMatchingType</a></div><div class="brief "><p class="paragraph">Returns number matching type String object or null.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="2074948731%2FProperties%2F191549138" anchor-label="pushType" id="2074948731%2FProperties%2F191549138" data-filterable-set=":pingidsdkv2/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":pingidsdkv2/main" data-filterable-set=":pingidsdkv2/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="index.html#2074948731%2FProperties%2F191549138"><span>push</span><wbr></wbr><span><span>Type</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="2074948731%2FProperties%2F191549138"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":pingidsdkv2/main"><div class="symbol monospace block"><span class="token keyword">private </span><span class="token keyword">final </span><a href="https://developer.android.com/reference/kotlin/java/lang/String.html">String</a> <a href="index.html#2074948731%2FProperties%2F191549138">pushType</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="64429910%2FProperties%2F191549138" anchor-label="timeoutDuration" id="64429910%2FProperties%2F191549138" data-filterable-set=":pingidsdkv2/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":pingidsdkv2/main" data-filterable-set=":pingidsdkv2/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="index.html#64429910%2FProperties%2F191549138"><span>timeout</span><wbr></wbr><span><span>Duration</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="64429910%2FProperties%2F191549138"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":pingidsdkv2/main"><div class="symbol monospace block"><span class="token keyword">private </span><span class="token keyword">final </span><a href="https://developer.android.com/reference/kotlin/java/lang/Integer.html">Integer</a> <a href="index.html#64429910%2FProperties%2F191549138">timeoutDuration</a></div><div class="brief "><p class="paragraph">The maximum time duration allowed from getting push till user response.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div data-togglable="FUNCTION">
+        <h2 class="tableheader">Functions</h2>
+        <div class="table"><a data-name="1939718683%2FFunctions%2F191549138" anchor-label="approve" id="1939718683%2FFunctions%2F191549138" data-filterable-set=":pingidsdkv2/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":pingidsdkv2/main" data-filterable-set=":pingidsdkv2/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="approve.html"><span><span>approve</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1939718683%2FFunctions%2F191549138"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":pingidsdkv2/main"><div class="symbol monospace block"><span class="token keyword">public </span><span class="token keyword">final </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-unit/index.html">Unit</a> <a href="approve.html"><span class="token function">approve</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword"></span><a href="https://developer.android.com/reference/kotlin/android/content/Context.html">Context</a> context<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword"></span><a href="https://developer.android.com/reference/kotlin/java/lang/String.html">String</a> authenticationMethod<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword"></span><a href="https://developer.android.com/reference/kotlin/java/lang/Integer.html">Integer</a> numberMatchingPickedValue<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword"></span><a href="../-ping-one/-ping-one-mobile-confirmation-callback/index.html">PingOne.PingOneMobileConfirmationCallback</a> callback</span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Approves the current mobile push authentication request.</p></div><div class="symbol monospace block"><div class="block"><div class="block"><span class="token annotation builtin">@</span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-deprecated/index.html"><span class="token annotation builtin">Deprecated</span></a><span class="token punctuation">(</span><span>message<span class="token operator"> = </span><span class="breakable-word"><span class="token string">&quot;Use approve(Context, String?, Int?, PingOne.PingOneMobileConfirmationCallback) instead.&quot;</span></span><span class="token punctuation">, </span></span><wbr></wbr><span>replaceWith<span class="token operator"> = </span><span class="token annotation builtin">@</span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-replace-with/index.html"><span class="token annotation builtin">ReplaceWith</span></a><span class="token punctuation">(</span><span>expression<span class="token operator"> = </span><span class="breakable-word"><span class="token string">&quot;approve(context, authenticationMethod, numberMatchingPickedValue, callback)&quot;</span></span></span><wbr></wbr><span class="token punctuation">)</span></span><wbr></wbr><span class="token punctuation">)</span></div></div><span class="token keyword">public </span><span class="token keyword">final </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-unit/index.html">Unit</a> <a href="approve.html"><span class="token function"><strike>approve</strike></span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword"></span><a href="https://developer.android.com/reference/kotlin/android/content/Context.html">Context</a> context<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword"></span><a href="https://developer.android.com/reference/kotlin/java/lang/String.html">String</a> authenticationMethod<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword"></span><a href="https://developer.android.com/reference/kotlin/java/lang/Integer.html">Integer</a> numberMatchingPickedValue<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword"></span><a href="../-ping-one/-ping-one-s-d-k-callback/index.html">PingOne.PingOneSDKCallback</a> callback</span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Approves a mobile push authentication request.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="350431677%2FFunctions%2F191549138" anchor-label="approveSuspend" id="350431677%2FFunctions%2F191549138" data-filterable-set=":pingidsdkv2/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":pingidsdkv2/main" data-filterable-set=":pingidsdkv2/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="approve-suspend.html"><span>approve</span><wbr></wbr><span><span>Suspend</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="350431677%2FFunctions%2F191549138"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":pingidsdkv2/main"><div class="symbol monospace block"><span class="token keyword">public </span><span class="token keyword">final </span><span class="token keyword"></span><span data-unresolved-link="com.google.gson/JsonObject///PointingToDeclaration/">JsonObject</span> <a href="approve-suspend.html"><span class="token function">approveSuspend</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword"></span><a href="https://developer.android.com/reference/kotlin/android/content/Context.html">Context</a> context<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword"></span><a href="https://developer.android.com/reference/kotlin/java/lang/String.html">String</a> authenticationMethod<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword"></span><a href="https://developer.android.com/reference/kotlin/java/lang/Integer.html">Integer</a> numberMatchingPickedValue</span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Approves the current mobile push authentication request (suspend version).</p></div></div></div>
                 </div>
               </div>
             </div>
@@ -140,7 +279,22 @@
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":pingidsdkv2/main"><div class="symbol monospace block"><div class="block"><div class="block"><span class="token annotation builtin">@</span><a href="https://developer.android.com/reference/kotlin/java/lang/Deprecated.html"><span class="token annotation builtin">Deprecated</span></a><span class="token punctuation">(</span><span>since<span class="token operator"> = </span><span class="breakable-word"><span class="token string">&quot;2.3.0&quot;</span></span></span><wbr></wbr><span class="token punctuation">)</span></div></div><span class="token keyword">public </span><span class="token keyword"></span>void <a href="deny.html"><span class="token function"><strike>deny</strike></span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword"></span><a href="https://developer.android.com/reference/kotlin/android/content/Context.html">Context</a> context<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword"></span><a href="../-ping-one/-ping-one-s-d-k-callback/index.html">PingOne.PingOneSDKCallback</a> callback</span></span><span class="token punctuation">)</span></div><div class="brief ">Denies authentication</div><div class="symbol monospace block"><span class="token keyword">public </span><span class="token keyword"></span>void <a href="deny.html"><span class="token function">deny</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword"></span><a href="https://developer.android.com/reference/kotlin/android/content/Context.html">Context</a> context<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword"></span><a href="../../com.pingidentity.pingidsdkv2.types/-deny-reason/index.html">DenyReason</a> denyReason<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword"></span><a href="../-ping-one/-ping-one-s-d-k-callback/index.html">PingOne.PingOneSDKCallback</a> callback</span></span><span class="token punctuation">)</span></div><div class="brief ">Deny the authentication with a reason specified in <a href="../../com.pingidentity.pingidsdkv2.types/-deny-reason/index.html">DenyReason</a>.</div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":pingidsdkv2/main"><div class="symbol monospace block"><div class="block"><div class="block"><span class="token annotation builtin">@</span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-deprecated/index.html"><span class="token annotation builtin">Deprecated</span></a><span class="token punctuation">(</span><span>message<span class="token operator"> = </span><span class="breakable-word"><span class="token string">&quot;Use deny(Context, DenyReason, PingOne.PingOneSDKCallback) instead.&quot;</span></span><span class="token punctuation">, </span></span><wbr></wbr><span>replaceWith<span class="token operator"> = </span><span class="token annotation builtin">@</span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-replace-with/index.html"><span class="token annotation builtin">ReplaceWith</span></a><span class="token punctuation">(</span><span>expression<span class="token operator"> = </span><span class="breakable-word"><span class="token string">&quot;deny(context, denyReason, callback)&quot;</span></span></span><wbr></wbr><span class="token punctuation">)</span></span><wbr></wbr><span class="token punctuation">)</span></div></div><span class="token keyword">public </span><span class="token keyword">final </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-unit/index.html">Unit</a> <a href="deny.html"><span class="token function"><strike>deny</strike></span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword"></span><a href="https://developer.android.com/reference/kotlin/android/content/Context.html">Context</a> context<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword"></span><a href="../-ping-one/-ping-one-s-d-k-callback/index.html">PingOne.PingOneSDKCallback</a> callback</span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Denies authentication.</p></div><div class="symbol monospace block"><span class="token keyword">public </span><span class="token keyword">final </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-unit/index.html">Unit</a> <a href="deny.html"><span class="token function">deny</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword"></span><a href="https://developer.android.com/reference/kotlin/android/content/Context.html">Context</a> context<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword"></span><a href="../../com.pingidentity.pingidsdkv2.types/-deny-reason/index.html">DenyReason</a> denyReason<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword"></span><a href="../-ping-one/-ping-one-s-d-k-callback/index.html">PingOne.PingOneSDKCallback</a> callback</span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Deny the authentication with a reason specified in <a href="../../com.pingidentity.pingidsdkv2.types/-deny-reason/index.html">DenyReason</a>.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1515675212%2FFunctions%2F191549138" anchor-label="denySuspend" id="-1515675212%2FFunctions%2F191549138" data-filterable-set=":pingidsdkv2/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":pingidsdkv2/main" data-filterable-set=":pingidsdkv2/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="deny-suspend.html"><span>deny</span><wbr></wbr><span><span>Suspend</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1515675212%2FFunctions%2F191549138"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":pingidsdkv2/main"><div class="symbol monospace block"><span class="token keyword">public </span><span class="token keyword">final </span><span class="token keyword"></span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-unit/index.html">Unit</a> <a href="deny-suspend.html"><span class="token function">denySuspend</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword"></span><a href="https://developer.android.com/reference/kotlin/android/content/Context.html">Context</a> context<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword"></span><a href="../../com.pingidentity.pingidsdkv2.types/-deny-reason/index.html">DenyReason</a> denyReason</span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Deny the authentication with a reason specified in <a href="../../com.pingidentity.pingidsdkv2.types/-deny-reason/index.html">DenyReason</a>.</p></div></div></div>
                 </div>
               </div>
             </div>
@@ -155,7 +309,7 @@
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":pingidsdkv2/main"><div class="symbol monospace block"><span class="token keyword">public </span><span class="token keyword"></span><span data-unresolved-link="com.google.gson/JsonObject///PointingToDeclaration/">JsonObject</span> <a href="get-application-context.html"><span class="token function">getApplicationContext</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":pingidsdkv2/main"><div class="symbol monospace block"><span class="token keyword">public </span><span class="token keyword">final </span><span data-unresolved-link="com.google.gson/JsonObject///PointingToDeclaration/">JsonObject</span> <a href="get-application-context.html"><span class="token function">getApplicationContext</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span></div></div></div>
                 </div>
               </div>
             </div>
@@ -170,7 +324,7 @@
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":pingidsdkv2/main"><div class="symbol monospace block"><span class="token keyword">public </span><span class="token keyword"></span><a href="https://developer.android.com/reference/kotlin/java/lang/String.html">String</a> <a href="get-client-context.html"><span class="token function">getClientContext</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span></div><div class="brief ">Returns client-context String object or null if no context was passed by the server</div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":pingidsdkv2/main"><div class="symbol monospace block"><span class="token keyword">public </span><span class="token keyword">final </span><a href="https://developer.android.com/reference/kotlin/java/lang/String.html">String</a> <a href="get-client-context.html"><span class="token function">getClientContext</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span></div></div></div>
                 </div>
               </div>
             </div>
@@ -185,7 +339,7 @@
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":pingidsdkv2/main"><div class="symbol monospace block"><span class="token keyword">public </span><span class="token keyword"></span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-array/index.html">Array</a><span class="token operator">&lt;</span>int<span class="token operator">&gt;</span> <a href="get-number-matching-options.html"><span class="token function">getNumberMatchingOptions</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span></div><div class="brief ">Returns number matching options int array object or null</div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":pingidsdkv2/main"><div class="symbol monospace block"><span class="token keyword">public </span><span class="token keyword">final </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int-array/index.html">IntArray</a> <a href="get-number-matching-options.html"><span class="token function">getNumberMatchingOptions</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span></div></div></div>
                 </div>
               </div>
             </div>
@@ -200,7 +354,22 @@
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":pingidsdkv2/main"><div class="symbol monospace block"><span class="token keyword">public </span><span class="token keyword"></span><a href="https://developer.android.com/reference/kotlin/java/lang/String.html">String</a> <a href="get-number-matching-type.html"><span class="token function">getNumberMatchingType</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span></div><div class="brief ">Returns number matching type String object or null SELECT_NUMBER: the user will pick a number from numberMatchingOptions.</div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":pingidsdkv2/main"><div class="symbol monospace block"><span class="token keyword">public </span><span class="token keyword">final </span><a href="https://developer.android.com/reference/kotlin/java/lang/String.html">String</a> <a href="get-number-matching-type.html"><span class="token function">getNumberMatchingType</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1730069727%2FFunctions%2F191549138" anchor-label="getPushType" id="-1730069727%2FFunctions%2F191549138" data-filterable-set=":pingidsdkv2/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":pingidsdkv2/main" data-filterable-set=":pingidsdkv2/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="get-push-type.html"><span>get</span><wbr></wbr><span>Push</span><wbr></wbr><span><span>Type</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1730069727%2FFunctions%2F191549138"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":pingidsdkv2/main"><div class="symbol monospace block"><span class="token keyword">public </span><span class="token keyword">final </span><a href="https://developer.android.com/reference/kotlin/java/lang/String.html">String</a> <a href="get-push-type.html"><span class="token function">getPushType</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span></div></div></div>
                 </div>
               </div>
             </div>
@@ -215,7 +384,7 @@
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":pingidsdkv2/main"><div class="symbol monospace block"><span class="token keyword">public </span><span class="token keyword"></span>int <a href="get-timeout-duration.html"><span class="token function">getTimeoutDuration</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span></div><div class="brief ">The maximum time duration allowed from getting push till user response</div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":pingidsdkv2/main"><div class="symbol monospace block"><span class="token keyword">public </span><span class="token keyword">final </span><a href="https://developer.android.com/reference/kotlin/java/lang/Integer.html">Integer</a> <a href="get-timeout-duration.html"><span class="token function">getTimeoutDuration</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span></div></div></div>
                 </div>
               </div>
             </div>
@@ -230,7 +399,7 @@
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":pingidsdkv2/main"><div class="symbol monospace block"><span class="token keyword">public </span><span class="token keyword"></span>boolean <a href="is-cancel-auth.html"><span class="token function">isCancelAuth</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span></div><div class="brief ">Checks if the push type is cancel authentication</div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":pingidsdkv2/main"><div class="symbol monospace block"><span class="token keyword">public </span><span class="token keyword">final </span><a href="https://developer.android.com/reference/kotlin/java/lang/Boolean.html">Boolean</a> <a href="is-cancel-auth.html"><span class="token function">isCancelAuth</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span></div></div></div>
                 </div>
               </div>
             </div>
@@ -245,7 +414,7 @@
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":pingidsdkv2/main"><div class="symbol monospace block"><span class="token keyword">public </span><span class="token keyword"></span>boolean <a href="is-test.html"><span class="token function">isTest</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span></div><div class="brief ">Checks if the push was sent for testing purpose.</div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":pingidsdkv2/main"><div class="symbol monospace block"><span class="token keyword">public </span><span class="token keyword">final </span><a href="https://developer.android.com/reference/kotlin/java/lang/Boolean.html">Boolean</a> <a href="is-test.html"><span class="token function">isTest</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span></div></div></div>
                 </div>
               </div>
             </div>

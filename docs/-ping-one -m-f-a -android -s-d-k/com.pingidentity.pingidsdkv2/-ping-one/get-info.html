@@ -109,37 +109,76 @@
   <div class="cover ">
     <h1 class="cover"><span>get</span><wbr></wbr><span><span>Info</span></span></h1>
   </div>
-  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":pingidsdkv2/main"><div class="symbol monospace block"><span class="token keyword">public </span><span class="token keyword">static </span>void <a href="get-info.html"><span class="token function">getInfo</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword"></span><a href="https://developer.android.com/reference/kotlin/android/content/Context.html">Context</a> context<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword"></span><a href="-ping-one-get-info-callback/index.html">PingOne.PingOneGetInfoCallback</a> callback</span></span><span class="token punctuation">)</span></div><p class="paragraph">Get info. </p><p class="paragraph"> Returns all the users that are paired to the device. For each user the response includes its user id, first name, last name, the device id, and optional <a href="../../com.pingidentity.pingidsdkv2.communication.models/-device-requirements-evaluation/index.html">com.pingidentity.pingidsdkv2.communication.models.DeviceRequirementsEvaluation</a> details when available. </p><p class="paragraph"><strong>Sample usage:</strong></p><div class="sample-container"><pre><code class="block lang-kotlin" theme="idea">PingOne.getInfo(context, new PingOneGetInfoCallback() {
-    @Override
+  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":pingidsdkv2/main"><div class="symbol monospace block"><span class="token keyword">public </span><span class="token keyword">final </span><span class="token keyword">static </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-unit/index.html">Unit</a> <a href="get-info.html"><span class="token function">getInfo</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword"></span><a href="https://developer.android.com/reference/kotlin/android/content/Context.html">Context</a> context<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword"></span><a href="-ping-one-get-info-callback/index.html">PingOne.PingOneGetInfoCallback</a> callback</span></span><span class="token punctuation">)</span></div><p class="paragraph">Get info.</p><p>
+Returns all the users that are paired to the device, per geographical server name. For each
+region the response includes a list of paired users (each with user id, first name, last name,
+and device id), a shouldRollback flag, and optional
+{@link com.pingidentity.pingidsdkv2.communication.models.DeviceRequirementsEvaluation}
+details at the region level when available.
+<p>
+<b>Sample usage:</b>
+<pre>
+<code>PingOne.getInfo(context, new PingOneGetInfoCallback() {
+    &#064;Override
     public void onComplete(@Nullable JsonObject publicJson, @Nullable PingOneSDKError error) {
         if (publicJson != null){
              //parse an array of the users paired to this device
         }
     }
 });
-</code></pre><span class="copy-tooltip"><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div><span class="copy-icon"></span></span></div><p class="paragraph"><strong>An example of JsonObject returned in </strong><a href="-ping-one-get-info-callback/index.html"><strong>PingOneGetInfoCallback</strong></a></p><div class="sample-container"><pre><code class="block lang-kotlin" theme="idea">{
-  &quot;users&quot; : [
-    {
-      &quot;id&quot; : &quot;6f05692a-b34b-4036-ae4d-ab1810ec651c&quot;,
-      &quot;environment&quot; : {
-        &quot;id&quot; : &quot;1e41d166-8012-4fa2-b755-15cd7c8a03de&quot;
-      },
-      &quot;device&quot; : {
-        &quot;id&quot; : &quot;897fbc68-57d2-4b1e-84c8-dd36289d2b8b&quot;
-      },
-      &quot;name&quot; : {
-        &quot;given&quot; : &quot;John&quot;,
-        &quot;family&quot; : &quot;Doe&quot;
-      },
-      &quot;deviceRequirementsEvaluation&quot; : {
-        &quot;status&quot; : &quot;Passed&quot;,
-        &quot;reason&quot; : null,
-        &quot;deviceRequirementsDataHash&quot; : &quot;tK3pi0+/RSd0m7O3S0Q+IpOYu+Q/kOE5sLVFx9rAAXk=&quot;
+</code>
+</pre>
+<p>
+<b>An example of JsonObject returned in {@link PingOneGetInfoCallback}</b>
+<pre>
+<code>{
+"NA": {
+    "deviceRequirementsEvaluation": {
+      "status": "PASSED",
+      "deviceRequirementsDataHash": "<hash>"
+    },
+    "shouldRollback": false,
+    "users": [
+      {
+        "id": "<user-id>",
+        "name": {
+          "given": "<given>",
+          "family": "<family>"
+        },
+        "environment": {
+          "id": "<environment-id>"
+        },
+        "device": {
+          "id": "<device-id>"
+        }
       }
-    }
-  ]
+    ]
+},
+"EU": {
+    "deviceRequirementsEvaluation": {
+      "status": "PASSED",
+      "deviceRequirementsDataHash": "<hash>"
+    },
+    "shouldRollback": false,
+    "users": [
+      {
+        "id": "<user-id>",
+        "name": {
+          "given": "<given>",
+          "family": "<family>"
+        },
+        "environment": {
+          "id": "<environment-id>"
+        },
+        "device": {
+          "id": "<device-id>"
+        }
+      }
+    ]
 }
-    </code></pre><span class="copy-tooltip"><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div><span class="copy-icon"></span></span></div><h4 class="tableheader">Parameters</h4><div class="table"><div class="table-row table-row_content" data-filterable-current=":pingidsdkv2/main" data-filterable-set=":pingidsdkv2/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><u><span><span>context</span></span></u></div></span></div><div><div class="title"><p class="paragraph">The context of the calling application.</p></div></div></div></div><div class="table-row table-row_content" data-filterable-current=":pingidsdkv2/main" data-filterable-set=":pingidsdkv2/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><u><span><span>callback</span></span></u></div></span></div><div><div class="title"><p class="paragraph"><a href="-ping-one-get-info-callback/index.html">PingOneGetInfoCallback</a> is triggered upon completion of the flow.</p></div></div></div></div></div></div></div>
+}
+    </code>
+</pre><h4 class="tableheader">Parameters</h4><div class="table"><div class="table-row table-row_content" data-filterable-current=":pingidsdkv2/main" data-filterable-set=":pingidsdkv2/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><u><span><span>context</span></span></u></div></span></div><div><div class="title"><p class="paragraph">The context of the calling application.</p></div></div></div></div><div class="table-row table-row_content" data-filterable-current=":pingidsdkv2/main" data-filterable-set=":pingidsdkv2/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><u><span><span>callback</span></span></u></div></span></div><div><div class="title"><p class="paragraph">{@link PingOneGetInfoCallback} is triggered upon completion of the flow.</p></div></div></div></div></div></div></div>
 </div>
     <div class="footer">
         <div class="footer--container">
