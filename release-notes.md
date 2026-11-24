@@ -1,5 +1,11 @@
 # Release Notes
 
+## v2.4.2 - November 24th, 2026
+Bug fix:
+
+In version 2.4.1 there was a rare scenario where a paired device could end up in a state where it had to be re-paired. This issue has been fixed.
+
+
 ## v2.4.1 - November 16th, 2026
 Features:
 
